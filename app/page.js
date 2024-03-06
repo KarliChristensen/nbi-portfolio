@@ -12,14 +12,28 @@ export default function Home() {
           <div className="mx-10 md:w-1/2 flex justify-center flex-col text-white">
             <h1 className="text-1xl">{`Hi, I'm Karli`}</h1>
             <TypeIt
-              className="text-2xl md:text-5xl max-w-32 font-bold"
+              className="text-2xl md:text-5xl max-w-32 font-bold text-nowrap"
+              options={{
+                speed: 50,
+                waitUntilVisible: true,
+                lifeLike: true,
+              }}
               getBeforeInit={(instance) => {
                 instance
                   .type("I'm a translator.")
                   .pause(750)
-                  .delete(11)
+                  .delete(11, { speed: 500 })
                   .pause(500)
-                  .type("frontend developer!");
+                  .type(" developer.", { speed: 500 })
+                  .pause(500)
+                  .move(-10)
+                  .type(
+                    '<em><strong class="font-semibold">frontend </strong></em>',
+                    {
+                      speed: 100,
+                    }
+                  )
+                  .move(null, { to: "END" });
 
                 return instance;
               }}
