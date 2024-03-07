@@ -42,7 +42,10 @@ export default function Home() {
         </div>
       </section>
       <section id="about" className="snap-start">
-        <div className="w-screen h-screen "></div>
+        <div className="w-screen h-screen bg-blue-600"></div>
+      </section>
+      <section id="projects" className="snap-start">
+        <div className="w-screen h-screen bg-red-600"></div>
       </section>
     </main>
   );

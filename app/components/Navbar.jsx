@@ -5,7 +5,6 @@ import Link from "next/link";
 import { navLinks } from "../config";
 
 const Navbar = () => {
-  const [currentSection, setCurrentSection] = useState("");
 
   return (
     <header className="absolute top-0 bg-transparent w-full z-50 text-gray-400">
@@ -14,12 +13,7 @@ const Navbar = () => {
           <ol className="flex flex-row">
             {navLinks &&
               navLinks.map(({ url, name }, i) => (
-                <li
-                  key={i}
-                  className={
-                    currentSection === url.substring(1) ? "active" : ""
-                  }
-                >
+                <li key={i}>
                   <Link href={url}>{name}</Link>
                 </li>
               ))}
