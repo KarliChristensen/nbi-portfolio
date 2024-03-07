@@ -1,68 +1,29 @@
 "use client";
 
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { navLinks } from "../config";
 
 const Navbar = () => {
-  const [activeLink, setActiveLink] = useState("");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll("section");
-      const scrollPosition = window.scrollY + 200;
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-
-        if (
-          scrollPosition >= sectionTop &&
-          scrollPosition < sectionTop + sectionHeight
-        ) {
-          setActiveLink(section.getAttribute("id"));
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const [currentSection, setCurrentSection] = useState("");
 
   return (
     <header className="absolute top-0 bg-transparent w-full z-50 text-gray-400">
       <div className="flex justify-evenly md:justify-between px-10 py-7">
         <div className="flex justify-evenly md:w-auto">
-          <Link href="#home-section">
-            <div
-              className={`text-xl cursor-pointer ${
-                activeLink === "home-section" ? "text-green-500" : ""
-              }`}
-            >
-              HOME
-            </div>
-          </Link>
-          <Link href="#about-section">
-            <div
-              className={`text-xl cursor-pointer ${
-                activeLink === "about-section" ? "text-green-500" : ""
-              }`}
-            >
-              ABOUT
-            </div>
-          </Link>
-          <Link href="#work-section">
-            <div
-              className={`text-xl cursor-pointer ${
-                activeLink === "work-section" ? "text-green-500" : ""
-              }`}
-            >
-              WORK
-            </div>
-          </Link>
+          <ol className="flex flex-row">
+            {navLinks &&
+              navLinks.map(({ url, name }, i) => (
+                <li
+                  key={i}
+                  className={
+                    currentSection === url.substring(1) ? "active" : ""
+                  }
+                >
+                  <Link href={url}>{name}</Link>
+                </li>
+              ))}
+          </ol>
         </div>
         <div className="hidden md:block">
           <p className="nav-text">DIGITAL PORTFOLIO</p>

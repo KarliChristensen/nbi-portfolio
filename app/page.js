@@ -6,7 +6,7 @@ import TypeIt from "typeit-react";
 export default function Home() {
   return (
     <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
-      <section id="home-section" className="h-screen w-screen snap-start flex">
+      <section id="home" className="h-screen w-screen snap-start flex">
         <div className="w-1/3 hidden md:block h-screen bg-slate-300"></div>
         <div className="w-screen md:w-2/3 h-screen bg-slate-800 flex items-center">
           <div className="mx-10 md:w-1/2 flex justify-center flex-col text-white">
@@ -41,7 +41,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="about-section" className="snap-start">
+      <section id="about" className="snap-start">
         <div className="w-screen h-screen "></div>
       </section>
     </main>
