@@ -21,20 +21,12 @@ export default function Home() {
       threshold: 1,
     };
 
-    console.log("Page is active in", activeSection)
+    console.log("Page is active in", activeSection);
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          if (entry.target.id == "home") {
-            setActiveSection("home");
-          }
-          if (entry.target.id == "about") {
-            setActiveSection("about");
-          }
-          if (entry.target.id == "projects") {
-            setActiveSection("projects");
-          }
+          setActiveSection(entry.target.id);
         }
       });
     }, observerOptions);
