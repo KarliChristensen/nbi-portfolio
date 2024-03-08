@@ -1,17 +1,19 @@
 "use client";
-
-import { createContext, useState } from "react";
+import { createContext, useState, } from "react";
 
 const AppContext = createContext();
 
-function Context({ children }) {
-  const [count, setCount] = useState(0);
+const Context = ({ children }) => {
+  const [activeSection, setActiveSection] = useState("home"); 
 
+  console.log("Active in Context", activeSection);
+  
   return (
-    <AppContext.Provider value={{ count, setCount }}>
+
+    <AppContext.Provider value={{ activeSection, setActiveSection }}>
       {children}
     </AppContext.Provider>
   );
-}
+};
 
 export default Context;

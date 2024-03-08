@@ -1,9 +1,49 @@
 "use client";
 
-import Image from "next/image";
 import TypeIt from "typeit-react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  let [activeSection, setActiveSection] = useState("about");
+
+  let links = ["about", "projects", "home"];
+
+  useEffect(() => {
+    let home = document.getElementById("home");
+    let about = document.getElementById("about");
+    let skills = document.getElementById("projects");
+
+    let sections = [about, home, skills];
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1,
+    };
+
+    console.log("Page is active in", activeSection)
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (entry.target.id == "home") {
+            setActiveSection("home");
+          }
+          if (entry.target.id == "about") {
+            setActiveSection("about");
+          }
+          if (entry.target.id == "projects") {
+            setActiveSection("projects");
+          }
+        }
+      });
+    }, observerOptions);
+
+    sections?.forEach((section) => {
+      section && observer.observe(section);
+    });
+  }, [activeSection]);
+
   return (
     <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
       <section id="home" className="h-screen w-screen snap-start flex">

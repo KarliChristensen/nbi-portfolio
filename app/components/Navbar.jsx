@@ -1,10 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import { navLinks } from "../config";
+import { AppContext } from "./context/Context";
 
 const Navbar = () => {
+
+/*   const { activeSection } = useContext(AppContext);  */
 
   return (
     <header className="absolute top-0 bg-transparent w-full z-50 text-gray-400">
@@ -14,7 +17,15 @@ const Navbar = () => {
             {navLinks &&
               navLinks.map(({ url, name }, i) => (
                 <li key={i}>
-                  <Link href={url}>{name}</Link>
+                  <Link href={url}>
+                   {/*  <span
+                      className={`cursor-pointer ${
+                        activeSection == name && "text-orange-500"
+                      }`}
+                    >
+                      {name}
+                    </span> */}
+                  </Link>
                 </li>
               ))}
           </ol>
