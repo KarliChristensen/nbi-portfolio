@@ -2,12 +2,11 @@
 
 import TypeIt from "typeit-react";
 import { useEffect, useState } from "react";
-import { useAppContext } from "./components/Context";
 
 export default function Home() {
-  const { activeSection, updateActiveSection } = useAppContext();
+  const [activeSection, setActiveSection] = useState("home");
 
-  let links = ["about", "work", "home"]; 
+  console.log(activeSection);
 
   useEffect(() => {
     let home = document.getElementById("home");
@@ -25,7 +24,7 @@ export default function Home() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          updateActiveSection(entry.target.id);
+          setActiveSection(entry.target.id);
         }
       });
     }, observerOptions);
@@ -33,7 +32,7 @@ export default function Home() {
     sections?.forEach((section) => {
       section && observer.observe(section);
     });
-  }, [activeSection, updateActiveSection]);
+  }, []);
 
   return (
     <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">

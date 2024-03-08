@@ -1,15 +1,9 @@
 "use client";
 
-import React, { useContext } from "react";
 import Link from "next/link";
 import { navLinks } from "../config";
-import { useAppContext } from "./Context";
 
 const Navbar = () => {
-  const { activeSection } = useAppContext();
-
-  console.log("Navbar is active in", activeSection);
-
   return (
     <header className="absolute top-0 bg-transparent w-full z-50 text-gray-400">
       <div className="flex justify-evenly md:justify-between px-10 py-7">
@@ -20,9 +14,9 @@ const Navbar = () => {
                 <li key={i}>
                   <Link href={url}>
                     <span
-                      className={`cursor-pointer ${
+                    /*</Link>    className={`cursor-pointer ${
                         activeSection == name && "text-orange-500"
-                      }`}
+                      }`} */
                     >
                       {name.toLocaleUpperCase()}
                     </span>
