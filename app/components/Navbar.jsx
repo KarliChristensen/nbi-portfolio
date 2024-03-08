@@ -3,11 +3,10 @@
 import React, { useContext } from "react";
 import Link from "next/link";
 import { navLinks } from "../config";
-import { AppContext } from "./context/Context";
+import { useAppContext } from "./Context";
 
 const Navbar = () => {
-
-/*   const { activeSection } = useContext(AppContext);  */
+  const { activeSection, updateActiveSection } = useAppContext();
 
   return (
     <header className="absolute top-0 bg-transparent w-full z-50 text-gray-400">
@@ -18,13 +17,13 @@ const Navbar = () => {
               navLinks.map(({ url, name }, i) => (
                 <li key={i}>
                   <Link href={url}>
-                   {/*  <span
+                    <span
                       className={`cursor-pointer ${
                         activeSection == name && "text-orange-500"
                       }`}
                     >
                       {name}
-                    </span> */}
+                    </span>
                   </Link>
                 </li>
               ))}
