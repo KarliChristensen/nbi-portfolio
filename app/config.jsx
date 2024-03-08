@@ -3,16 +3,16 @@ module.exports = {
 
   navLinks: [
     {
-      name: "HOME",
+      name: "home",
       url: "/#home",
     },
     {
-      name: "ABOUT",
+      name: "about",
       url: "/#about",
     },
     {
-      name: "WORK",
-      url: "/#projects",
+      name: "work",
+      url: "/#work",
     },
   ],
 };

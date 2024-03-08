@@ -2,16 +2,17 @@
 
 import TypeIt from "typeit-react";
 import { useEffect, useState } from "react";
+import { useAppContext } from "./components/Context";
 
 export default function Home() {
-  let [activeSection, setActiveSection] = useState("about");
+  const { activeSection, updateActiveSection } = useAppContext();
 
-  let links = ["about", "projects", "home"];
+  let links = ["about", "work", "home"]; 
 
   useEffect(() => {
     let home = document.getElementById("home");
     let about = document.getElementById("about");
-    let skills = document.getElementById("projects");
+    let skills = document.getElementById("work");
 
     let sections = [about, home, skills];
 
@@ -21,12 +22,10 @@ export default function Home() {
       threshold: 1,
     };
 
-    console.log("Page is active in", activeSection);
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+          updateActiveSection(entry.target.id);
         }
       });
     }, observerOptions);
@@ -34,7 +33,7 @@ export default function Home() {
     sections?.forEach((section) => {
       section && observer.observe(section);
     });
-  }, [activeSection]);
+  }, [activeSection, updateActiveSection]);
 
   return (
     <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
@@ -76,7 +75,7 @@ export default function Home() {
       <section id="about" className="snap-start">
         <div className="w-screen h-screen bg-blue-600"></div>
       </section>
-      <section id="projects" className="snap-start">
+      <section id="work" className="snap-start">
         <div className="w-screen h-screen bg-red-600"></div>
       </section>
     </main>

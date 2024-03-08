@@ -6,7 +6,9 @@ import { navLinks } from "../config";
 import { useAppContext } from "./Context";
 
 const Navbar = () => {
-  const { activeSection, updateActiveSection } = useAppContext();
+  const { activeSection } = useAppContext();
+
+  console.log("Navbar is active in", activeSection);
 
   return (
     <header className="absolute top-0 bg-transparent w-full z-50 text-gray-400">
@@ -24,6 +26,7 @@ const Navbar = () => {
                     >
                       {name}
                     </span>
+                    {console.log(name)}
                   </Link>
                 </li>
               ))}

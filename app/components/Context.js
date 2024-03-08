@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { createContext, useState, useContext } from "react";
 
@@ -7,6 +7,7 @@ const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 export const ContextProvider = ({ children }) => {
+
   const [activeSection, setActiveSection] = useState("home");
 
   const updateActiveSection = (newValue) => {
