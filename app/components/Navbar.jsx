@@ -24,9 +24,8 @@ const Navbar = () => {
                         activeSection == name && "text-orange-500"
                       }`}
                     >
-                      {name}
+                      {name.toLocaleUpperCase()}
                     </span>
-                    {console.log(name)}
                   </Link>
                 </li>
               ))}
