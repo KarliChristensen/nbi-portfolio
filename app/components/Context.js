@@ -8,7 +8,7 @@ export const useAppContext = () => useContext(AppContext);
 
 export const ContextProvider = ({ children }) => {
 
-  const [activeSection, setActiveSection] = useState("home");
+  let [activeSection, setActiveSection] = useState("home");
 
   const updateActiveSection = (newValue) => {
     setActiveSection(newValue);
