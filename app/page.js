@@ -2,9 +2,9 @@
 
 import TypeIt from "typeit-react";
 import { useEffect } from "react";
-import { useAppContext } from "../../components/Context";
+import { useAppContext } from "./components/Context";
 
-const Home = () => {
+export default function Home () {
 
   const { updateActiveSection } = useAppContext();
 
@@ -80,5 +80,3 @@ const Home = () => {
     </main>
   );
 };
-
-export default Home;
