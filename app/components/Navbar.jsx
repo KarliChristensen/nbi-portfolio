@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
@@ -6,22 +6,28 @@ import { navLinks } from "../config";
 import { useAppContext } from "./Context";
 
 const Navbar = () => {
- const { activeSection } = useAppContext();
- const [linkTexts, setLinkTexts] = useState({});
+  const { activeSection } = useAppContext();
+  const [linkTexts, setLinkTexts] = useState({});
 
- const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
- useEffect(() => {
+  useEffect((linkName) => {
+    if (activeSection === linkName) {
+       handleMagic(linkName);
+    }
+   }, [activeSection]); // Dependencies
+
+  useEffect(() => {
     const initialLinkTexts = {};
-    navLinks.forEach(({ name }) => {
-      initialLinkTexts[name] = name.toLocaleUpperCase();
+    navLinks.forEach(({ linkName }) => {
+      initialLinkTexts[linkName] = linkName.toLocaleUpperCase();
     });
     setLinkTexts(initialLinkTexts);
- }, []);
+  }, []);
 
- const handleMouseOver = (name) => {
+  const handleMagic = (linkName) => {
     let iteration = 0;
-    const originalText = name.toLocaleUpperCase();
+    const originalText = linkName.toLocaleUpperCase();
     const interval = setInterval(() => {
       const newText = originalText
         .split("")
@@ -33,7 +39,7 @@ const Navbar = () => {
         })
         .join("");
 
-      setLinkTexts((prev) => ({ ...prev, [name]: newText }));
+      setLinkTexts((prev) => ({ ...prev, [linkName]: newText }));
 
       if (iteration >= originalText.length) {
         clearInterval(interval);
@@ -43,36 +49,37 @@ const Navbar = () => {
     }, 30);
 
     return () => clearInterval(interval);
- };
+  };
 
- return (
+  return (
     <header className="absolute top-0 bg-transparent w-full z-50 text-gray-400">
       <div className="flex justify-evenly md:justify-between px-10 py-7">
         <div className="flex justify-evenly md:w-auto">
           <ol className="flex flex-row">
             {navLinks &&
-              navLinks.map(({ url, name }, i) => (
+              navLinks.map(({ url, linkName }, i) => (
                 <li key={i}>
-                 <Link href={url}>
+                  <Link href={url}>
                     <span
-                      onMouseOver={() => handleMouseOver(name)}
-                      className={`cursor-pointer font-mono ${
-                        activeSection == name && "text-orange-500"
+                      onClick={() => handleMagic(linkName)}
+                      className={`cursor-pointer font-mono text-2xl ${
+                        activeSection == linkName &&
+                        " text-slate- transition-colors ease-in-out duration-400"
                       }`}
                     >
-                      {linkTexts[name] || name.toLocaleUpperCase()}
+                      {linkTexts[linkName] || linkName.toLocaleUpperCase()}
                     </span>
-                 </Link>
+                  </Link>
                 </li>
               ))}
           </ol>
         </div>
         <div className="hidden md:block">
-          <p className="nav-text font-mono">DIGITAL PORTFOLIO</p>
+          <p className="nav-text font-mono text-2xl">DIGITAL PORTFOLIO</p>
         </div>
       </div>
     </header>
- );
+  );
 };
 
 export default Navbar;
