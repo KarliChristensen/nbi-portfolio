@@ -65,10 +65,9 @@ const Navbar = () => {
                 <li key={i}>
                   <Link href={url}>
                     <span
-                      className={`cursor-pointer font-mono text-2xl ${
-                        activeSection == linkName &&
-                        " text-slate- transition-colors ease-in-out duration-400"
-                      }`}
+                      className={`cursor-pointer font-mono text-2xl md:text-slate-800 hover:text-slate-100 ${
+                        activeSection == linkName && "!text-slate-100"
+                      } `}
                     >
                       {linkTexts[linkName] || linkName.toLocaleUpperCase()}
                     </span>

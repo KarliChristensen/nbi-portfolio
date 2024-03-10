@@ -57,7 +57,7 @@ export default function Home() {
                   .pause(500)
                   .move(-10)
                   .type(
-                    '<em><strong class="font-mono">frontend </strong></em>',
+                    '<em><strong class="font-mono">frontend</strong></em> ',
                     {
                       speed: 100,
                     }
