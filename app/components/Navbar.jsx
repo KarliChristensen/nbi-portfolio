@@ -8,14 +8,18 @@ import { useAppContext } from "./Context";
 const Navbar = () => {
   const { activeSection } = useAppContext();
   const [linkTexts, setLinkTexts] = useState({});
+  const [processedLinks, setProcessedLinks] = useState(new Set());
+
+  useEffect(() => {
+    const matchingLinkName = navLinks.find(
+      ({ linkName }) => linkName === activeSection
+    );
+    if (matchingLinkName && !processedLinks.has(matchingLinkName.linkName)) {
+      handleMagic(matchingLinkName.linkName);
+    }
+  }, [activeSection, processedLinks]);
 
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-  useEffect((linkName) => {
-    if (activeSection === linkName) {
-       handleMagic(linkName);
-    }
-   }, [activeSection]); // Dependencies
 
   useEffect(() => {
     const initialLinkTexts = {};
@@ -61,7 +65,6 @@ const Navbar = () => {
                 <li key={i}>
                   <Link href={url}>
                     <span
-                      onClick={() => handleMagic(linkName)}
                       className={`cursor-pointer font-mono text-2xl ${
                         activeSection == linkName &&
                         " text-slate- transition-colors ease-in-out duration-400"
