@@ -4,8 +4,7 @@ import TypeIt from "typeit-react";
 import { useEffect } from "react";
 import { useAppContext } from "./components/Context";
 
-export default function Home () {
-
+export default function Home() {
   const { updateActiveSection } = useAppContext();
 
   useEffect(() => {
@@ -29,10 +28,10 @@ export default function Home () {
       });
     }, observerOptions);
 
-    sections?.forEach(section => {
-      section && observer.observe(section)
-    })
-    }, [])
+    sections?.forEach((section) => {
+      section && observer.observe(section);
+    });
+  }, []);
 
   return (
     <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
@@ -58,7 +57,7 @@ export default function Home () {
                   .pause(500)
                   .move(-10)
                   .type(
-                    '<em><strong class="font-semibold">frontend </strong></em>',
+                    '<em><strong class="font-mono">frontend </strong></em>',
                     {
                       speed: 100,
                     }
@@ -79,4 +78,4 @@ export default function Home () {
       </section>
     </main>
   );
-};
+}
