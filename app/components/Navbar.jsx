@@ -9,6 +9,7 @@ const Navbar = () => {
   const { activeSection } = useAppContext();
   const [linkTexts, setLinkTexts] = useState({});
   const [processedLinks, setProcessedLinks] = useState(new Set());
+  const [lastScrollTop, setLastScrollTop] = useState(0);
 
   useEffect(() => {
     const matchingLinkName = navLinks.find(
@@ -19,8 +20,6 @@ const Navbar = () => {
     }
   }, [activeSection, processedLinks]);
 
-  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
   useEffect(() => {
     const initialLinkTexts = {};
     navLinks.forEach(({ linkName }) => {
@@ -28,6 +27,8 @@ const Navbar = () => {
     });
     setLinkTexts(initialLinkTexts);
   }, []);
+  
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   const handleMagic = (linkName) => {
     let iteration = 0;
@@ -42,16 +43,12 @@ const Navbar = () => {
           return letters[Math.floor(Math.random() * 26)];
         })
         .join("");
-
       setLinkTexts((prev) => ({ ...prev, [linkName]: newText }));
-
       if (iteration >= originalText.length) {
         clearInterval(interval);
       }
-
       iteration += 1 / 3;
     }, 30);
-
     return () => clearInterval(interval);
   };
 

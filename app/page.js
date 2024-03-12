@@ -56,17 +56,21 @@ export default function Home() {
                   .type(" developer.", { speed: 500 })
                   .pause(500)
                   .move(-10)
+                  .delete(7)
+                  .pause(200)
+                  .type(`<span className="">Frontend</span> `, {
+                    speed: 100,
+                  })
+                  .move(null, { to: "END" })
+                  .delete(1)
                   .type(
-                    '<em><strong class="font-mono">frontend</strong></em> ',
-                    {
-                      speed: 100,
-                    }
+                    `<br><em><span className="font-mono"> extraordinaire</span></em>`
                   )
-                  .move(null, { to: "END" });
-
+                  .move(null, { to: "END" })
                 return instance;
               }}
             />
+            <p className="fancy-outline">word</p>
           </div>
         </div>
       </section>
