@@ -9,7 +9,6 @@ const Navbar = () => {
   const { activeSection } = useAppContext();
   const [linkTexts, setLinkTexts] = useState({});
   const [processedLinks, setProcessedLinks] = useState(new Set());
-  const [lastScrollTop, setLastScrollTop] = useState(0);
 
   useEffect(() => {
     const matchingLinkName = navLinks.find(

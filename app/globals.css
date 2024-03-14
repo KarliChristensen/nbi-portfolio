@@ -26,8 +26,18 @@ body {
     rgb(var(--background-start-rgb)); */
 }
 
-@layer utilities {
-  /*   .text-balance {
-    text-wrap: balance;
-  } */
+@layer base {
+  .font-outline-1 {
+    -webkit-text-stroke: 1px white;
+    color: rgba(0, 0, 0, 0);
+  }
+  .font-outline-2 {
+    -webkit-text-stroke: 2px white;
+  }
+  .font-outline-3 {
+    -webkit-text-stroke: 3px white;
+  }
+  .font-outline-4 {
+    -webkit-text-stroke: 4px white;
+  }
 }
