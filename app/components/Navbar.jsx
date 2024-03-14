@@ -26,7 +26,7 @@ const Navbar = () => {
     });
     setLinkTexts(initialLinkTexts);
   }, []);
-  
+
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   const handleMagic = (linkName) => {
@@ -61,7 +61,7 @@ const Navbar = () => {
                 <li key={i}>
                   <Link href={url}>
                     <span
-                      className={`cursor-pointer font-mono text-2xl md:text-slate-800 hover:text-slate-100 ${
+                      className={`cursor-pointer font-mono text-2xl md:text-slate-800 hover:text-slate-500 ${
                         activeSection == linkName && "!text-slate-100"
                       } `}
                     >
