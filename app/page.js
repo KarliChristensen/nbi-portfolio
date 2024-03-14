@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppContext } from "./components/Context";
 import TypeIt from "typeit-react";
 import LinkBar from "./components/LinkBar";
@@ -11,6 +11,7 @@ import Work from "./sections/Work";
 
 export default function Home() {
   const { updateActiveSection } = useAppContext();
+  const [isScrollingInList, setIsScrollingInList] = useState(false);
 
   useEffect(() => {
     let home = document.getElementById("home");
@@ -40,7 +41,7 @@ export default function Home() {
 
   return (
     <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
-      <Landing></Landing>
+      <Landing />
       <section
         id="about"
         className="snap-start bg-slate-400 flex justify-center items-center "
@@ -69,10 +70,13 @@ export default function Home() {
               </p>
             </TypeIt>
           </div>
-          <div className="w-1/2 h-full bg-slate-500 hidden md:block">
+          <div className="w-1/2 h-full bg-slate-500 hidden md:block overflow-y-scroll overflow-x-hidden scrollbar-hide">
             <ol className="flex flex-col">
               {workLinks.map(({ time, title, subtitle, text, tools }, i) => (
-                <li key={i} className="w-full h-full bg-blue-300 flex mb-5">
+                <li
+                  key={i}
+                  className="w-full h-full rounded-xl flex mb-10 hover:opacity-80"
+                >
                   <header className="h-full mr-10 min-w-32">
                     {time.map((year, index) => (
                       <span key={index} className="text-slate-300 text-sm">
@@ -82,14 +86,21 @@ export default function Home() {
                     ))}
                   </header>
                   <div>
-                    <h1 className="mb-1 text-white font-semibold">{title}</h1>
-                    <h1 className="mb-1 text-slate-500 font-semibold">
+                    <h1 className="mb-1 text-slate-200 font-semibold leading-tight">
+                      {title}
+                    </h1>
+                    <h1 className="mb-1 text-slate-400 font-semibold leading-snug">
                       {subtitle}
                     </h1>
-                    <p className="mb-1 text-sm">{text}</p>
-                    <ul className="flex flex-row space-x-3">
+                    <p className="mb-1 text-slate-300 text-sm font-medium mr-10">
+                      {text}
+                    </p>
+                    <ul className="flex flex-row mt-3 space-x-3">
                       {tools.map((tools, index) => (
-                        <li key={index} className="bg-green-800 rounded-full font-medium py-1 px-3 text-green-500">
+                        <li
+                          key={index}
+                          className="bg-green-800 rounded-full font-medium text-sm py-1 px-3 text-green-500"
+                        >
                           <span className="">{tools}</span>
                         </li>
                       ))}
@@ -99,13 +110,12 @@ export default function Home() {
               ))}
             </ol>
           </div>
-          <div className="absolute bottom-0 mb-40 flex justify-center md:justify-start w-full">
-            <LinkBar></LinkBar>
+          <div className="absolute bottom-0 mb-20 flex justify-center md:justify-start w-full">
+            <LinkBar />
           </div>
         </div>
       </section>
-      {/* <About></About> */}
-      <Work></Work>
+      <Work />
     </main>
   );
 }
