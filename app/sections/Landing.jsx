@@ -7,8 +7,11 @@ const Landing = () => {
     <section id="home" className="h-screen w-screen snap-start flex">
       <div className="w-1/3 hidden md:block h-screen bg-slate-300"></div>
       <div className="w-screen md:w-2/3 h-screen bg-slate-800 flex items-center">
-        <div className="mx-10 md:w-1/2 flex justify-center flex-col text-white">
-          <h1 className="text-1xl">{`Hi, I'm Karli`}</h1>
+        <div className="mx-10 md:w-1/2 text-white">
+          <div className="flex">
+            <span className="text-1xl rotate-[345deg]">{`Hi, I'm Karli`}</span>
+          </div>
+          <br></br>
           <TypeIt
             className="text-2xl md:text-5xl max-w-32 font-bold text-nowrap"
             options={{

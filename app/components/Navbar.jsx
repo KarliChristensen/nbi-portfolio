@@ -53,7 +53,7 @@ const Navbar = () => {
 
   return (
     <header className="absolute top-0 bg-transparent w-full z-50 text-gray-400">
-      <div className="flex justify-evenly md:justify-between px-10 py-7">
+      <div className="flex justify-evenly md:justify-between ml-10 px-10 py-7">
         <div className="flex justify-evenly md:w-auto">
           <ol className="flex flex-row">
             {navLinks &&
@@ -73,7 +73,7 @@ const Navbar = () => {
           </ol>
         </div>
         <div className="hidden md:block">
-          <p className="nav-text font-mono text-2xl">DIGITAL PORTFOLIO</p>
+          <p className="nav-text font-mono text-2xl mr-20">DIGITAL PORTFOLIO</p>
         </div>
       </div>
     </header>

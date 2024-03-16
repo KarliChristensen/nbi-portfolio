@@ -11,6 +11,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {},
+      rotate: {
+        '345': '345deg',
+      }
     },
   },
   plugins: [

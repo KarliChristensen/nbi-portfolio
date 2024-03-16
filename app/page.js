@@ -44,7 +44,7 @@ export default function Home() {
       <Landing />
       <section id="about" className="snap-start bg-slate-400">
         <div className="w-screen h-screen relative flex justify-center py-40">
-          <div className="w-full max-w-[550px] w-min-[450px] md:w-3/4 lg:w-4/5 h-full inline px-10">
+          <div className="w-full lg:max-w-[550px] md:max-w-[650px] w-min-[450px] md:w-full lg:w-4/5 h-full inline px-10">
             <h1>About Me</h1>
             <TypeIt options={{ speed: 0 }}>
               <p>
@@ -68,44 +68,42 @@ export default function Home() {
             </TypeIt>
           </div>
 
-          {/* <div class="[&:has(p)]:bg-red-500"></div> */}
-
-          <div className="w-full max-w-[600px] w-min-[570px] h-full bg-slate-500 hidden lg:block overflow-y-scroll scrollbar-hide">
+          <div className="w-full max-w-[600px] w-min-[570px] h-full hidden lg:block overflow-y-scroll scrollbar-hide">
             <ol className="flex flex-col">
               {workLinks.map(({ time, title, subtitle, text, tools }, i) => (
                 <li
                   key={i}
-                  className={`w-full h-full rounded-xl flex py-2 hover:opacity-80 ${
+                  className={`group w-full h-full rounded-xl flex px-5 py-3 hover:opacity-100 hover:shadow-inner hover:bg-slate-600/30 ${
                     hoveredItem !== null && hoveredItem !== i
-                      ? "opacity-50"
+                      ? "opacity-60"
                       : ""
                   }`}
                   onMouseEnter={() => setHoveredItem(i)}
                   onMouseLeave={() => setHoveredItem(null)}
                 >
-                  <header className="h-full mr-10 min-w-32">
+                  <header className="h-full mr-5 min-w-32">
                     {time.map((year, index) => (
-                      <span key={index} className="text-slate-300 text-sm">
+                      <span key={index} className="text-slate-300 text-xs">
                         {year}
                         {index !== time.length - 1 && " — "}
                       </span>
                     ))}
                   </header>
                   <div>
-                    <h1 className="mb-1 text-slate-200 font-semibold leading-tight">
+                    <h1 className="mb-1 text-slate-200 font-semibold leading-tight group-hover:text-green-300">
                       {title}
                     </h1>
                     <h1 className="mb-1 text-slate-400 font-semibold leading-snug">
                       {subtitle}
                     </h1>
-                    <p className="mb-1 text-slate-300 text-sm font-medium mr-10">
+                    <p className="mb-1 text-slate-300 text-sm font-medium">
                       {text}
                     </p>
-                    <ul className="flex flex-row mt-3 space-x-3">
+                    <ul className="flex flex-row mt-3 space-x-1.5">
                       {tools.map((tools, index) => (
                         <li
                           key={index}
-                          className="bg-green-800 rounded-full font-medium text-sm py-1 px-3 text-green-500"
+                          className="bg-green-800 rounded-full font-medium text-sm py-1 px-2 text-green-500"
                         >
                           <span className="">{tools}</span>
                         </li>
@@ -116,9 +114,7 @@ export default function Home() {
               ))}
             </ol>
           </div>
-          <div className="absolute w-auto md:left-0 bottom-0 md:ml-20 mb-20 flex justify-center md:justify-start">
-            <LinkBar />
-          </div>
+          <LinkBar />
         </div>
       </section>
       <Work />

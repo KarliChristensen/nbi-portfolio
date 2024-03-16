@@ -1,34 +1,74 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import githubIcon from "../../public/icons/githubNew.svg";
-import linkedinIcon from "../../public/icons/linkedinNew.svg";
-import mailIcon from "../../public/icons/mailNew.svg";
 
 const LinkBar = () => {
   return (
-    <div className="m-0">
-      <ul className="flex flex-row justify-center md:justify-start space-x-20 md:space-x-10">
-        <li className="w-[30px] h-[30px] hover:scale-110 ease-out duration-200">
-          <a href="https://github.com/KarliChristensen" className="">
-            {" "}
-            <Image src={githubIcon} alt="Check out this Github" />
-          </a>
-        </li>
-        <li className="w-[30px] h-[30px] hover:scale-110 ease-out duration-200">
-          <a href="https://www.linkedin.com/in/karlichristensen/">
-            {" "}
-            <Image src={linkedinIcon} alt="And then look at this LinkedIn" />
-          </a>
-        </li>
-        <li className="w-[30px] h-[30px] hover:scale-110 ease-out duration-200">
-          <a href="mailto:karlichristensen@post.com?subject=Mail%20from%20Portfolio.com">
-            {" "}
-            <Image src={mailIcon} alt="What about this rocking mail link!" />
-          </a>
-        </li>
-      </ul>
+    <div className="absolute w-auto md:left-0 bottom-0 md:ml-20 mb-20 flex justify-center md:justify-start">
+      <div className="m-0">
+        <ul className="flex flex-row justify-center md:justify-start space-x-20 md:space-x-10">
+          <li className="w-[30px] h-[30px] hover:scale-125 ease-out duration-200 group">
+            <a href="https://github.com/KarliChristensen">
+              {" "}
+              <svg
+                className=" group-hover:stroke-white"
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="black"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+          </li>
+          <li className="w-[30px] h-[30px] hover:scale-125 ease-out duration-200 group">
+            <a href="https://www.linkedin.com/in/karlichristensen/">
+              {" "}
+              <svg
+                className=" group-hover:stroke-white"
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="black"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </li>
+          <li className="w-[30px] h-[30px] hover:scale-125 ease-out duration-200 group">
+            <a href="mailto:karlichristensen@post.com?subject=Mail%20from%20Portfolio.com">
+              {" "}
+              <svg
+                className=" group-hover:stroke-white"
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="black"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
