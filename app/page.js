@@ -5,13 +5,13 @@ import { useAppContext } from "./components/Context";
 import TypeIt from "typeit-react";
 import LinkBar from "./components/LinkBar";
 import Landing from "./sections/Landing";
-import About from "./sections/about";
+/* import About from "./sections/about"; */
 import { workLinks } from "./config";
 import Work from "./sections/Work";
 
 export default function Home() {
   const { updateActiveSection } = useAppContext();
-  const [isScrollingInList, setIsScrollingInList] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState(null);
 
   useEffect(() => {
     let home = document.getElementById("home");
@@ -44,7 +44,7 @@ export default function Home() {
       <Landing />
       <section id="about" className="snap-start bg-slate-400">
         <div className="w-screen h-screen relative flex justify-center py-40">
-          <div className="w-full max-w-[650px] w-min-[450px] md:w-3/4 lg:w-4/5 h-full inline px-10">
+          <div className="w-full max-w-[550px] w-min-[450px] md:w-3/4 lg:w-4/5 h-full inline px-10">
             <h1>About Me</h1>
             <TypeIt options={{ speed: 0 }}>
               <p>
@@ -67,12 +67,21 @@ export default function Home() {
               </p>
             </TypeIt>
           </div>
-          <div className="w-1/2 max-w-[650px] w-min-[570px] h-full bg-slate-500 hidden lg:block overflow-y-scroll scrollbar-hide">
+
+          {/* <div class="[&:has(p)]:bg-red-500"></div> */}
+
+          <div className="w-full max-w-[600px] w-min-[570px] h-full bg-slate-500 hidden lg:block overflow-y-scroll scrollbar-hide">
             <ol className="flex flex-col">
               {workLinks.map(({ time, title, subtitle, text, tools }, i) => (
                 <li
                   key={i}
-                  className="w-full h-full rounded-xl flex mb-10 hover:opacity-80"
+                  className={`w-full h-full rounded-xl flex py-2 hover:opacity-80 ${
+                    hoveredItem !== null && hoveredItem !== i
+                      ? "opacity-50"
+                      : ""
+                  }`}
+                  onMouseEnter={() => setHoveredItem(i)}
+                  onMouseLeave={() => setHoveredItem(null)}
                 >
                   <header className="h-full mr-10 min-w-32">
                     {time.map((year, index) => (
@@ -108,10 +117,9 @@ export default function Home() {
             </ol>
           </div>
           <div className="absolute w-auto md:left-0 bottom-0 md:ml-20 mb-20 flex justify-center md:justify-start">
-          <LinkBar />
+            <LinkBar />
+          </div>
         </div>
-        </div>
-
       </section>
       <Work />
     </main>
