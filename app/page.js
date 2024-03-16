@@ -40,16 +40,13 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+    <main className="h-screen overflow-y-scroll overflow-x-hidden snap-y snap-mandatory scroll-smooth">
       <Landing />
-      <section
-        id="about"
-        className="snap-start bg-slate-400 flex justify-center items-center "
-      >
-        <div className="w-screen h-screen relative flex py-40 mx-10">
-          <div className="bg-red-400 w-full md:w-1/2 h-full inline">
+      <section id="about" className="snap-start bg-slate-400">
+        <div className="w-screen h-screen relative flex justify-center py-40">
+          <div className="w-full max-w-[650px] w-min-[450px] md:w-3/4 lg:w-4/5 h-full inline px-10">
             <h1>About Me</h1>
-            <TypeIt>
+            <TypeIt options={{ speed: 0 }}>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla,
                 rerum libero. Ipsa et ex nesciunt ab alias ipsum odio accusamus
@@ -70,7 +67,7 @@ export default function Home() {
               </p>
             </TypeIt>
           </div>
-          <div className="w-1/2 h-full bg-slate-500 hidden md:block overflow-y-scroll overflow-x-hidden scrollbar-hide">
+          <div className="w-1/2 max-w-[650px] w-min-[570px] h-full bg-slate-500 hidden lg:block overflow-y-scroll scrollbar-hide">
             <ol className="flex flex-col">
               {workLinks.map(({ time, title, subtitle, text, tools }, i) => (
                 <li
@@ -110,10 +107,11 @@ export default function Home() {
               ))}
             </ol>
           </div>
-          <div className="absolute bottom-0 mb-20 flex justify-center md:justify-start w-full">
-            <LinkBar />
-          </div>
+          <div className="absolute w-auto md:left-0 bottom-0 md:ml-20 mb-20 flex justify-center md:justify-start">
+          <LinkBar />
         </div>
+        </div>
+
       </section>
       <Work />
     </main>
