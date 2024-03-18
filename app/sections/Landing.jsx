@@ -5,8 +5,8 @@ import { AppContext } from "next/app";
 const Landing = () => {
   return (
     <section id="home" className="h-screen w-screen snap-start flex">
-      <div className="w-1/3 hidden md:block h-screen bg-slate-300"></div>
-      <div className="w-screen md:w-2/3 h-screen bg-slate-800 flex items-center">
+      <div className="w-1/3 hidden md:block h-screen bg-primary"></div>
+      <div className="w-screen md:w-2/3 h-screen bg-secondary flex items-center">
         <div className="mx-10 md:w-1/2 text-white">
           <div className="flex">
             <span className="text-1xl rotate-[345deg]">{`Hi, I'm Karli`}</span>

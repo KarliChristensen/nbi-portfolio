@@ -1,6 +1,5 @@
-const plugin = require('tailwindcss/plugin')
+const plugin = require("tailwindcss/plugin");
 /** @type {import('tailwindcss').Config} */
-
 
 module.exports = {
   content: [
@@ -10,10 +9,17 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#000814",
+        secondary: "#001D3D",
+        primaryAccent: "#003566",
+        tertiary: "#FFC300",
+        tertiaryAccent: "#FFD60A",
+      },
       backgroundImage: {},
       rotate: {
-        '345': '345deg',
-      }
+        345: "345deg",
+      },
     },
   },
   plugins: [

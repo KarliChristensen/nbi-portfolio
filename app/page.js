@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <main className="h-screen overflow-y-scroll overflow-x-hidden snap-y snap-mandatory scroll-smooth">
       <Landing />
-      <section id="about" className="snap-start bg-slate-400">
+      <section id="about" className="snap-start bg-primaryAccent">
         <div className="w-screen h-screen relative flex justify-center py-40">
           <div className="w-full lg:max-w-[550px] md:max-w-[650px] w-min-[450px] md:w-full lg:w-4/5 h-full inline px-10">
             <h1>About Me</h1>
