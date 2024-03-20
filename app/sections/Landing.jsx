@@ -5,15 +5,15 @@ import { AppContext } from "next/app";
 const Landing = () => {
   return (
     <section id="home" className="h-screen w-screen snap-start flex">
-      <div className="w-1/3 hidden md:block h-screen bg-primary"></div>
-      <div className="w-screen md:w-2/3 h-screen bg-secondary flex items-center">
+      <div className="w-1/5 md:w-1/4 hidden md:block h-screen bg-pink-100"></div>
+      <div className="w-screen md:w-full h-screen bg-amber-50 flex items-center">
         <div className="mx-10 md:w-1/2 text-white">
           <div className="flex">
             <span className="text-1xl rotate-[345deg]">{`Hi, I'm Karli`}</span>
           </div>
           <br></br>
           <TypeIt
-            className="text-2xl md:text-5xl max-w-32 font-bold text-nowrap"
+            className="text-4xl md:text-5xl lg:text-6xl text-green-800 -w-32 font-bold text-nowrap"
             options={{
               speed: 30, //50
               waitUntilVisible: true,
@@ -38,7 +38,7 @@ const Landing = () => {
                 .type(`<br><em><span> extraordinaire</span></em><br><br>`)
                 .move(null, { to: "END" })
                 .type(
-                  "<span style='-webkit-text-stroke: 1px white; color: rgba(0, 0, 0, 0); font-outline-1;'>Wrangler</span> of <br> JS & HTML <br> <span style='-webkit-text-stroke: 1px white; color: rgba(0, 0, 0, 0); font-outline-1;'>Slayer</span> of CSS</span>",
+                  "<span style='-webkit-text-stroke: 2px orange; color: rgba(0, 0, 0, 0); font-outline-1;'>Wrangler</span> of <br> JS & HTML <br> <span style='-webkit-text-stroke: 2px orange; color: rgba(0, 0, 0, 0); font-outline-1;'>Slayer</span> of CSS</span>",
                   { speed: 20 }
                 );
               return instance;

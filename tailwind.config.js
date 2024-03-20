@@ -9,6 +9,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        roboto: ["Roboto", "sans"],
+      },
+      boxShadow: {},
       colors: {
         primary: "#000814",
         secondary: "#001D3D",
