@@ -44,7 +44,7 @@ export default function Home() {
       <Landing />
       <section id="about" className="snap-start bg-primaryAccent">
         <div className="w-screen h-screen relative flex justify-center py-40">
-          <div className="w-full lg:max-w-[550px] md:max-w-[650px] w-min-[450px] md:w-full lg:w-4/5 h-full leading-relaxed inline px-10 mt-10">
+          <div className="w-full lg:max-w-[550px] md:max-w-[650px] w-min-[450px] md:w-full lg:w-4/5 h-full leading-relaxed inline px-10 md:mt-5">
             <h1 className="text-slate-100">About Me</h1>
             <p className="text-slate-300">
               <TypeIt options={{ speed: 0 }}>
@@ -68,7 +68,7 @@ export default function Home() {
               {workLinks.map(({ time, title, subtitle, text, tools }, i) => (
                 <li
                   key={i}
-                  className={`group w-full h-full rounded-xl flex px-5 py-3 hover:opacity-100 hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] -inset-x-4 -inset-y-4 hover:drop-shadow-lg hover:bg-secondary/50 ${
+                  className={`group transition-all duration-150 ease-in w-full h-full rounded-xl flex px-5 py-3 hover:opacity-100 hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] -inset-x-4 -inset-y-4 hover:drop-shadow-lg hover:bg-secondary/50 ${
                     hoveredItem !== null && hoveredItem !== i
                       ? "opacity-60"
                       : ""

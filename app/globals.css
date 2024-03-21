@@ -26,6 +26,12 @@ body {
     rgb(var(--background-start-rgb)); */
 }
 
+#wrangler.hover-effect,
+#slayer.hover-effect {
+  color: white;
+  font-size: 3rem;
+}
+
 @layer base {
   .font-outline-1 {
     -webkit-text-stroke: 1px white;
