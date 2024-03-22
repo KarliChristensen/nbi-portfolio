@@ -4,51 +4,72 @@ import { motion } from "framer-motion";
 
 const Landing = () => {
   const [offset, setOffset] = useState(0);
+  const [animationRunning, setAnimationRunning] = useState(false);
 
   const handleMouseOver = (event) => {
-    console.log("Mouse over span");
     const wranglerSpan = event.target;
     wranglerSpan.style.color = "rgb(22 101 52)";
-    wranglerSpan.style.webkitTextStroke = "0px rgb(22 101 52)"; 
+    wranglerSpan.style.webkitTextStroke = "0px rgb(22 101 52)";
+    if (!animationRunning) {
+      setAnimationRunning(true);
+    }
   };
 
   const handleMouseOut = (event) => {
     const wranglerSpan = event.target;
-    wranglerSpan.style.color = "transparent"; // Reset color
+    wranglerSpan.style.color = "transparent";
     wranglerSpan.classList.remove("hover-effect");
-    wranglerSpan.style.webkitTextStroke = "2px rgb(22 101 52)"; 
+    wranglerSpan.style.webkitTextStroke = "2px rgb(22 101 52)";
   };
 
+  useEffect(() => {
+    let intervalId;
+    if (animationRunning) {
+      intervalId = setInterval(() => {
+        setOffset((prevOffset) => {
+          if (prevOffset >= 100) {
+            setAnimationRunning(false);
+            return prevOffset;
+          } else {
+            return prevOffset + 1;
+          }
+        });
+      }, 35);
+      // Update timer for animation, (Sets speed)
+      clearInterval(intervalId);
+    }
+    return () => clearInterval(intervalId);
+  }, [animationRunning]);
+
   return (
-    <section id="home" className="h-screen w-screen snap-start flex">
-      <svg
-        className="w-screen h-screen absolute -z-10"
-        strokeWidth="0"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 914.1 841.4"
-      >
-        <path
-          id="text-curvature-1"
-          className="fill-transparent"
-          d="M12.92,901.78c55.41-52.18,90.11-122.33,121.5-190.56,17.06-37.08,32.74-74.83,46.46-113.27s25.65-76.32,33.88-115.58c7.94-37.87,11.78-77.14,4.77-115.47-5.43-29.69-19.66-73.98-55.58-77.29-17.51-1.61-32.54,10.36-42.67,23.39-10.32,13.28-17.88,28.74-22.94,44.74-10.37,32.78-9.83,68.31-2.89,101.71,6.81,32.79,19.63,66.53,40.59,92.97,10.27,12.96,23.23,23.53,38.7,29.61,16.16,6.35,34.23,6.26,50.88,1.94,34.2-8.88,62.55-33.57,84.79-60.06,22.09-26.31,39.05-56.23,51.97-87.99,13.05-32.08,21.71-65.86,27.17-100.02,5.87-36.74,6.97-73.83,10.34-110.83,1.76-19.3,4.36-38.56,9.17-57.36,4.35-17.01,10.02-34.49,20.58-48.74,8.19-11.06,21.61-23.16,36.52-20.9,16.58,2.52,26.9,21.59,34.51,34.61,17.91,30.62,32.37,66.12,65.16,84.02,15.06,8.23,32.23,10.83,48.96,6.69s32.77-14.99,45.54-27.24c45.46-43.59,64.33-106.66,105.7-153.38,9.68-10.93,20.51-20.71,32.81-28.6,8.1-5.19.59-18.18-7.57-12.95-52.19,33.47-75.71,93.04-108.41,142.95-16.32,24.9-37.32,53.31-66.72,63.19-15.18,5.1-30.65,3.45-44.47-4.6s-24.62-20.48-33.2-33.81c-9.95-15.46-17.7-32.2-27.25-47.9-8.76-14.39-19.33-30.09-35.89-36.03-34.17-12.25-61.21,24.58-72.03,51.74-13.87,34.83-17.49,72.74-20.1,109.82-2.46,34.98-4.68,69.81-11.48,104.29-12.73,64.57-38.21,128.57-84.57,176.49-22.19,22.94-52.02,45-85.43,44.72s-55.39-26.18-69.53-53.3c-29-55.61-40.02-130.48-6.06-186.4,7.19-11.84,18.23-26.89,33.42-27.85,14.5-.92,25.02,11.59,31.43,23.11,8.46,15.19,12.78,33.13,15.26,50.23,2.62,18.1,2.55,36.63,1.02,54.83-3.2,38.17-13.33,75.55-24.5,112.06-11.51,37.61-25.07,74.57-40.17,110.87s-31.08,70.62-48.63,104.92c-16.33,31.91-34.26,63.31-56.29,91.68-10.77,13.87-22.55,26.93-35.33,38.96-7.04,6.63,3.58,17.22,10.61,10.61h0Z"
-        />
-        <motion.text className="text-3xl text-black">
-          <motion.textPath
-            href="#text-curvature-1"
-            startOffset={offset + "%"}
-            transition={{
-              duration: 1,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          >
-            Curabitur mattis efficitur velit
-          </motion.textPath>
-        </motion.text>
-      </svg>
-      <div className="w-1/5 md:w-1/4 hidden md:block h-screen bg-pink-100 z-10"></div>
+    <section id="home" className="h-screen w-screen snap-start flex relative">
+      <div className="hidden">
+        <svg
+          className="fill-black fixed right-0 bottom-0"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 914.1 841.4"
+        >
+          <path
+            id="text-curvature-1"
+            d="M34.73 968.41c-18.31-58.79-23.82-121-16.86-182.15 3.44-30.3 10.17-60.28 19.76-89.22 9.28-28.01 21-56.23 37.23-80.99 14.84-22.64 36.2-41.85 64.77-41.39 31.25.5 59.26 20.44 84.27 37.06 25.15 16.7 54.37 33.47 85.52 33.14 30.52-.33 53.79-19.33 69.5-44.12 16.83-26.56 27.49-57.41 35.93-87.52s13.99-63.53 21.64-95.18c2.97-12.28 7.98-25.62 21.77-28.52 12.84-2.71 26.25 3.86 36.45 11.04 12.11 8.52 22.73 19.18 35.87 26.21 12.29 6.58 26.24 9.52 40.14 8.41 28.01-2.22 53.6-17.61 70.96-39.35 18.7-23.41 29.14-51.84 37.24-80.37 8.77-30.87 15.24-62.99 30.47-91.54 2.61-4.89 5.8-11.55 11.22-13.91 6.3-2.74 13.45 3.19 18.34 6.46 13.09 8.75 27.04 16.48 42.13 21.18 26 8.09 53.84 4.54 76.05-11.47 20.45-14.75 34.99-36.24 45.99-58.62 21.71-44.18 28.87-98.59 65.27-134.38 8.01-7.88 17.43-14.3 27.95-18.33 3.78-1.45 6.39-5.05 5.24-9.23-.99-3.62-5.42-6.7-9.23-5.24-50.05 19.22-69.9 73.3-86.2 119.94-8.37 23.96-18 47.59-32.9 68.34-13.41 18.66-32.24 34.68-55.69 37.88-14.96 2.04-30.32-1.57-43.96-7.65-7.19-3.21-14.09-7.05-20.75-11.24-6.48-4.08-12.56-8.87-19.81-11.57-15.49-5.76-27.72 4.52-35 17.36-7.96 14.03-13.76 29.33-18.63 44.67-17.06 53.76-24.51 126.04-81.25 154.18-11.97 5.93-25.44 8.98-38.8 7.88s-25.87-8.28-36.69-16.72c-11.71-9.13-22.73-19.08-36.64-24.77-13.11-5.37-28.56-6.92-41.43-.01s-18.86 20.6-22.23 33.94c-3.89 15.42-6.54 31.19-9.89 46.73-7.01 32.48-15.06 64.91-27.54 95.78-10.33 25.56-24.21 55.32-49.91 68.61-27.88 14.41-60.2.97-85.08-13.42-27.61-15.97-52.5-36.71-83.47-46.21-14.82-4.54-30.66-5.93-45.85-2.4-13.77 3.2-26.15 10.59-36.55 20.02-21.08 19.13-34.4 46-45.64 71.69-12.55 28.67-22.2 58.54-28.6 89.18-12.75 61.08-13.18 124.54-.87 185.73 3 14.88 6.79 29.59 11.3 44.09 2.86 9.19 17.35 5.27 14.46-3.99Z"
+          ></path>
+          <motion.text className="text-3xl text-black">
+            <motion.textPath
+              href="#text-curvature-1"
+              startOffset={offset + "%"}
+              transition={{
+                duration: 1,
+                repeat: 0,
+              }}
+            >
+              Curabitur mattis efficitur velit
+            </motion.textPath>
+          </motion.text>
+        </svg>
+      </div>
+      <div className="w-1/5 md:w-1/4 hidden md:block h-screen bg-pink-100"></div>
       <div className="w-screen md:w-full h-screen bg-slate-200 flex items-center">
-        <div className="mx-10 md:w-1/2 text-white">
+        <div className="mx-10 md:w-1/2 text-white z-10">
           <div className="flex">
             <span className="text-1xl rotate-[345deg]">{`Hi, I'm Karli`}</span>
           </div>
@@ -56,7 +77,7 @@ const Landing = () => {
           <TypeIt
             className="text-4xl md:text-5xl lg:text-6xl text-green-800 -w-32 font-roboto font-extrabold text-nowrap"
             options={{
-              speed: 30, //50
+              speed: 0, //50
               waitUntilVisible: true,
               lifeLike: true,
               afterComplete: async (instance) => {
