@@ -73,7 +73,10 @@ const Navbar = () => {
           </ol>
         </div>
         <div className="hidden md:block">
-          <p className="nav-text font-mono text-2xl mr-20">DIGITAL PORTFOLIO</p>
+          <p className="nav-text font-mono text-2xl mr-20 inline-block">
+            DI<span className="">G</span>IT<span>A</span>L P<span>OR</span>TFO<span>L</span>
+            IO
+          </p>
         </div>
       </div>
     </header>

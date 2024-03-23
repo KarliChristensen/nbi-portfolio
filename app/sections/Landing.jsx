@@ -2,12 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import TypeIt from "typeit-react";
 import { motion } from "framer-motion";
 import { svgElements } from "../config";
+import { useAppContext } from "../components/Context";
 
 const Landing = () => {
   const [offset, setOffset] = useState(0);
   const [animationRunning, setAnimationRunning] = useState(false);
   const [animating, setAnimating] = useState(false);
   const [svgObject, setSvgObject] = useState({});
+  const { activeSection } = useAppContext();
 
   const handleMouseOverWrangler = (event) => {
     const wranglerSpan = event.target;
@@ -54,7 +56,7 @@ const Landing = () => {
 
   return (
     <section id="home" className="h-screen w-screen snap-start flex relative">
-      <div className="">
+      <div className={activeSection === "home" ? "block" : "hidden -z-10"}>
         <svg
           className="fixed right-0 bottom-0"
           xmlns="http://www.w3.org/2000/svg"
@@ -74,12 +76,12 @@ const Landing = () => {
                 repeat: 0,
               }}
             >
-              Curabitur mattis efficitur velit
+              {svgObject.textString}
             </motion.textPath>
           </motion.text>
         </svg>
       </div>
-      <div className="w-1/5 md:w-1/4 hidden md:block h-screen bg-pink-100"></div>
+      <div className="w-1/5 md:w-1/4 hidden md:block h-screen bg-pink-100 z-10"></div>
       <div className="w-screen md:w-full h-screen bg-slate-200 flex items-center">
         <div className="mx-10 md:w-1/2 text-white z-10">
           <div className="flex">
