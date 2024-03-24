@@ -63,7 +63,7 @@ const Landing = () => {
           viewBox={svgObject.viewBoxConfig}
         >
           <path
-            className="fill-transparent"
+            className="fill-transparent" //fill-transparent
             id="text-curvature-1"
             d={svgObject.svgPath}
           ></path>

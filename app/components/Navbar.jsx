@@ -52,8 +52,12 @@ const Navbar = () => {
   };
 
   return (
-    <header className={`absolute top-0 w-full z-50 ${activeSection == "about" ? 'bg-red-500' : 'bg-transparent'}`}>
-      <div className="flex justify-evenly md:justify-between ml-10 px-10 py-2 md:py-7">
+    <header
+      className={`absolute top-0 w-full z-50 transition-colors ease-in-out duration-300 ${
+        activeSection == "about" ? "bg-red-500" : "bg-transparent"
+      }`}
+    >
+      <div className="flex justify-evenly md:justify-between md:ml-10 px-10 py-2 md:py-7">
         <div className="flex justify-evenly md:w-auto">
           <ol className="flex flex-row">
             {navLinks &&
