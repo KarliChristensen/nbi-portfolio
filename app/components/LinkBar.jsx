@@ -4,20 +4,19 @@ import React from "react";
 
 const LinkBar = () => {
   return (
-    <div className="absolute w-auto md:left-0 bottom-0 md:ml-20 mb-20 flex justify-center md:justify-start">
+    <div className="absolute w-auto md:left-0 bottom-0 md:ml-20 flex justify-center mb-4 md:mb-10 md:justify-start">
       <div className="m-0">
         <ul className="flex flex-row justify-center md:justify-start space-x-20 md:space-x-10">
           <li className="w-[30px] h-[30px] hover:scale-125 ease-out duration-200 group">
             <a href="https://github.com/KarliChristensen">
-              {" "}
               <svg
-                className=" group-hover:stroke-white"
+                className=" group-hover:stroke-orange-400"
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
                 height="30"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="white"
+                stroke="#94a3b8"
                 strokeWidth="1"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -28,15 +27,14 @@ const LinkBar = () => {
           </li>
           <li className="w-[30px] h-[30px] hover:scale-125 ease-out duration-200 group">
             <a href="https://www.linkedin.com/in/karlichristensen/">
-              {" "}
               <svg
-                className=" group-hover:stroke-white"
+                className=" group-hover:stroke-orange-400"
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
                 height="30"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="white"
+                stroke="#94a3b8"
                 strokeWidth="1"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -49,15 +47,14 @@ const LinkBar = () => {
           </li>
           <li className="w-[30px] h-[30px] hover:scale-125 ease-out duration-200 group">
             <a href="mailto:karlichristensen@post.com?subject=Mail%20from%20Portfolio.com">
-              {" "}
               <svg
-                className=" group-hover:stroke-white"
+                className=" group-hover:stroke-orange-400"
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
                 height="30"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="white"
+                stroke="#94a3b8"
                 strokeWidth="1"
                 strokeLinecap="round"
                 strokeLinejoin="round"

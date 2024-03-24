@@ -8,10 +8,10 @@ const About = () => {
 
   return (
     <section id="about" className="snap-start bg-primaryAccent">
-      <div className="w-screen h-screen relative flex flex-col lg:flex-row justify-center items-center py-40">
-        <div className="w-full lg:max-w-[550px] md:max-w-[650px] w-min-[450px] md:w-full lg:w-4/5 h-full leading-relaxed inline px-10 md:mt-5">
-          <h1 className="text-slate-100">About Me</h1>
-          <p className="text-slate-300">
+      <div className="w-screen h-auto md:h-screen relative flex flex-col lg:flex-row justify-center items-center py-14 md:py-40">
+        <div className="w-full lg:max-w-[550px] md:max-w-[650px] w-min-[450px] md:w-full lg:w-4/5 leading-relaxed inline px-5 md:px-10 md:mt-5 mb-10">
+          <h1 className="text-slate-100 mb-3">About Me</h1>
+          <p className="text-slate-300 text-sm">
             <TypeIt options={{ speed: 0 }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla,
               rerum libero. Ipsa et ex nesciunt ab alias ipsum odio accusamus
@@ -29,6 +29,7 @@ const About = () => {
         </div>
 
         <div className="w-full max-w-[600px] w-min-[570px] h-full lg:block overflow-y-scroll scrollbar-hide">
+        <h1 className="text-slate-100 mb-3 ml-5 md:hidden">Experience</h1>
           <ol className="flex flex-col">
             {workLinks.map(({ time, title, subtitle, text, tools }, i) => (
               <li

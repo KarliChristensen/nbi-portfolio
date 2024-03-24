@@ -11,7 +11,7 @@ const Work = () => {
       {projectLinks.map(({ name, github, url, image, text, tools }, i) => (
         <div key={i} className="inline-block max-w-screen snap-start">
           <div className="w-screen h-screen flex flex-col justify-center items-start">
-            <h1 className="text-3xl ml-5 md:ml-20 mb-5">{name}</h1>
+            <h1 className="text-xl ml-5 md:ml-20 mb-2">{name}</h1>
             <a href={url} className="w-full h-2/4 bg-black">
               <Image src={image} alt="test"></Image>
             </a>

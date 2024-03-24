@@ -89,9 +89,9 @@ const Landing = () => {
           </div>
           <br></br>
           <TypeIt
-            className="text-4xl md:text-5xl lg:text-6xl text-green-800 -w-32 font-roboto font-extrabold text-nowrap"
+            className="text-2xl md:text-5xl lg:text-6xl text-green-800 -w-32 font-roboto font-extrabold text-nowrap"
             options={{
-              speed: 0, //50
+              speed: 40, //50
               waitUntilVisible: true,
               lifeLike: true,
               afterComplete: async (instance) => {
