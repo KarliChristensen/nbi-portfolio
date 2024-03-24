@@ -52,7 +52,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="absolute top-0 bg-transparent w-full z-50 text-orange-400">
+    <header className="absolute top-0 bg-transparent w-full z-50">
       <div className="flex justify-evenly md:justify-between ml-10 px-10 py-7">
         <div className="flex justify-evenly md:w-auto">
           <ol className="flex flex-row">
@@ -61,7 +61,7 @@ const Navbar = () => {
                 <li key={i}>
                   <Link href={url}>
                     <span
-                      className={`cursor-pointer font-mono text-2xl md:text-slate-400 hover:text-slate-300 rounded-full ${
+                      className={`cursor-pointer font-mono text-2xl text-slate-400 hover:text-slate-300 rounded-full ${
                         activeSection == linkName && "!text-orange-400"
                       } `}
                     >
@@ -73,9 +73,8 @@ const Navbar = () => {
           </ol>
         </div>
         <div className="hidden md:block">
-          <p className="nav-text font-mono text-2xl mr-20 inline-block">
-            DI<span className="">G</span>IT<span>A</span>L P<span>OR</span>TFO<span>L</span>
-            IO
+          <p className="nav-text font-mono text-2xl mr-20 inline-block text-orange-400">
+            DIGITAL PORTFOLIO
           </p>
         </div>
       </div>
