@@ -23,7 +23,7 @@ const Work = () => {
                     key={index}
                     className="bg-green-200 rounded-full font-medium text-sm py-1 px-2 text-secondary"
                   >
-                    <span className="">{tools}</span>
+                    <span>{tools}</span>
                   </li>
                 ))}
               </ul>
