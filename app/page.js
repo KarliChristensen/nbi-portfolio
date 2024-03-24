@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useAppContext } from "./components/Context";
 import Landing from "./sections/Landing";
-import About from "./sections/about";
 import Work from "./sections/Work";
+import About from "./sections/About";
 
 export default function Home() {
   const { updateActiveSection } = useAppContext();
