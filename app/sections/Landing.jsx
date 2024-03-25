@@ -91,7 +91,7 @@ const Landing = () => {
           <TypeIt
             className="text-2xl md:text-5xl lg:text-6xl text-green-800 -w-32 font-roboto font-extrabold text-nowrap"
             options={{
-              speed: 40, //50
+              speed: 0, //50
               waitUntilVisible: true,
               lifeLike: true,
               afterComplete: async (instance) => {
@@ -132,7 +132,7 @@ const Landing = () => {
                 .type(`<br><span> extraordinaire</span><br><br>`)
                 .move(null, { to: "END" })
                 .type(
-                  `<span id='wrangler' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); font-outline-1;'>Wrangler</span> of <br> JS & HTML <br> <span id='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); font-outline-1;'>Slayer</span> of CSS</span>`,
+                  `<span id='wrangler' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0);'>Wrangler</span> of <br> JS & HTML <br> <span id='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0);'>Slayer</span> of CSS</span>`,
                   { speed: 20 }
                 );
               return instance;

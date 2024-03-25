@@ -109,6 +109,7 @@ module.exports = {
       github: "https://github.com/joseph",
       url: "https://deployment.com/joseph",
       image: "",
+      imageAlt: "",
       text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, fugiat cum aliquam alias exercitationem voluptas quia eum dolor quis nulla harum quasi sint officiis omnis ducimus molestiae similique veritatis repellendus?",
       tools: ["React", "Redux"],
     },

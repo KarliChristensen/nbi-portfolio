@@ -8,7 +8,7 @@ const Work = () => {
       id="work"
       className="snap-start overflow-x-auto whitespace-nowrap snap-x snap-mandatory"
     >
-      {projectLinks.map(({ name, github, url, image, text, tools }, i) => (
+      {projectLinks.map(({ name, github, url, image, imageAlt, text, tools }, i) => (
         <div key={i} className="inline-block max-w-screen snap-start">
           <div className="w-screen h-screen flex flex-col justify-center items-start">
             <h1 className="text-xl ml-5 md:ml-20 mb-2">{name}</h1>

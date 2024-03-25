@@ -9,21 +9,30 @@ const About = () => {
   return (
     <section id="about" className="snap-center bg-primaryAccent">
       <div className="w-screen h-auto md:h-screen relative flex flex-col lg:flex-row justify-center items-center py-14 md:py-40">
-        <div className="w-full h-full lg:max-w-[550px] md:max-w-[650px] w-min-[450px] md:w-full lg:w-4/5 leading-relaxed inline py-2 px-5 md:px-10 md:mt-10 mb-10">
+        <div className="w-full h-full lg:max-w-[550px] md:max-w-[650px] w-min-[450px] md:w-full lg:w-4/5 leading-relaxed inline px-5 md:py-3 md:px-10 md:mt-10 mb-10">
           <h1 className="text-slate-100 mb-3">About Me</h1>
-          <p className="text-slate-300 text-sm">
+          <p className="text-slate-300 text-sm md:text-base">
             <TypeIt options={{ speed: 0 }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla,
-              rerum libero. Ipsa et ex nesciunt ab alias ipsum odio accusamus
-              quo, aspernatur reiciendis, voluptatibus suscipit, fuga dolorem
-              cumque excepturi officia! Lorem ipsum dolor sit amet consectetur,
-              adipisicing elit. Eum molestiae natus odit iste autem possimus,
-              molestias, illo aspernatur quos, quas vitae earum fuga enim.
-              Provident id odit quisquam aliquam voluptates. Lorem ipsum dolor
-              sit, amet consectetur adipisicing elit. Hic quisquam quasi
-              pariatur aliquid nam voluptatem praesentium iure facilis esse?
-              Veritatis, natus nemo facere eum dignissimos ipsum eligendi
-              corporis labore eaque!
+              Back in 2019 when Corona wasn’t yet a concern I made my living as
+              a translator, subtitler, copywriter, and transcriptionist. Covid
+              came and went, and with the world changing, and my clients
+              readjusting, I found it an opportune time to realign. Being
+              skilled at rapidly adjusting to changes, I found that I was best
+              suited to the world of development, I made the decision and then
+              the leap, now since 2023 I’ve been providing mediocre Frontend
+              code containing superior copywriting and excellent flow while I
+              still find my feet in the industry.<br></br>
+              <br></br> My main interest these days is toying with CSS, finding
+              ways to employ my new abilities to facilitate the superior
+              deployment of my old ones, and improving reader and user
+              experiences where I can, since - with all the advancements and
+              developments to user content consumption, the internet is still
+              primarily a written medium with well written words facilitating
+              the exchange.
+              <br></br>
+              <br></br>In my free time, I confess to fully embracing my nerdy
+              ways, I dominate at D&D, subjugate in games, both cardboard and
+              computer and, I scoff to suggest, read poetry.
             </TypeIt>
           </p>
         </div>

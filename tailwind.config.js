@@ -22,7 +22,7 @@ module.exports = {
       },
       backgroundImage: {},
       rotate: {
-        345: "345deg",
+        350: "350deg",
       },
     },
   },
