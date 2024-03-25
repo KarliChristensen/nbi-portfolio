@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import TypeIt from "typeit-react";
 import { motion } from "framer-motion";
 import { svgElements } from "../config";
@@ -6,19 +6,15 @@ import { useAppContext } from "../components/Context";
 
 const Landing = () => {
   const [offset, setOffset] = useState(0);
-  const [animationRunning, setAnimationRunning] = useState(false);
   const [animating, setAnimating] = useState(false);
   const [svgObject, setSvgObject] = useState({});
   const { activeSection } = useAppContext();
 
   const handleMouseOverWrangler = (event) => {
     const wranglerSpan = event.target;
-    const randomIndex = Math.floor(Math.random() * svgElements.length);
-    setSvgObject(svgElements[randomIndex]);
     wranglerSpan.style.color = "rgb(22 101 52)";
     wranglerSpan.style.webkitTextStroke = "0px rgb(22 101 52)";
-    if (!animationRunning && !animating) {
-      setAnimationRunning(true); // Set animationRunning to true to trigger animation again
+    if (!animating) {
       setAnimating(true);
     }
   };
@@ -37,12 +33,15 @@ const Landing = () => {
   };
 
   useEffect(() => {
+    console.log("useEffect triggered");
     let intervalId;
-    if (animationRunning) {
+    if (animating && Object.keys(svgObject).length === 0) {
+      const randomIndex = Math.floor(Math.random() * svgElements.length);
+      setSvgObject(svgElements[randomIndex]);
       intervalId = setInterval(() => {
         setOffset((prevOffset) => {
           if (prevOffset >= 100) {
-            setAnimationRunning(false); // Set animationRunning to false when animation completes
+            clearInterval(intervalId);
             setAnimating(false);
             return 0;
           } else {
@@ -52,18 +51,18 @@ const Landing = () => {
       }, 35);
     }
     return () => clearInterval(intervalId);
-  }, [animationRunning]);
+  }, [animating]);
 
   return (
     <section id="home" className="h-screen w-screen snap-start flex relative">
-      <div className={activeSection === "home" ? "block" : "hidden -z-10"}>
+      <div className={`${activeSection === "home" ? "block" : "hidden -z-10"}`}>
         <svg
-          className="fixed right-0 bottom-0"
+          className="fixed bottom-0 left-0 h-screen w-screen bg-red-300"
           xmlns="http://www.w3.org/2000/svg"
           viewBox={svgObject.viewBoxConfig}
         >
           <path
-            className="fill-transparent" //fill-transparent
+            className="fill-transparent fixed left-0"
             id="text-curvature-1"
             d={svgObject.svgPath}
           ></path>
@@ -71,8 +70,12 @@ const Landing = () => {
             <motion.textPath
               href="#text-curvature-1"
               startOffset={offset + "%"}
+              onAnimationComplete={() => {
+                setAnimating(false);
+                setSvgObject({});
+              }}
               transition={{
-                duration: 1,
+                duration: 0.5,
                 repeat: 0,
               }}
             >
@@ -81,7 +84,7 @@ const Landing = () => {
           </motion.text>
         </svg>
       </div>
-      <div className="w-1/5 md:w-1/4 hidden md:block h-screen bg-pink-100 z-10"></div>
+      <div className="w-1/5 md:w-1/4 hidden md:block h-screen bg-pink-100"></div>
       <div className="w-screen md:w-full h-screen bg-slate-200 flex items-center">
         <div className="mx-10 md:w-1/2 text-white z-10">
           <div className="flex">
