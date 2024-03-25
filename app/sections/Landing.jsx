@@ -33,9 +33,8 @@ const Landing = () => {
   };
 
   useEffect(() => {
-    console.log("useEffect triggered");
     let intervalId;
-    if (animating && Object.keys(svgObject).length === 0) {
+    if (animating) {
       const randomIndex = Math.floor(Math.random() * svgElements.length);
       setSvgObject(svgElements[randomIndex]);
       intervalId = setInterval(() => {
@@ -43,6 +42,7 @@ const Landing = () => {
           if (prevOffset >= 100) {
             clearInterval(intervalId);
             setAnimating(false);
+            setSvgObject({})
             return 0;
           } else {
             return prevOffset + 1;
