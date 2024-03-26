@@ -42,7 +42,7 @@ const Landing = () => {
           if (prevOffset >= 100) {
             clearInterval(intervalId);
             setAnimating(false);
-            setSvgObject({})
+            setSvgObject({});
             return 0;
           } else {
             return prevOffset + 1;
@@ -57,7 +57,7 @@ const Landing = () => {
     <section id="home" className="h-screen w-screen snap-start flex relative">
       <div className={`${activeSection === "home" ? "block" : "hidden -z-10"}`}>
         <svg
-          className="fixed bottom-0 left-0 h-screen w-screen bg-red-300"
+          className="fixed bottom-0 left-0 h-screen w-screen"
           xmlns="http://www.w3.org/2000/svg"
           viewBox={svgObject.viewBoxConfig}
         >
@@ -135,7 +135,7 @@ const Landing = () => {
                 .type(`<br><span> extraordinaire</span><br><br>`)
                 .move(null, { to: "END" })
                 .type(
-                  `<span id='wrangler' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0);'>Wrangler</span> of <br> JS & HTML <br> <span id='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0);'>Slayer</span> of CSS</span>`,
+                  `<span id='wrangler' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0);'>Wrangler</span> of <br> JS & HTML,<br> <span id='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0);'>Slayer</span> of CSS</span>`,
                   { speed: 20 }
                 );
               return instance;
