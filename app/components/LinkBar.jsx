@@ -1,12 +1,10 @@
-"use client";
-
 import React from "react";
 
 const LinkBar = () => {
   return (
     <div className="absolute w-full bottom-0 pb-3 sm:pb-10 justify-center lg:justify-end">
-        <ul className="flex flex-row justify-center  space-x-20">
-          <li className="w-[30px] h-[30px] hover:scale-125 ease-out duration-200 group">
+        <ul className="flex flex-row justify-center space-x-20">
+          <li className="hover:scale-125 ease-out duration-200 group">
             <a href="https://github.com/KarliChristensen">
               <svg
                 className=" group-hover:stroke-orange-400"
@@ -24,7 +22,7 @@ const LinkBar = () => {
               </svg>
             </a>
           </li>
-          <li className="w-[30px] h-[30px] hover:scale-125 ease-out duration-200 group">
+          <li className="hover:scale-125 ease-out duration-200 group">
             <a href="https://www.linkedin.com/in/karlichristensen/">
               <svg
                 className=" group-hover:stroke-orange-400"
@@ -44,7 +42,7 @@ const LinkBar = () => {
               </svg>
             </a>
           </li>
-          <li className="w-[30px] h-[30px] hover:scale-125 ease-out duration-200 group">
+          <li className="hover:scale-125 ease-out duration-200 group">
             <a href="mailto:karlichristensen@post.com?subject=Mail%20from%20Portfolio.com">
               <svg
                 className=" group-hover:stroke-orange-400"

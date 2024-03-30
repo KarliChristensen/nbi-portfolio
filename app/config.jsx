@@ -1,5 +1,15 @@
+import JS from "../public/icons/file-type-js-official.256x256.png";
+import HTML from "../public/icons/file-type-html.226x256.png";
+import CSS from "../public/icons/file-type-css.226x256.png";
+import NodeJS from "../public/icons/node-js.227x256.png";
+import React from "../public/icons/react.256x228.png";
+import Mongo from "../public/icons/mongodb-original.116x256.png";
+import Tailwind from "../public/icons/tailwind-css.256x154.png";
+import Git from "../public/icons/git.256x256.png"
+
 module.exports = {
   email: "karlichristensen@post.com",
+
   svgElements: [
     /* Simple Wavbe BOT */
     {
@@ -78,6 +88,41 @@ module.exports = {
       imageAlt: "",
       text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, fugiat cum aliquam alias exercitationem voluptas quia eum dolor quis nulla harum quasi sint officiis omnis ducimus molestiae similique veritatis repellendus?",
       tools: ["React", "Redux"],
+    },
+  ],
+
+  techStack: [
+    {
+      icon: JS,
+      altText: "JavaScript icon",
+    },
+    {
+      icon: HTML,
+      altText: "HTML icon",
+    },
+    {
+      icon: CSS,
+      altText: "CSS icon",
+    },
+    {
+      icon: NodeJS,
+      altText: "NodeJS icon",
+    },
+    {
+      icon: React,
+      altText: "React icon",
+    },
+    {
+      icon: Mongo,
+      altText: "Mongo icon",
+    },
+    {
+      icon: Tailwind,
+      altText: "Tailwind icon",
+    },
+    {
+      icon: Git,
+      altText: "Git icon",
     },
   ],
 };

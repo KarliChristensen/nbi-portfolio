@@ -106,12 +106,12 @@ const Landing = () => {
       <div className="w-screen md:w-full h-screen bg-slate-200 flex items-center ">
         <div className="mx-5 md:w-1/2 min-h-[255px] sm:min-h-[400px] md:min-h-[450] lg:min-h-[500] z-10">
           <div className="flex mb-2">
-            <span className="text-1xl rotate-[345deg] text-green-800 font-extrabold">{`Hi, I'm Karli`}</span>
+            <span className="text-1xl rotate-[345deg] text-green-800 font-jenthill font-extrabold">{`Hi, I'm Karli`}</span>
           </div>
           <TypeIt
             className="clampDefault text-green-800 -w-32 font-roboto font-extrabold"
             options={{
-              speed: 0, //50
+              speed: 50, //50
               waitUntilVisible: true,
               lifeLike: true,
               afterComplete: async (instance) => {
@@ -136,6 +136,9 @@ const Landing = () => {
                     });
                   }
                 }
+                setTimeout(function () {
+                  instance.destroy();
+                }, 1000);
               },
             }}
             getAfterInit={(instance) => {
@@ -162,7 +165,8 @@ const Landing = () => {
                 )
                 .break()
                 .type(
-                  "<span>JS & HTML,<br><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>S</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>l</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>a</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>y</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>e</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>r</span> <span>of CSS</span>"
+                  "<span>JS & HTML,<br><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>S</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>l</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>a</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>y</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>e</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>r</span> <span>of CSS</span>",
+                  { speed: 50 }
                 );
 
               return instance;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { workLinks } from "../config";
 import TypeIt from "typeit-react";
 import LinkBar from "../components/LinkBar";
+import TechStack from "../components/TechStack";
 
 const About = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -42,12 +43,11 @@ const About = () => {
               and, I scoff to suggest, read poetry.
             </TypeIt>
           </p>
+          <TechStack />
         </div>
 
-        <div className="w-full md:max-w-[650px] lg:max-w-[650px] w-min-[570px] mb-14 md:mb-0 pt-3 md:mt-0 lg:mt-10 overflow-y-scroll scrollbar-hide">
-          <h1 className="text-slate-100 mb-3 ml-5">
-            Experience
-          </h1>
+        <div className="w-full md:max-w-[650px] lg:max-w-[650px] w-min-[570px] mb-14 md:mb-0 pt-3 mt-1 md:mt-10 overflow-y-scroll scrollbar-hide">
+          <h1 className="text-slate-100 mt-1 ml-5">Experience</h1>
           <ol className="flex flex-col h-auto">
             {workLinks.map(({ time, title, subtitle, text, tools }, i) => (
               <li
