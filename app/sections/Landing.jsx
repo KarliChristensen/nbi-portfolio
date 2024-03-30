@@ -14,6 +14,7 @@ const Landing = () => {
     const wranglerSpan = event.target;
     wranglerSpan.style.color = "rgb(22 101 52)";
     wranglerSpan.style.webkitTextStroke = "0px rgb(22 101 52)";
+    wranglerSpan.style.transition = `all .3s ease`;
     if (!animating) {
       setAnimating(true);
     }
@@ -23,7 +24,6 @@ const Landing = () => {
     const slayerSpans = document.querySelectorAll(".slayer");
     slayerSpans.forEach((span, index) => {
       span.style.color = "rgb(22 101 52)";
-      span.style.webkitTextStroke = "0px rgb(22 101 52)";
       span.style.transition = `all .3s ease`;
       const transformStyles = [
         "rotate(5deg) translate(-20%, 15%)",
@@ -46,7 +46,6 @@ const Landing = () => {
     slayerSpans.forEach((span) => {
       span.style.color = "transparent";
       span.style.transform = "none";
-      span.style.webkitTextStroke = "2px rgb(22 101 52)";
     });
   };
 
@@ -111,7 +110,7 @@ const Landing = () => {
           <TypeIt
             className="clampDefault text-green-800 -w-32 font-roboto font-extrabold"
             options={{
-              speed: 50, //50
+              speed: 0, //50
               waitUntilVisible: true,
               lifeLike: true,
               afterComplete: async (instance) => {

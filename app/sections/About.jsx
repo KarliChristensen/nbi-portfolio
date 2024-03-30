@@ -10,7 +10,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="snap-center h-full relative pt-14 bg-primaryAccent"
+      className="snap-center h-dvh relative pt-14 bg-primaryAccent"
     >
       <div className="w-screen h-full flex flex-col lg:flex-row justify-center items-center lg:items-start md:pt-0 relative">
         <div className="lg:max-w-[550px] md:max-w-[650px] w-min-[400px] leading-relaxed inline md:py-3 px-5 md:mt-10">
