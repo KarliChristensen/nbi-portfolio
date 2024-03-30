@@ -20,11 +20,11 @@ const Landing = () => {
   };
 
   const handleMouseOverSlayer = () => {
-    const slayerSpans = document.querySelectorAll('.slayer');
+    const slayerSpans = document.querySelectorAll(".slayer");
     slayerSpans.forEach((span, index) => {
       span.style.color = "rgb(22 101 52)";
       span.style.webkitTextStroke = "0px rgb(22 101 52)";
-      span.style.transition =  `all .3s ease`
+      span.style.transition = `all .3s ease`;
       const transformStyles = [
         "rotate(5deg) translate(-20%, 15%)",
         "rotate(-8deg) translate(-10%, -20%)",
@@ -39,11 +39,11 @@ const Landing = () => {
 
   const handleMouseOut = (event) => {
     const wranglerSpan = event.target;
-    const slayerSpans = document.querySelectorAll('.slayer');
+    const slayerSpans = document.querySelectorAll(".slayer");
     wranglerSpan.style.color = "transparent";
     wranglerSpan.classList.remove("hover-effect");
     wranglerSpan.style.webkitTextStroke = "2px rgb(22 101 52)";
-    slayerSpans.forEach(span => {
+    slayerSpans.forEach((span) => {
       span.style.color = "transparent";
       span.style.transform = "none";
       span.style.webkitTextStroke = "2px rgb(22 101 52)";
@@ -152,14 +152,19 @@ const Landing = () => {
                 .type(`<span>Frontend</span> `, { speed: 100 })
                 .move(null, { to: "END" })
                 .delete(1)
-                .type(
-                  `<br><span><strong><em>extraordinaire</em></strong></span><br><br>`
-                )
+                .break()
+                .type(`<span><strong><em>extraordinaire</em></strong></span>`)
+                .break()
+                .break()
                 .move(null, { to: "END" })
                 .type(
-                  `<span id='wrangler' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0);'>Wrangler</span> of <br> JS & HTML,<br><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>S</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>l</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>a</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>y</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>e</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>r</span> <span>of CSS</span>`,
-                  { speed: 20 }
+                  `<span id='wrangler' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0);'>Wrangler</span> of`
+                )
+                .break()
+                .type(
+                  "<span>JS & HTML,<br><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>S</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>l</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>a</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>y</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>e</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>r</span> <span>of CSS</span>"
                 );
+
               return instance;
             }}
           />
