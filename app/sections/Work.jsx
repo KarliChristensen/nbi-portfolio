@@ -13,7 +13,7 @@ const Work = () => {
           <div key={i} className="inline-block max-w-screen snap-start">
             <div className="w-screen h-screen flex flex-col justify-center items-start">
               <h1 className="text-xl ml-5 md:ml-20 mb-2">{name}</h1>
-              <div className="w-screen h-2/5 flex justify-center items-start relative">
+              <div className="w-screen h-2/5 flex justify-center items-start">
                 <Image
                   className="w-full h-full bg-black"
                   src={image}

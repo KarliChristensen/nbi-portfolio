@@ -7,39 +7,48 @@ const About = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
 
   return (
-    <section id="about" className="snap-center bg-primaryAccent">
-      <div className="w-screen h-auto md:h-screen relative flex flex-col lg:flex-row justify-center items-center py-14 md:py-40">
-        <div className="w-full h-full lg:max-w-[550px] md:max-w-[650px] w-min-[450px] md:w-full lg:w-4/5 leading-relaxed inline px-5 md:py-3 md:px-10 md:mt-10 mb-10">
+    <section
+      id="about"
+      className="snap-center h-full relative pt-14 bg-primaryAccent"
+    >
+      <div className="w-screen h-full flex flex-col lg:flex-row justify-center items-center lg:items-start md:pt-0 relative">
+        <div className="lg:max-w-[550px] md:max-w-[650px] w-min-[400px] leading-relaxed inline md:py-3 px-5 md:mt-10">
           <h1 className="text-slate-100 mb-3">About Me</h1>
-          <p className="text-slate-300 text-sm md:text-base">
+          <p className="text-slate-300 text-sm lg:text-base">
             <TypeIt options={{ speed: 0 }}>
               Back in 2019 when Corona wasn’t yet a concern I made my living as
               a translator, subtitler, copywriter, and transcriptionist. Covid
               came and went, and with the world changing, and my clients
-              readjusting, I found it an opportune time to realign. Being
-              skilled at rapidly adjusting to changes, I found that I was best
-              suited to the world of development, I made the decision and then
-              the leap, now since 2023 I’ve been providing mediocre Frontend
-              code containing superior copywriting and excellent flow while I
-              still find my feet in the industry.<br></br>
-              <br></br> My main interest these days is toying with CSS, finding
-              ways to employ my new abilities to facilitate the superior
-              deployment of my old ones, and improving reader and user
-              experiences where I can, since - with all the advancements and
-              developments to user content consumption, the internet is still
-              primarily a written medium with well written words facilitating
-              the exchange.
+              adjusting to the new market, I found it an opportune time to
+              realign. With a bit of guidance and help from friends, I made the
+              move, the decision and then the leap towards becoming a developer.
+              Since 2023 I’ve been providing mediocre Frontend code containing
+              excellent copywriting and exquisite flow while I still find my
+              feet in the industry.
+            </TypeIt>
+            <br></br>
+            <br></br>
+            <TypeIt options={{ speed: 0 }} className="hidden md:block">
+              My main interest these days is toying with CSS, finding ways to
+              employ my new abilities to facilitate the superior deployment of
+              my old ones, and improving reader and user experiences where I
+              can, since - with all the advancements and developments to user
+              content consumption, the internet is still primarily a written
+              medium with well written words facilitating the exchange.
               <br></br>
-              <br></br>In my free time, I confess to fully embracing my nerdy
-              ways, I dominate at D&D, subjugate in games, both cardboard and
-              computer and, I scoff to suggest, read poetry.
+              <br></br>
+              In my free time, I confess to fully embracing my nerdy ways, I
+              dominate at D&D, subjugate in games, both cardboard and computer
+              and, I scoff to suggest, read poetry.
             </TypeIt>
           </p>
         </div>
 
-        <div className="w-full max-w-[600px] w-min-[570px] h-full lg:block overflow-y-scroll scrollbar-hide">
-          <h1 className="text-slate-100 mb-3 ml-5 md:hidden">Experience</h1>
-          <ol className="flex flex-col">
+        <div className="w-full md:max-w-[650px] lg:max-w-[650px] w-min-[570px] mb-14 md:mb-0 pt-3 md:mt-0 lg:mt-10 overflow-y-scroll scrollbar-hide">
+          <h1 className="text-slate-100 mb-3 ml-5">
+            Experience
+          </h1>
+          <ol className="flex flex-col h-auto">
             {workLinks.map(({ time, title, subtitle, text, tools }, i) => (
               <li
                 key={i}
@@ -49,7 +58,7 @@ const About = () => {
                 onMouseEnter={() => setHoveredItem(i)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
-                <header className="h-full mr-5 min-w-32">
+                <header className="h-full mr-0 md:mr-5 min-w-28">
                   {time.map((year, index) => (
                     <span key={index} className="text-slate-300 text-xs">
                       {year}

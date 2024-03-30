@@ -19,7 +19,7 @@ export default function Home() {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.2,
+      threshold: 0.3,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -32,6 +32,7 @@ export default function Home() {
 
     sections?.forEach((section) => {
       section && observer.observe(section);
+      console.log(section);
     });
   }, []);
 

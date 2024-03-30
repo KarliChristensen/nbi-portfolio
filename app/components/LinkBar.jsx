@@ -4,9 +4,8 @@ import React from "react";
 
 const LinkBar = () => {
   return (
-    <div className="absolute w-auto md:left-0 bottom-0 md:ml-20 flex justify-center mb-4 md:mb-10 md:justify-start">
-      <div className="m-0">
-        <ul className="flex flex-row justify-center md:justify-start space-x-20 md:space-x-10">
+    <div className="absolute w-full bottom-0 pb-3 sm:pb-10 justify-center lg:justify-end">
+        <ul className="flex flex-row justify-center  space-x-20">
           <li className="w-[30px] h-[30px] hover:scale-125 ease-out duration-200 group">
             <a href="https://github.com/KarliChristensen">
               <svg
@@ -66,7 +65,6 @@ const LinkBar = () => {
           </li>
         </ul>
       </div>
-    </div>
   );
 };
 

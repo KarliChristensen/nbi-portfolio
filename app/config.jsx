@@ -19,7 +19,7 @@ module.exports = {
       svgPath:
         "M-156.246 748.999S-67.407 545.282 3.051 637.184c70.458 91.902 162.36 47.483 176.146 3.064 13.786-44.419-33.698-75.054-65.863-49.015s-47.483 176.146 85.775 128.663c133.258-47.483 59.736-87.307 171.551-116.409 111.815-29.102 148.575 111.814 75.053 113.346-73.522 1.532-91.902-61.268-38.293-93.434s196.058-6.127 226.692 49.015c30.634 55.142 223.629 104.155 252.731 42.887",
       viewBoxConfig: "-136.41 -173.477 998.178 973.433",
-      textString: "THEY SEE ME ROLLING THEY HATING!",
+      textString: "THEY SEE ME ROLLING...",
     },
   ],
 
@@ -40,24 +40,23 @@ module.exports = {
 
   workLinks: [
     {
-      time: [2013, 2023],
-      title: "Translator",
-      text: "This is a long ass string",
+      time: [2023, 2024],
+      title: "Junior Frontend developer",
+      text: `Starting with the Ironhack Bootcamp, I spent 6 months learning the essentials before voulenteering my work to old contacts. Some of those projects are listed here.`,
       tools: [],
     },
-
     {
       time: [2018, 2022],
-      title: "Crowd-Collective, Co-Founder",
-      subtitle: "Big Developer Energy",
-      text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis, aliquam nam reiciendis error dolorum recusandae dignissimos corrupti similique incidunt iste non dolore alias exercitationem doloremque? Ipsam sapiente eos facilis ad",
+      title: "Crowd-Collective",
+      subtitle: "Co-Founder",
+      text: "After collaborating with other freelancers, and finding that we were mutually benefitting from sharing skills, know-how and clients, we eventually came together under the banner Crowd-Collective and operated as a comunally driven informal digital bureau.",
       tools: [],
     },
     {
-      time: [2014, 2017],
-      title: "Private Tutor",
-      subtitle: "Mentor Danmark",
-      text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis, aliquam nam reiciendis error dolorum recusandae dignissimos corrupti similique incidunt iste non dolore alias exercitationem doloremque? Ipsam sapiente eos facilis ad",
+      time: [2013, 2023],
+      title: "Translator",
+      subtitle: "Freelance",
+      text: "In 2013 I started as a small-scale freelancer but quickly grew my business into a full-time job that kept me, as well as the people I relied on for external review both busy and engaged. In 2015 expanded my business to provide niche services, such as editing and transcription.",
       tools: [],
     },
   ],
