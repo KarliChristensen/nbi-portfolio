@@ -14,11 +14,11 @@ module.exports = {
       },
       boxShadow: {},
       colors: {
-        primary: "#000814",
-        secondary: "#001D3D",
-        primaryAccent: "#003566",
-        tertiary: "#FFC300",
-        tertiaryAccent: "#FFD60A",
+        newOrange: "#fc6e44",
+        newYellow: "#f2c064",
+        newBeige: "#f4ece0",
+        newLightBlue: "#ccdcf6",
+        newBlue: "#4684e9",
       },
       backgroundImage: {},
       rotate: {
@@ -45,3 +45,13 @@ module.exports = {
     }),
   ],
 };
+
+/* 
+
+orange hex fc6e44
+gul f2c064
+beige f4ece0
+lys blå ccdcf6
+blå blå 4684e9
+
+*/

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { workLinks } from "../config";
 import TypeIt from "typeit-react";
-import LinkBar from "../components/LinkBar";
 import TechStack from "../components/TechStack";
 
 const About = () => {
@@ -10,12 +9,12 @@ const About = () => {
   return (
     <section
       id="about"
-      className="snap-start h-dvh pt-14 bg-primaryAccent"
+      className="snap-start h-dvh pt-14 bg-newBeige"
     >
       <div className="w-screen h-full flex flex-col lg:flex-row justify-center items-center lg:items-start md:pt-0 relative">
         <div className="lg:max-w-[550px] md:max-w-[650px] w-min-[400px] leading-relaxed inline md:py-3 px-5 md:mt-10">
-          <h1 className="text-slate-100 mb-3">About Me</h1>
-          <p className="text-slate-300 text-sm lg:text-base">
+          <h1 className="text-black font-extrabold mb-3">About Me</h1>
+          <p className="text-black text-sm lg:text-base font-semibold">
             <TypeIt options={{ speed: 0 }}>
               Back in 2019 when Corona wasn’t yet a concern I made my living as
               a translator, subtitler, copywriter, and transcriptionist. Covid
@@ -47,12 +46,12 @@ const About = () => {
         </div>
 
         <div className="w-full md:max-w-[650px] lg:max-w-[650px] w-min-[570px] md:mb-0 mt-1 lg:mt-14 overflow-y-scroll md:scrollbar-hide">
-          <h1 className="text-slate-100 ml-5 self-start">Experience</h1>
+          <h1 className="text-black font-extrabold ml-5 self-start">Experience</h1>
           <ol className="flex flex-col overflow-y-scroll scrollbar-hide overflow-scroll">
             {workLinks.map(({ time, title, subtitle, text, tools }, i) => (
               <li
                 key={i}
-                className={`group transition-all duration-150 ease-in w-full h-full rounded-xl flex px-5 py-3 hover:opacity-100 hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] -inset-x-4 -inset-y-4 hover:drop-shadow-lg hover:bg-secondary/50 ${
+                className={`group transition-all duration-150 ease-in w-full h-full flex px-5 py-3 hover:opacity-100 hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] -inset-x-4 -inset-y-4 hover:drop-shadow-lg hover:bg-newLightBlue/50 ${
                   hoveredItem !== null && hoveredItem !== i ? "opacity-60" : ""
                 }`}
                 onMouseEnter={() => setHoveredItem(i)}
@@ -60,20 +59,20 @@ const About = () => {
               >
                 <header className="h-full mr-0 md:mr-5 min-w-28">
                   {time.map((year, index) => (
-                    <span key={index} className="text-slate-300 text-xs">
+                    <span key={index} className="text-slate-800 text-xs font-semibold">
                       {year}
                       {index !== time.length - 1 && " — "}
                     </span>
                   ))}
                 </header>
                 <div>
-                  <h1 className="mb-1 text-slate-100 font-semibold leading-tight group-hover:text-green-300">
+                  <h1 className="mb-1 text-black font-semibold leading-tight group-hover:text-newBlue">
                     {title}
                   </h1>
-                  <h1 className="mb-1 text-slate-500 font-semibold leading-snug">
+                  <h1 className="mb-1 text-black font-semibold leading-snug group-hover:text-newBlue">
                     {subtitle}
                   </h1>
-                  <p className="mb-1 text-slate-300 text-sm font-medium leading-tight">
+                  <p className="mb-1 text-black text-sm font-medium leading-tight group-hover:text-newBlue">
                     {text}
                   </p>
                   <ul className="flex flex-row mt-3 space-x-1.5">

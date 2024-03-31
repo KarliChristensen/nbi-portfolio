@@ -52,7 +52,15 @@ const Navbar = () => {
   };
 
   return (
-    <header className="absolute top-0 w-full z-50 transition-colors ease-in-out duration-300">
+    <header
+      className={`absolute top-0 w-full z-50 transition-colors ease-in-out duration-300 ${
+        activeSection === "about"
+          ? "bg-newOrange"
+          : activeSection === "work"
+          ? "bg-newBlue"
+          : "bg-transparent"
+      }`}
+    >
       <div className="flex justify-evenly md:justify-between md:ml-10 px-10 py-2 md:py-7">
         <div className="flex justify-evenly md:w-auto">
           <ol className="flex flex-row">
@@ -61,8 +69,8 @@ const Navbar = () => {
                 <li key={i}>
                   <Link href={url}>
                     <span
-                      className={`cursor-pointer font-mono text-2xl text-slate-400 hover:text-slate-300 ${
-                        activeSection == linkName && "!text-orange-400"
+                      className={`cursor-pointer font-mono text-2xl text-slate-400 hover:text-slate-200 ${
+                        activeSection == linkName && "!text-newYellow"
                       } `}
                     >
                       {linkTexts[linkName] || linkName.toLocaleUpperCase()}

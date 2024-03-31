@@ -19,17 +19,20 @@ const Work = () => {
             <h1 className="ml-5 md:ml-20 mb-5 font-extrabold font-roboto text-3xl">
               {name}
             </h1>
-            <div className="w-screen h-2/5 flex justify-center relative">
+            <div className="w-screen h-2/5 flex justify-center relative bg-newYellow">
               <Image
-                className="inset-0 w-full h-full object-cover border-y-2 border-black"
+                className="inset-0 w-full h-full object-cover border-y-2 opacity-60"
                 src={image}
                 alt={imageAlt}
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               ></Image>
               {i > 0 && (
-                <Link className="absolute left-0 top-1/2 transform -translate-y-1/2" href={`#work-${projectLinks[i - 1].name.toLowerCase()}`}>
+                <Link
+                  className="absolute left-0 top-1/2 transform -translate-y-1/2"
+                  href={`#work-${projectLinks[i - 1].name.toLowerCase()}`}
+                >
                   <svg
-                    className="stroke-pink-600 fill-transparent left-0 w-20 opacity-70 hover:opacity-95 hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer"
+                    className="stroke-newYellow fill-transparent left-0 w-20 opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     strokeWidth="2"
@@ -38,9 +41,9 @@ const Work = () => {
                   >
                     <path
                       d="m17 4-8.33057 6.0405c-2.22591 1.614-2.2259 2.305 0 3.919l8.33057 6.0405"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                     />
                   </svg>
                 </Link>
@@ -51,7 +54,7 @@ const Work = () => {
                   href={`#work-${projectLinks[i + 1].name.toLowerCase()}`}
                 >
                   <svg
-                    className=" stroke-pink-600 fill-transparent w-20 opacity-70 hover:opacity-95 hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer"
+                    className=" stroke-newYellow fill-transparent w-20 opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                   >
@@ -59,13 +62,13 @@ const Work = () => {
                       d="m7 4 8.3306 6.0405c2.2259 1.614 2.2259 2.305 0 3.919l-8.3306 6.0405"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeWidth="1.5"
                     />
                   </svg>
                 </Link>
               )}
             </div>
-            <div className="bg-red-200 mx-5 md:mx-20 mt-5 md:w-2/3 lg:1/2">
+            <div className="mx-5 md:mx-20 mt-5 md:w-2/3 lg:1/2">
               <p className="whitespace-normal font-roboto">{text}</p>
               <ul className="flex flex-row mt-3 space-x-1.5">
                 {tools.map((tool, index) => (
