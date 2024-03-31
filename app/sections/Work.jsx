@@ -19,7 +19,7 @@ const Work = () => {
             <h1 className="ml-5 md:ml-20 mb-5 font-extrabold font-roboto text-3xl">
               {name}
             </h1>
-            <div className="w-screen h-2/5 flex justify-center items-start relative inset-0 ">
+            <div className="w-screen h-2/5 flex justify-center relative">
               <Image
                 className="inset-0 w-full h-full object-cover border-y-2 border-black"
                 src={image}
@@ -27,9 +27,9 @@ const Work = () => {
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               ></Image>
               {i > 0 && (
-                <Link href={`#work-${projectLinks[i - 1].name.toLowerCase()}`}>
+                <Link className="absolute left-0 top-1/2 transform -translate-y-1/2" href={`#work-${projectLinks[i - 1].name.toLowerCase()}`}>
                   <svg
-                    className="absolute stroke-pink-600 fill-transparent left-0 transform translate-y-48 w-20 opacity-70 hover:opacity-95 hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer"
+                    className="stroke-pink-600 fill-transparent left-0 w-20 opacity-70 hover:opacity-95 hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     strokeWidth="2"
@@ -47,11 +47,11 @@ const Work = () => {
               )}
               {i < projectLinks.length - 1 && (
                 <Link
-                  className="snap-mandatory snap-start"
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2"
                   href={`#work-${projectLinks[i + 1].name.toLowerCase()}`}
                 >
                   <svg
-                    className="absolute stroke-pink-600 fill-transparent right-0 transform translate-y-48 w-20 opacity-70 hover:opacity-95 hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer"
+                    className=" stroke-pink-600 fill-transparent w-20 opacity-70 hover:opacity-95 hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                   >
