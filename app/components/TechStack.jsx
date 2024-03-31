@@ -4,7 +4,7 @@ import { techStack } from "../config";
 
 const TechStack = () => {
   return (
-    <div className="w-full mt-1 md:mt-10">
+    <div className="w-full mt-1 md:mt-10 ">
       <h1 className="text-slate-100 mb-3">Tech Stack</h1>
       <ul className="flex mb-3 flex-row justify-center space-x-5">
         {techStack &&

@@ -2,7 +2,7 @@ import React from "react";
 
 const LinkBar = () => {
   return (
-    <div className="absolute w-full bottom-0 pb-3 sm:pb-10 justify-center lg:justify-end">
+    <div className="w-full bottom-0 pb-3 sm:pb-10 justify-center lg:justify-end">
         <ul className="flex flex-row justify-center space-x-20">
           <li className="hover:scale-125 ease-out duration-200 group">
             <a href="https://github.com/KarliChristensen">

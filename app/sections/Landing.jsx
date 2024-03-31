@@ -110,7 +110,7 @@ const Landing = () => {
           <TypeIt
             className="clampDefault text-green-800 -w-32 font-roboto font-extrabold"
             options={{
-              speed: 0, //50
+              speed: 50, //50
               waitUntilVisible: true,
               lifeLike: true,
               afterComplete: async (instance) => {
