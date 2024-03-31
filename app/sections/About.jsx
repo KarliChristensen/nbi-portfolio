@@ -46,9 +46,9 @@ const About = () => {
           <TechStack />
         </div>
 
-        <div className="w-full md:max-w-[650px] lg:max-w-[650px] w-min-[570px] mb-14 md:mb-0 pt-3 mt-1 md:mt-10 overflow-y-scroll scrollbar-hide">
-          <h1 className="text-slate-100 mt-1 ml-5">Experience</h1>
-          <ol className="flex flex-col h-auto">
+        <div className="w-full md:max-w-[650px] lg:max-w-[650px] w-min-[570px] md:mb-0 mt-1 lg:mt-14 overflow-y-scroll md:scrollbar-hide">
+          <h1 className="text-slate-100 ml-5 self-start">Experience</h1>
+          <ol className="flex flex-col overflow-y-scroll scrollbar-hide overflow-scroll">
             {workLinks.map(({ time, title, subtitle, text, tools }, i) => (
               <li
                 key={i}

@@ -65,7 +65,7 @@ const Navbar = () => {
                 <li key={i}>
                   <Link href={url}>
                     <span
-                      className={`cursor-pointer font-mono text-2xl text-slate-400 hover:text-slate-300 rounded-full ${
+                      className={`cursor-pointer font-mono text-2xl text-slate-400 hover:text-slate-300 ${
                         activeSection == linkName && "!text-orange-400"
                       } `}
                     >

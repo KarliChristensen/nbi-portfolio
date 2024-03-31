@@ -1,3 +1,5 @@
+/* Icon images */
+
 import JS from "../public/icons/file-type-js-official.256x256.png";
 import HTML from "../public/icons/file-type-html.226x256.png";
 import CSS from "../public/icons/file-type-css.226x256.png";
@@ -5,7 +7,14 @@ import NodeJS from "../public/icons/node-js.227x256.png";
 import React from "../public/icons/react.256x228.png";
 import Mongo from "../public/icons/mongodb-original.116x256.png";
 import Tailwind from "../public/icons/tailwind-css.256x154.png";
-import Git from "../public/icons/git.256x256.png"
+import Git from "../public/icons/git.256x256.png";
+
+/* Project images */
+
+import Gogoes from "../public/images/Gogos.png";
+import Padle from "../public/images/PadleClient.png";
+import SecondServing from "../public/images/SecondServing.png";
+import PortfolioV2 from "../public/images/Portfolio V2.png";
 
 module.exports = {
   email: "karlichristensen@post.com",
@@ -73,18 +82,37 @@ module.exports = {
 
   projectLinks: [
     {
-      name: "Placeholder title",
+      name: "Gogo's Kitchen",
       github: "https://github.com/joseph",
-      url: "https://deployment.com/joseph",
-      image: "",
+      url: "https://karlichristensen.github.io/nextjs-gogo-community-kitchen-template-2/",
+      image: Gogoes,
+      imageAlt: "",
       text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, fugiat cum aliquam alias exercitationem voluptas quia eum dolor quis nulla harum quasi sint officiis omnis ducimus molestiae similique veritatis repellendus?",
       tools: ["React", "Redux"],
     },
     {
-      name: "Placeholder title",
+      name: "Padle League",
       github: "https://github.com/joseph",
-      url: "https://deployment.com/joseph",
-      image: "",
+      url: "https://adorable-concha-1ef0b2.netlify.app/",
+      image: Padle,
+      imageAlt: "",
+      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, fugiat cum aliquam alias exercitationem voluptas quia eum dolor quis nulla harum quasi sint officiis omnis ducimus molestiae similique veritatis repellendus?",
+      tools: ["React", "Redux"],
+    },
+    {
+      name: "Portfolio V2",
+      github: "https://github.com/joseph",
+      url: "https://master--heartfelt-cendol-ac77bd.netlify.app/",
+      image: PortfolioV2,
+      imageAlt: "",
+      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, fugiat cum aliquam alias exercitationem voluptas quia eum dolor quis nulla harum quasi sint officiis omnis ducimus molestiae similique veritatis repellendus?",
+      tools: ["React", "Redux"],
+    },
+    {
+      name: "Second Serving",
+      github: "https://github.com/joseph",
+      url: "https://bewildered-wig-mite.cyclic.app/",
+      image: SecondServing,
       imageAlt: "",
       text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, fugiat cum aliquam alias exercitationem voluptas quia eum dolor quis nulla harum quasi sint officiis omnis ducimus molestiae similique veritatis repellendus?",
       tools: ["React", "Redux"],

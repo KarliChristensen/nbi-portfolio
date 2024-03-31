@@ -71,7 +71,7 @@ const Landing = () => {
   }, [animating]);
 
   return (
-    <section id="home" className="h-screen w-screen snap-start flex">
+    <section id="home" className="h-dvh w-screen snap-start flex">
       <div className={`${activeSection === "home" ? "block" : "hidden -z-10"}`}>
         <svg
           className="fixed bottom-0 left-0 h-screen w-screen"
@@ -102,10 +102,10 @@ const Landing = () => {
         </svg>
       </div>
       <div className="w-1/5 md:w-1/4 hidden md:block h-screen bg-pink-100"></div>
-      <div className="w-screen md:w-full h-screen bg-slate-200 flex items-center ">
+      <div className="w-screen md:w-full h-screen flex items-center ">
         <div className="mx-5 md:w-1/2 min-h-[255px] sm:min-h-[400px] md:min-h-[450] lg:min-h-[500] z-10">
           <div className="flex mb-2">
-            <span className="text-1xl rotate-[345deg] text-green-800 font-jenthill font-extrabold">{`Hi, I'm Karli`}</span>
+            <span className="text-1xl rotate-[345deg] text-green-800 pacifico-regular">{`Hi, I'm Karli`}</span>
           </div>
           <TypeIt
             className="clampDefault text-green-800 -w-32 font-roboto font-extrabold"
@@ -160,14 +160,13 @@ const Landing = () => {
                 .break()
                 .move(null, { to: "END" })
                 .type(
-                  `<span id='wrangler' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0);'>Wrangler</span> of`
+                  `<span style="white-space: nowrap;"><span id='wrangler' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0);'>Wrangler</span> of</span`
                 )
                 .break()
                 .type(
-                  "<span>JS & HTML,<br><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>S</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>l</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>a</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>y</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>e</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>r</span> <span>of CSS</span>",
+                  "<span><span style='white-space: nowrap;'>JS & HTML</span><br><span style='white-space: nowrap;'><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>S</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>l</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>a</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>y</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>e</span><span class='slayer' style='-webkit-text-stroke: 2px rgb(22 101 52); color: rgba(0, 0, 0, 0); display: inline-block;'>r</span> <span>of CSS</span></span>",
                   { speed: 50 }
                 );
-
               return instance;
             }}
           />

@@ -16,16 +16,6 @@
   } */
 }
 
-body {
-  min-height: 100vh;
-  /* mobile viewport bug fix */
-  min-height: -webkit-fill-available;
-}
-
-main {
-  height: -webkit-fill-available;
-}
-
 #wrangler.hover-effect,
 #slayer.hover-effect {
   color: white;
