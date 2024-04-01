@@ -87,7 +87,7 @@ const Work = () => {
                 <ul className="ml-3 mt-3">
                   <a href={github}>
                     <svg
-                      className=" hover:stroke-newOrange hover:scale-105"
+                      className=" hover:stroke-newOrange hover:scale-110 transition-all ease-in-out"
                       xmlns="http://www.w3.org/2000/svg"
                       width="29"
                       height="29"
@@ -106,7 +106,7 @@ const Work = () => {
                   {tools.map((tool, index) => (
                     <li
                       key={index}
-                      className="bg-newBeige rounded-full font-bold text-newBlue text-sm py-1 px-2 text-secondary"
+                      className="bg-newBeige rounded-full font-bold text-newBlue text-sm py-1 px-2"
                     >
                       <span>{tool}</span>
                     </li>
