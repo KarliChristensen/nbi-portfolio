@@ -72,7 +72,7 @@ const Landing = () => {
 
   return (
     <section id="home" className="h-dvh w-screen snap-start flex">
-      <div className={`${activeSection === "home" ? "block" : "hidden -z-10"}`}>
+      <div className={`${activeSection === "home" ? "block" : "hidden"}`}>
         <svg
           className="fixed bottom-0 left-0 h-screen w-screen"
           xmlns="http://www.w3.org/2000/svg"
