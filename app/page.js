@@ -32,9 +32,8 @@ export default function Home() {
 
     sections?.forEach((section) => {
       section && observer.observe(section);
-      console.log(section);
     });
-  }, []);
+  });
 
   return (
     <main className="h-screen overflow-y-scroll overflow-x-hidden snap-y snap-mandatory antialiased scroll-smooth scrollbar-hide">

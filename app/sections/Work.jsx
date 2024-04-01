@@ -32,7 +32,7 @@ const Work = () => {
                   href={`#work-${projectLinks[i - 1].name.toLowerCase()}`}
                 >
                   <svg
-                    className="stroke-newYellow fill-transparent left-0 w-20 opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer"
+                    className="stroke-newOrange fill-transparent left-0 w-20 opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     strokeWidth="2"
@@ -54,7 +54,7 @@ const Work = () => {
                   href={`#work-${projectLinks[i + 1].name.toLowerCase()}`}
                 >
                   <svg
-                    className=" stroke-newYellow fill-transparent w-20 opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer"
+                    className=" stroke-newOrange fill-transparent w-20 opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                   >

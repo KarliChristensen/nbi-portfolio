@@ -1,8 +1,8 @@
 /* Icon images */
 
-import JS from "../public/icons/file-type-js-official.256x256.png";
-import HTML from "../public/icons/file-type-html.226x256.png";
-import CSS from "../public/icons/file-type-css.226x256.png";
+import JSIcon from "../public/icons/file-type-js-official.256x256.png";
+import HTMLIcon from "../public/icons/file-type-html.226x256.png";
+import CSSIcon from "../public/icons/file-type-css.226x256.png";
 import NodeJS from "../public/icons/node-js.227x256.png";
 import React from "../public/icons/react.256x228.png";
 import Mongo from "../public/icons/mongodb-original.116x256.png";
@@ -121,15 +121,15 @@ module.exports = {
 
   techStack: [
     {
-      icon: JS,
+      icon: JSIcon,
       altText: "JavaScript icon",
     },
     {
-      icon: HTML,
+      icon: HTMLIcon,
       altText: "HTML icon",
     },
     {
-      icon: CSS,
+      icon: CSSIcon,
       altText: "CSS icon",
     },
     {
