@@ -104,7 +104,7 @@ const Landing = () => {
           </motion.text>
         </svg>
       </div>
-      <div className="w-1/5 md:w-1/4 hidden md:block h-screen bg-newBlue"></div>
+      <div className="w-24 md:w-1/4 min-w-[350px] hidden lg:block h-screen bg-newBlue"></div>
       <div className="w-screen md:w-full h-screen flex items-center bg-newBeige">
         <div className="mx-5 md:w-1/2 min-h-[255px] sm:min-h-[400px] md:min-h-[450] lg:min-h-[500] z-10">
           <div className="flex mb-2">

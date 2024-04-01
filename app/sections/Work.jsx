@@ -21,7 +21,7 @@ const Work = () => {
             </h1>
             <div className="w-screen h-2/5 flex justify-center relative bg-newYellow">
               <Image
-                className="inset-0 w-full h-full object-cover border-y-2 opacity-60"
+                className="inset-0 w-full h-full object-cover border-black border-y-4 opacity-60"
                 src={image}
                 alt={imageAlt}
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
