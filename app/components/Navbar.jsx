@@ -53,7 +53,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`absolute top-0 w-full z-50 transition-colors ease-in-out duration-300 ${
+      className={`absolute top-0 w-full z-10 transition-colors ease-in-out duration-300 ${
         activeSection === "about"
           ? "bg-newOrange"
           : activeSection === "work"
