@@ -58,6 +58,8 @@ const Navbar = () => {
           ? "bg-newOrange"
           : activeSection === "work"
           ? "bg-newBlue"
+          : activeSection === "home"
+          ? "bg-newBlue lg:bg-transparent"
           : "bg-transparent"
       }`}
     >
