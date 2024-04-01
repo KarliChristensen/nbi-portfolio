@@ -23,6 +23,8 @@ module.exports = {
       backgroundImage: {},
       rotate: {
         350: "350deg",
+        165: "165deg",
+        125: "125deg",
       },
     },
   },
@@ -45,13 +47,3 @@ module.exports = {
     }),
   ],
 };
-
-/* 
-
-orange hex fc6e44
-gul f2c064
-beige f4ece0
-lys blå ccdcf6
-blå blå 4684e9
-
-*/

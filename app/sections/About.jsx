@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import { workLinks } from "../config";
-import TypeIt from "typeit-react";
+import Image from "next/image";
 import TechStack from "../components/TechStack";
+import StraightLong from "../../public/graphics/StraightLong.png";
+import Squiggly from "../../public/graphics/Squiggly.png";
+import LinkBar from "../components/LinkBar";
 
 const About = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
 
   return (
-    <section
-      id="about"
-      className="snap-start h-dvh pt-14 bg-newBeige"
-    >
+    <section id="about" className="snap-start h-dvh pt-14 bg-newBeige">
       <div className="w-screen h-full flex flex-col lg:flex-row justify-center items-center lg:items-start md:pt-0 relative">
         <div className="lg:max-w-[550px] md:max-w-[650px] w-min-[400px] leading-relaxed inline md:py-3 px-5 md:mt-10">
-          <h1 className="text-black font-extrabold mb-3">About Me</h1>
-          <p className="text-black text-sm lg:text-base font-semibold">
-            <TypeIt options={{ speed: 0 }}>
+          <h1 className="text-black indent-5 font-extrabold mb-3">
+            About Me
+            <Image
+              className="w-28"
+              src={Squiggly}
+              alt="Squiggly underline"
+            ></Image>
+          </h1>
+          <div className="text-black text-sm lg:text-base font-semibold">
+            <p>
               Back in 2019 when Corona wasn’t yet a concern I made my living as
               a translator, subtitler, copywriter, and transcriptionist. Covid
               came and went, and with the world changing, and my clients
@@ -25,10 +32,9 @@ const About = () => {
               Since 2023 I’ve been providing mediocre Frontend code containing
               excellent copywriting and exquisite flow while I still find my
               feet in the industry.
-            </TypeIt>
+            </p>
             <br></br>
-            <br></br>
-            <TypeIt options={{ speed: 0 }} className="hidden md:block">
+            <p className="hidden md:block">
               My main interest these days is toying with CSS, finding ways to
               employ my new abilities to facilitate the superior deployment of
               my old ones, and improving reader and user experiences where I
@@ -40,13 +46,20 @@ const About = () => {
               In my free time, I confess to fully embracing my nerdy ways, I
               dominate at D&D, subjugate in games, both cardboard and computer
               and, I scoff to suggest, read poetry.
-            </TypeIt>
-          </p>
+            </p>
+          </div>
           <TechStack />
         </div>
 
         <div className="w-full md:max-w-[650px] lg:max-w-[650px] w-min-[570px] md:mb-0 mt-1 lg:mt-14 overflow-y-scroll md:scrollbar-hide">
-          <h1 className="text-black font-extrabold ml-5 self-start">Experience</h1>
+          <h1 className="text-black font-extrabold indent-2  ml-5 self-start">
+            Experience
+            <Image
+              className="w-28"
+              src={StraightLong}
+              alt="Straight underline"
+            ></Image>
+          </h1>
           <ol className="flex flex-col overflow-y-scroll scrollbar-hide overflow-scroll">
             {workLinks.map(({ time, title, subtitle, text, tools }, i) => (
               <li
@@ -59,7 +72,10 @@ const About = () => {
               >
                 <header className="h-full mr-0 md:mr-5 min-w-28">
                   {time.map((year, index) => (
-                    <span key={index} className="text-slate-800 text-xs font-semibold">
+                    <span
+                      key={index}
+                      className="text-slate-800 text-xs font-semibold"
+                    >
                       {year}
                       {index !== time.length - 1 && " — "}
                     </span>
@@ -89,6 +105,7 @@ const About = () => {
               </li>
             ))}
           </ol>
+          <LinkBar></LinkBar>
         </div>
       </div>
     </section>

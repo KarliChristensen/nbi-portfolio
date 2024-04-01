@@ -6,7 +6,7 @@ import ContextProvider from "./components/Context";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Portfolio V3",
+  title: "Karli Christensen",
   description: "V3 of the portfolio series, reworked",
 };
 

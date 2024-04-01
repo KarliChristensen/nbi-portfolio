@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import TypeIt from "typeit-react";
 import { motion } from "framer-motion";
 import { svgElements } from "../config";
 import { useAppContext } from "../components/Context";
+import Squiggly from "../../public/graphics/Squiggly.png";
+import Straight from "../../public/graphics/Straight.png";
 
 const Landing = () => {
   const [offset, setOffset] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [svgObject, setSvgObject] = useState({});
   const { activeSection } = useAppContext();
+  3;
 
   const handleMouseOverWrangler = (event) => {
     const wranglerSpan = event.target;
@@ -71,7 +75,17 @@ const Landing = () => {
   }, [animating]);
 
   return (
-    <section id="home" className="h-dvh w-screen snap-start flex">
+    <section id="home" className="h-dvh w-screen snap-start flex relative">
+      <Image
+        className="rotate-12 absolute left-0 top-[20%] transform -translate-y-[10%] lg:translate-x-[150%] translate-x-[10%]"
+        src={Squiggly}
+        alt="Graphical Swerve"
+      ></Image>
+      <Image
+        className="rotate-165 absolute left-0 bottom-0 transform -translate-y-1/2 -translate-x-5  lg:translate-x-[200%]"
+        src={Straight}
+        alt="Graphical Swerve"
+      ></Image>
       <div className={`${activeSection === "home" ? "block" : "hidden"}`}>
         <svg
           className="fixed bottom-0 left-0 h-screen w-screen"
@@ -108,7 +122,7 @@ const Landing = () => {
       <div className="w-screen md:w-full h-screen flex items-center bg-newBeige">
         <div className="mx-5 md:w-1/2 min-h-[255px] sm:min-h-[400px] md:min-h-[450] lg:min-h-[500] z-10">
           <div className="flex mb-2">
-            <span className="text-1xl rotate-[345deg] text-newOrange">{`Hi, I'm Karli`}</span>
+            <span className="text-1xl rotate-[345deg] pacifico-regular text-newOrange">{`Hi, I'm Karli`}</span>
           </div>
           <TypeIt
             className="clampDefault -w-32 font-roboto font-extrabold"
