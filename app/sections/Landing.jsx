@@ -79,11 +79,14 @@ const Landing = () => {
           viewBox={svgObject.viewBoxConfig}
         >
           <path
-            className="fill-transparent fixed left-0"
+            className="fill-transparent fixed left-0 "
             id="text-curvature-1"
             d={svgObject.svgPath}
           ></path>
-          <motion.text className="text-3xl font-extrabold text-newYellow">
+          <motion.text
+            className="text-3xl font-extrabold"
+            style={{ color: "blue" }}
+          >
             <motion.textPath
               href="#text-curvature-1"
               startOffset={offset + "%"}
@@ -102,7 +105,7 @@ const Landing = () => {
         </svg>
       </div>
       <div className="w-1/5 md:w-1/4 hidden md:block h-screen bg-newBlue"></div>
-      <div className="w-screen md:w-full h-screen flex items-center ">
+      <div className="w-screen md:w-full h-screen flex items-center bg-newBeige">
         <div className="mx-5 md:w-1/2 min-h-[255px] sm:min-h-[400px] md:min-h-[450] lg:min-h-[500] z-10">
           <div className="flex mb-2">
             <span className="text-1xl rotate-[345deg] text-newOrange">{`Hi, I'm Karli`}</span>

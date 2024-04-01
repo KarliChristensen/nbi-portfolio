@@ -114,7 +114,7 @@ module.exports = {
       url: "https://karlichristensen.github.io/nextjs-gogo-community-kitchen-template-2/",
       image: Gogoes,
       imageAlt: "Gogo's Kitchen website screenshot",
-      text: "A voulenteer project in Cape Town, South Africa aiming to help feed the poor and disinfranchised. The specifications for this project included the ability for the NGO frontrunners to rewrite and retool the site themselves as need arose, which necisitated an easily modifiable layout with comprehensive documentation. For this project I elected to start with a pre-existing template to accomplish the original specifications, and then to modify as needed, the project is still ongoing and is thus a WIP.",
+      text: "A voulenteer project from Cape Town, South Africa. The specifications for this project included a customizeable layout with comprehensive documentation. I chose a pre-existing template facilitating the original specifications, and modified as needed, the project is still ongoing and is thus a WIP.",
       tools: ["React", "Redux"],
     },
   ],

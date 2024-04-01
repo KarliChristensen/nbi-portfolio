@@ -7,7 +7,7 @@ const Work = () => {
   return (
     <section
       id="work"
-      className="h-dvh overflow-x-auto overflow-y-hidden whitespace-nowrap snap-x snap-mandatory snap-start antialiased scroll-smooth"
+      className="h-dvh overflow-x-auto overflow-y-hidden whitespace-nowrap snap-x snap-mandatory snap-start antialiased scroll-smooth bg-newBeige"
     >
       {projectLinks.map(({ name, image, imageAlt, text, tools }, i) => (
         <section
@@ -60,8 +60,8 @@ const Work = () => {
                   >
                     <path
                       d="m7 4 8.3306 6.0405c2.2259 1.614 2.2259 2.305 0 3.919l-8.3306 6.0405"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       strokeWidth="1.5"
                     />
                   </svg>
