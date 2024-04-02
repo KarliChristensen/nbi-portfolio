@@ -97,10 +97,7 @@ const Landing = () => {
             id="text-curvature-1"
             d={svgObject.svgPath}
           ></path>
-          <motion.text
-            className="text-3xl font-extrabold"
-            style={{ color: "blue" }}
-          >
+          <motion.text className="text-3xl font-extrabold">
             <motion.textPath
               href="#text-curvature-1"
               startOffset={offset + "%"}
@@ -112,6 +109,7 @@ const Landing = () => {
                 duration: 0.5,
                 repeat: 0,
               }}
+              style={{ fill: "#f2c064" }} // Change the color here
             >
               {svgObject.textString}
             </motion.textPath>

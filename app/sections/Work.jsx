@@ -26,7 +26,11 @@ const Work = () => {
                 <Image src={StraightLong} alt="Straight underline"></Image>
               </h1>
               <div className="w-screen h-2/5 flex justify-center relative bg-newYellow">
-                <a className="w-full h-full" href={url} aria-label="Link to deployed site">
+                <a
+                  className="w-full h-full"
+                  href={url}
+                  aria-label="Link to deployed site"
+                >
                   <Image
                     className="inset-0 w-full h-full object-cover border-black border-y-4 opacity-60"
                     src={image}
@@ -55,7 +59,7 @@ const Work = () => {
                         d="m17 4-8.33057 6.0405c-2.22591 1.614-2.2259 2.305 0 3.919l8.33057 6.0405"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth="1.5"
+                        strokeWidth="3"
                       />
                     </svg>
                   </Link>
@@ -74,7 +78,7 @@ const Work = () => {
                         d="m7 4 8.3306 6.0405c2.2259 1.614 2.2259 2.305 0 3.919l-8.3306 6.0405"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth="1.5"
+                        strokeWidth="3"
                       />
                     </svg>
                   </Link>
@@ -94,7 +98,7 @@ const Work = () => {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="#4684e9"
-                      strokeWidth="1.5"
+                      strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     >
