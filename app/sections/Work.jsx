@@ -8,7 +8,7 @@ const Work = () => {
   return (
     <section
       id="work"
-      className="h-dvh overflow-x-auto overflow-y-hidden whitespace-nowrap snap-x snap-mandatory snap-start antialiased scroll-smooth bg-newBeige"
+      className="h-dvh overflow-x-hidden overflow-y-hidden whitespace-nowrap snap-x snap-mandatory snap-start antialiased scroll-smooth bg-newBeige"
     >
       {projectLinks.map(
         ({ name, image, imageAlt, text, tools, url, github }, i) => (
@@ -26,7 +26,7 @@ const Work = () => {
                 <Image src={StraightLong} alt="Straight underline"></Image>
               </h1>
               <div className="w-screen h-2/5 flex justify-center relative bg-newYellow">
-                <a className="w-full h-full" href={url}>
+                <a className="w-full h-full" href={url} aria-label="Link to deployed site">
                   <Image
                     className="inset-0 w-full h-full object-cover border-black border-y-4 opacity-60"
                     src={image}
@@ -85,7 +85,7 @@ const Work = () => {
                   {text}
                 </p>
                 <ul className="ml-3 mt-3">
-                  <a href={github}>
+                  <a href={github} aria-label="GitHub repo">
                     <svg
                       className=" hover:stroke-newOrange hover:scale-110 transition-all ease-in-out"
                       xmlns="http://www.w3.org/2000/svg"
