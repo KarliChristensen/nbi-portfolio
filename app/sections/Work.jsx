@@ -11,7 +11,10 @@ const Work = () => {
       className="h-dvh overflow-x-hidden overflow-y-hidden whitespace-nowrap snap-x snap-mandatory snap-start antialiased scroll-smooth bg-newBeige"
     >
       {projectLinks.map(
-        ({ name, image, imageAlt, text, tools, url, github }, i) => (
+        (
+          { name, image, imageAlt, text, tools, url, github, deployment },
+          i
+        ) => (
           <section
             id={`work-${name.toLowerCase()}`}
             key={i}
@@ -106,6 +109,7 @@ const Work = () => {
                     </svg>
                   </a>
                 </ul>
+
                 <ul className="flex flex-row my-3 ml-3 space-x-1.5">
                   {tools.map((tool, index) => (
                     <li

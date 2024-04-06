@@ -5,8 +5,10 @@ const LinkBar = () => {
     <div className="w-full bottom-0 py-2 sm:pb-10 justify-center lg:justify-end">
       <ul className="flex flex-row justify-center space-x-20">
         <li className="hover:scale-125 ease-out duration-200 group">
-          <a href="https://github.com/KarliChristensen" aria-label="GitHub profile">
-          
+          <a
+            href="https://github.com/KarliChristensen"
+            aria-label="GitHub profile"
+          >
             <svg
               className=" group-hover:stroke-orange-400"
               xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +26,10 @@ const LinkBar = () => {
           </a>
         </li>
         <li className="hover:scale-125 ease-out duration-200 group">
-          <a href="https://www.linkedin.com/in/karlichristensen/" aria-label="LinkedIn profile">
+          <a
+            href="https://www.linkedin.com/in/karlichristensen/"
+            aria-label="LinkedIn profile"
+          >
             <svg
               className=" group-hover:stroke-orange-400"
               xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +49,10 @@ const LinkBar = () => {
           </a>
         </li>
         <li className="hover:scale-125 ease-out duration-200 group">
-          <a href="mailto:karlichristensen@post.com?subject=Mail%20from%20Portfolio.com" aria-label="Email link">
+          <a
+            href="mailto:karlichristensen@post.com?subject=Mail%20from%20Portfolio.com"
+            aria-label="Email link"
+          >
             <svg
               className=" group-hover:stroke-orange-400"
               xmlns="http://www.w3.org/2000/svg"

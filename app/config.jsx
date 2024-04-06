@@ -88,7 +88,7 @@ module.exports = {
       image: Padle,
       imageAlt: "Padle League website screenshot.",
       text: "At the end of the Ironhack bootcamp, students are tasked with completing a fully functional CRUD project, building the front and backend sepperately before deploying these inside of a 3-month time-limit.",
-      tools: ["React", "Next.js", "Node.js", "Tailwind"],
+      tools: ["React", "Next.js", "Node.js", "Tailwind", "Netfliy"],
       deployment: "Deployed on Netlify",
     },
     {
@@ -98,7 +98,7 @@ module.exports = {
       image: PortfolioV2,
       imageAlt: "Portfolio v2 website screenshot.",
       text: "A expanded series of projects, this is the second version - Built after setting myself a 48-hour time limit, to produce something viable and reproduceable.",
-      tools: ["React", "Next.js", "Node.js", "Tailwind"],
+      tools: ["React", "Next.js", "Node.js", "Tailwind", "Netfliy"],
       deployment: "Deployed on Netlify",
     },
     {
@@ -108,7 +108,7 @@ module.exports = {
       image: SecondServing,
       imageAlt: "SecondServing website screenshot",
       text: "A full-stack CRUD project made as part of a 3-man group for Ironhack. Features a user messaging service, cart, sales and purchase functionality.",
-      tools: ["Express", "Node.js", "Tailwind"],
+      tools: ["Express", "Node.js", "Tailwind", "Cyclic"],
       deployment: "Deployed on Cyclic",
     },
     {
@@ -120,6 +120,7 @@ module.exports = {
       imageAlt: "Gogo's Kitchen website screenshot",
       text: "A WIP voulenteer project from Cape Town, South Africa. The specifications for this project included a customizeable layout with comprehensive documentation and thus relies on a template.",
       tools: [],
+      deployment: "Deployed with Github",
     },
   ],
 
