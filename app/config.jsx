@@ -15,6 +15,7 @@ import Gogoes from "../public/images/Gogos.png";
 import Padle from "../public/images/PadleClient.png";
 import SecondServing from "../public/images/SecondServing.png";
 import PortfolioV2 from "../public/images/Portfolio V2.png";
+import Monster from "../public/images/Monster.png"
 
 module.exports = {
   email: "karlichristensen@post.com",
@@ -81,6 +82,16 @@ module.exports = {
   ],
 
   projectLinks: [
+    {
+      name: "Lille Monster",
+      github: "https://github.com/KarliChristensen/monster-book",
+      url: "https://monster-taupe.vercel.app/",
+      image: Monster,
+      imageAlt: "Lille Monster website screenshot.",
+      text: "A small project I put together for the launch of a children's book I wrote with my wife on the subject of becoming a parent, and not knowing what ever loving hell you're doing.",
+      tools: ["React", "Next.js", "Node.js", "Tailwind", "Vercel"],
+      deployment: "Deployed with Vercel",
+    },
     {
       name: "Padle League",
       github: "https://github.com/KarliChristensen/padel-app-client",
