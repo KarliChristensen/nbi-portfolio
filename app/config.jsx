@@ -75,7 +75,7 @@ module.exports = {
       time: [2013, 2023],
       title: "Translator",
       subtitle: "Freelance",
-      text: "In 2013 I started as a small-scale freelancer but quickly grew my business into a full-time job that kept me, as well as the people I relied on for external review both busy and engaged. In 2015 expanded my business to provide niche services, such as editing and transcription.",
+      text: "In 2013 I started as a small-scale freelancer but quickly grew my business into a full-time job that kept me, as well as the people I relied on for external review both busy and engaged. In 2015 I expanded my business to provide niche services, such as editing and transcription.",
       tools: [],
     },
   ],

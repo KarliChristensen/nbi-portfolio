@@ -29,20 +29,20 @@ const About = () => {
               adjusting to the new market, I found it an opportune time to
               realign. With a bit of guidance and help from friends, I made the
               move, the decision and then the leap towards becoming a developer.
-              Since 2023 I’ve been providing mediocre Frontend code containing
+              Since 2023 I’ve been providing mediocre front-end code containing
               excellent copywriting and exquisite flow while I still find my
               feet in the industry.
             </p>
-            <br></br>
+            <br />
             <p className="hidden md:block">
               My main interest these days is toying with CSS, finding ways to
               employ my new abilities to facilitate the superior deployment of
               my old ones, and improving reader and user experiences where I
-              can, since - with all the advancements and developments to user
+              can, since - with all the advancements and developments in user
               content consumption, the internet is still primarily a written
-              medium with well written words facilitating the exchange.
-              <br></br>
-              <br></br>
+              medium with well-written words facilitating the exchange.
+              <br />
+              <br />
               In my free time, I confess to fully embracing my nerdy ways, I
               dominate at D&D, subjugate in games, both cardboard and computer
               and, I scoff to suggest, read poetry.
