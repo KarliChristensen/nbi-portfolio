@@ -12,7 +12,7 @@ const Work = () => {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 1,
+      threshold: 0.7,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -22,7 +22,6 @@ const Work = () => {
             ".articleDiv, .articleSecondaryDiv"
           );
           if (elem.length > 0) {
-            console.log(elem);
             elem[0].classList.toggle("show");
             elem[1].classList.toggle("show");
           }
@@ -41,7 +40,7 @@ const Work = () => {
   }, []);
 
   return (
-    <section className="h-full flex flex-col pt-80 space-y-44 antialiased snap-start scroll-smooth bg-white">
+    <section id="projects" className="h-full flex flex-col pt-80 space-y-44 antialiased snap-start scroll-smooth bg-white">
       <Article
         imageOne={Monster1}
         imageTwo={Monster2}

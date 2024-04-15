@@ -1,20 +1,19 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppContext } from "./components/Context";
 import Landing from "./sections/Landing";
 import Projects from "./sections/Projects";
-import About from "./sections/About";
 
 export default function Home() {
   const { updateActiveSection } = useAppContext();
+  const [isFirstScroll, setIsFirstScroll] = useState(true);
 
   useEffect(() => {
     let home = document.getElementById("home");
-    let about = document.getElementById("about");
-    let skills = document.getElementById("work");
+    let projects = document.getElementById("projects");
 
-    let sections = [about, home, skills];
+    let sections = [home, projects];
 
     const observerOptions = {
       root: null,
@@ -26,6 +25,14 @@ export default function Home() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           updateActiveSection(entry.target.id);
+          if (entry.target.id === "projects" && isFirstScroll) {
+            // Disable snap after the first scroll
+            const mainContainer = document.querySelector("#main-container");
+            if (mainContainer) {
+              mainContainer.classList.remove("snap-mandatory");
+            }
+            setIsFirstScroll(false);
+          }
         }
       });
     }, observerOptions);
@@ -36,7 +43,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="h-screen overflow-x-hidden snap-y antialiased scroll-smooth scrollbar-hide">
+    <main
+      id="main-container"
+      className="h-screen overflow-x-hidden snap-y snap-mandatory antialiased scroll-smooth scrollbar-hide"
+    >
       <Landing />
       <Projects />
       {/*       <About /> */}
