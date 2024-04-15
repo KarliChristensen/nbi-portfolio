@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { useAppContext } from "./components/Context";
 import Landing from "./sections/Landing";
-import Work from "./sections/Work";
+import Projects from "./sections/Projects";
 import About from "./sections/About";
 
 export default function Home() {
@@ -36,10 +36,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="h-screen overflow-y-scroll overflow-x-hidden snap-y snap-mandatory antialiased scroll-smooth scrollbar-hide">
+    <main className="h-screen overflow-x-hidden snap-y antialiased scroll-smooth scrollbar-hide">
       <Landing />
-      <About />
-      <Work />
+      <Projects />
+      {/*       <About /> */}
     </main>
   );
 }

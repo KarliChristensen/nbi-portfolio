@@ -76,52 +76,40 @@ const Landing = () => {
 
   return (
     <section id="home" className="h-dvh w-screen snap-start flex relative">
-      <Image
-        className="rotate-12 absolute left-0 top-[20%] transform -translate-y-[10%] lg:translate-x-[150%] translate-x-[10%]"
-        src={Squiggly}
-        alt="Graphical Swerve"
-      ></Image>
-      <Image
-        className="rotate-165 absolute left-0 bottom-0 transform -translate-y-1/2 -translate-x-5  lg:translate-x-[200%]"
-        src={Straight}
-        alt="Graphical Swerve"
-      ></Image>
-      <div className={`${activeSection === "home" ? "block" : "hidden"}`}>
-        <svg
-          className="fixed bottom-0 left-0 h-screen w-screen"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox={svgObject.viewBoxConfig}
-        >
-          <path
-            className="fill-transparent fixed left-0 "
-            id="text-curvature-1"
-            d={svgObject.svgPath}
-          ></path>
-          <motion.text className="text-3xl font-extrabold">
-            <motion.textPath
-              href="#text-curvature-1"
-              startOffset={offset + "%"}
-              onAnimationComplete={() => {
-                setAnimating(false);
-                setSvgObject({});
-              }}
-              transition={{
-                duration: 0.5,
-                repeat: 0,
-              }}
-              style={{ fill: "#f2c064" }} // Change the color here
-            >
-              {svgObject.textString}
-            </motion.textPath>
-          </motion.text>
-        </svg>
-      </div>
       <div className="w-24 md:w-1/4 min-w-[350px] hidden lg:block h-screen bg-newBlue"></div>
-      <div className="w-screen md:w-full h-screen flex items-center bg-newBeige">
+      <div className="w-screen h-screen flex flex-col md:flex-row justify-center md:justify-start items-center text-center md:text-start bg-newBeige">
+        {" "}
+        <div className={`${activeSection === "home" ? "block" : "hidden"}`}>
+{/*           <svg
+            className="fixed bottom-0 left-0 h-screen w-screen"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox={svgObject.viewBoxConfig}
+          >
+            <path
+              className="fill-transparent fixed left-0 "
+              id="text-curvature-1"
+              d={svgObject.svgPath}
+            ></path>
+            <motion.text className="text-3xl font-extrabold z-20">
+              <motion.textPath
+                href="#text-curvature-1"
+                startOffset={offset + "%"}
+                onAnimationComplete={() => {
+                  setAnimating(false);
+                  setSvgObject({});
+                }}
+                transition={{
+                  duration: 0.5,
+                  repeat: 0,
+                }}
+                style={{ fill: "#f2c064" }} // Change the color here
+              >
+                {svgObject.textString}
+              </motion.textPath>
+            </motion.text>
+          </svg> */}
+        </div>
         <div className="mx-5 md:w-1/2 min-h-[255px] sm:min-h-[400px] md:min-h-[450] lg:min-h-[500] z-10">
-          <div className="flex mb-2">
-            <span className="text-1xl rotate-[345deg] pacifico-regular text-newOrange">{`Hi, I'm Karli`}</span>
-          </div>
           <TypeIt
             className="clampDefault -w-32 font-roboto font-extrabold"
             options={{
@@ -157,6 +145,9 @@ const Landing = () => {
             }}
             getAfterInit={(instance) => {
               instance
+                .type("Hi,  I'm Karli!")
+                .pause(1500)
+                .delete(16)
                 .type("I'm a translator.")
                 .pause(750)
                 .delete(11, { speed: 500 })
@@ -187,6 +178,12 @@ const Landing = () => {
               return instance;
             }}
           />
+        </div>
+        <div className="scroll_indicator flex flex-col absolute bottom-0 md:hidden">
+          <p className="text-end bottom-0 mb-8 text-white font-roboto font-extrabold">
+            Scroll
+          </p>
+          <span className="bg-white w-[2px] h-[59px] self-center"></span>
         </div>
       </div>
     </section>

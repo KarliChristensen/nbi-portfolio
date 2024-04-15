@@ -30,8 +30,30 @@
 }
 
 .clampDefault {
-  font-size: clamp(2.5rem, 0.625rem + 5vw, 3rem);
+  font-size: clamp(2rem, 0.5rem + 5vw, 3rem);
   line-height: 1.1;
+}
+
+.articleDiv {
+  transform: translateX(-250%);
+  transition: transform 1.5s ease-in-out;
+}
+
+.articleDiv.show {
+  transform: translateX(0%);
+}
+
+.articleSecondaryDiv {
+  transform: translateX(400%);
+  transition: transform 2.5s ease-in-out;
+}
+
+.articleSecondaryDiv.show {
+  transform: translateX(0%);
+}
+
+.articleTypeOne {
+  transform: translateX(0%);
 }
 
 @layer base {
