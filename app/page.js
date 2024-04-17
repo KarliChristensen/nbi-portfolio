@@ -25,14 +25,6 @@ export default function Home() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           updateActiveSection(entry.target.id);
-          if (entry.target.id === "projects" && isFirstScroll) {
-            // Disable snap after the first scroll
-            const mainContainer = document.querySelector("#main-container");
-            if (mainContainer) {
-              mainContainer.classList.remove("snap-mandatory");
-            }
-            setIsFirstScroll(false);
-          }
         }
       });
     }, observerOptions);
@@ -44,7 +36,6 @@ export default function Home() {
 
   return (
     <main
-      id="main-container"
       className="h-screen overflow-x-hidden snap-y snap-mandatory antialiased scroll-smooth scrollbar-hide"
     >
       <Landing />

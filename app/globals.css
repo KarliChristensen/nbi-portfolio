@@ -35,7 +35,7 @@
 }
 
 .articleDiv {
-  transform: translateX(-250%);
+  transform: translateX(-100%);
   transition: transform 1.5s ease-in-out;
 }
 
@@ -44,8 +44,8 @@
 }
 
 .articleSecondaryDiv {
-  transform: translateX(400%);
-  transition: transform 2.5s ease-in-out;
+  transform: translateX(100%);
+  transition: transform 2s ease-in-out;
 }
 
 .articleSecondaryDiv.show {
@@ -55,6 +55,35 @@
 .articleTypeOne {
   transform: translateX(0%);
 }
+
+img {
+  --c: #8a9b0f; /* the border color */
+  --b: 10px; /* the border thickness*/
+  --g: 2px; /* the gap on hover */
+
+  padding: calc(var(--g) + var(--b));
+  --_g: #0000 25%, var(--c) 0;
+  background: conic-gradient(
+        from 180deg at top var(--b) right var(--b),
+        var(--_g)
+      )
+      var(--_i, 200%) 0 /200% var(--_i, var(--b)) no-repeat,
+    conic-gradient(at bottom var(--b) left var(--b), var(--_g)) 0
+      var(--_i, 200%) / var(--_i, var(--b)) 200% no-repeat;
+  transition: 0.3s, background-position 0.3s 0.3s;
+  cursor: pointer;
+}
+
+img:hover {
+  --_i: 100%;
+  transition: 0.3s, background-size 0.3s 0.3s;
+}
+
+.imgTransition {
+  transition: transform 0.5s ease, z-index 0s, left 0.5s ease;
+  transition-delay: 0s, 0.5s, 0.5s;
+}
+
 
 @layer base {
 }
