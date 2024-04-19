@@ -10,8 +10,12 @@ const Navbar = () => {
       <div className="h-full w-full px-10 flex justify-between items-center">
         <Image src={""} alt="Logo" width={20} height={20}></Image>
         <div className="flex justify-between w-44">
-          <Link href="here">About me</Link>
-          <Link href="here">Projects</Link>
+          <Link className="navbarLink" href="here">
+            About me
+          </Link>
+          <Link className="navbarLink" href="here">
+            Projects
+          </Link>
         </div>
       </div>
     </header>

@@ -35,7 +35,7 @@
 }
 
 .articleDiv {
-  transform: translateX(-100%);
+  transform: translateX(-150%);
   transition: transform 1.5s ease-in-out;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .articleSecondaryDiv {
-  transform: translateX(100%);
+  transform: translateX(150%);
   transition: transform 2s ease-in-out;
 }
 
@@ -79,11 +79,57 @@ img:hover {
   transition: 0.3s, background-size 0.3s 0.3s;
 }
 
-.imgTransition {
-  transition: transform 0.5s ease, z-index 0s, left 0.5s ease;
-  transition-delay: 0s, 0.5s, 0.5s;
+.image-one {
+  transition: transform 0.5s ease-in-out;
 }
 
+.image-one:hover {
+  transform: translate(-10%, -8%);
+  animation: moveBack 1s infinite alternate;
+}
+
+@keyframes moveBack {
+  0% {
+    transform: translate(-10%, -8%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Navbar Link Animation */
+
+.navbarLink {
+  background-image: linear-gradient(to right, #C0C2C9, #C0C2C9 50%, #000 50%);
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbarLink:before {
+  content: "";
+  background: #000000;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbarLink:hover {
+  background-position: 0;
+}
+
+.navbarLink:hover::before {
+  width: 100%;
+}
 
 @layer base {
 }

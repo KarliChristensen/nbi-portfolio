@@ -40,18 +40,19 @@ const Work = () => {
   }, []);
 
   return (
-    <section id="projects" className="h-full flex flex-col pt-80 space-y-44 antialiased snap-start scroll-smooth overflow-y-scroll overflow-x-hidden bg-white">
+    <section id="projects" className="h-full flex flex-col py-40 space-y-44 antialiased snap-start scroll-smooth overflow-y-scroll overflow-x-hidden bg-white">
       <Article
         imageOne={Monster1}
         imageTwo={Monster2}
         Title={"Monster"}
         Subtitle={"Jensen & Dalgaard"}
       />
-      <Article imageOne={Monster1} imageTwo={Monster2} Title={"Monster"} />
-      <Article imageOne={Monster1} imageTwo={Monster2} Title={"Monster"} />
-      <Article imageOne={Monster1} imageTwo={Monster2} Title={"Monster"} />
-      <Article imageOne={Monster1} imageTwo={Monster2} Title={"Monster"} />
-      <Article imageOne={Monster1} imageTwo={Monster2} Title={"Monster"} />
+            <Article
+        imageOne={Monster1}
+        imageTwo={Monster2}
+        Title={"Monster"}
+        Subtitle={"Jensen & Dalgaard"}
+      />
     </section>
   );
 };
