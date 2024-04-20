@@ -6,7 +6,7 @@ function Article({ imageOne, imageTwo, github, deployment, text, title }) {
     <article className="article md:px-0 w-full md:py-20 flex justify-center">
       <div className="relative flex justify-center w-full m-5 md:m-0">
         <div className="articleDiv w-full flex justify-center items-center ">
-          <figure className="overlayHover w-full md:w-[80%] lg:w-[60%] max-w-[1000px] imgTilt rounded-md">
+          <figure className="overlayHover w-full md:w-[80%] lg:w-[60%] max-w-[1000px] imgTiltAlt rounded-md">
             <Image
               className="overlayHover"
               src={imageOne}
@@ -18,9 +18,9 @@ function Article({ imageOne, imageTwo, github, deployment, text, title }) {
             </figcaption>
           </figure>
         </div>
-        <div className="articleSecondaryDiv w-full absolute hidden bottom-[-20%] inset-x-[57%] md:block z-1">
+        <div className="articleSecondaryDiv w-full absolute hidden bottom-[-20%] inset-x-[25%] md:block z-1">
           <div className="max-w-[450px] md:max-w-[350px]">
-            <figure className="overlayHover w-full max-w-[1000px] imgTiltTwo rounded-md">
+            <figure className="overlayHover w-full max-w-[1000px] imgTiltTwoAlt rounded-md">
               <Image
                 className="overlayHover"
                 src={imageTwo}

@@ -1,9 +1,11 @@
 import React from "react";
-import Image from "next/image";
 import { useEffect } from "react";
+import { projectLinks } from "../config";
 import Monster1 from "../../public/images/Monster.png";
 import Monster2 from "../../public/images/Monster2.png";
 import Article from "../components/Article";
+import ArticleAltOne from "../components/ArticleAltOne";
+import ArticleAltTwo from "../components/ArticleAltTwo";
 
 const Work = () => {
   useEffect(() => {
@@ -40,19 +42,26 @@ const Work = () => {
   }, []);
 
   return (
-    <section id="projects" className="h-full flex flex-col py-40 space-y-44 antialiased snap-start scroll-smooth overflow-y-scroll overflow-x-hidden bg-white scrollbar-hide">
+    <section
+      id="projects"
+      className="h-full flex flex-col py-40 space-y-44 antialiased snap-start scroll-smooth overflow-y-scroll overflow-x-hidden bg-white scrollbar-hide"
+    >
       <Article
         imageOne={Monster1}
         imageTwo={Monster2}
-        Title={"Monster"}
-        Subtitle={"Jensen & Dalgaard"}
+        title={
+          <h2>
+            A very small <span>Monster</span>
+          </h2>
+        }
+        text={
+          "A site I put together for the launch of a children's book I co-wrote with my wife on the subject of becoming a parent, and not knowing what ever loving hell you're doing."
+        }
+        github={"https://github.com/KarliChristensen/monster-book"}
+        deployment={"https://monster-taupe.vercel.app/"}
       />
-            <Article
-        imageOne={Monster1}
-        imageTwo={Monster2}
-        Title={"Monster"}
-        Subtitle={"Jensen & Dalgaard"}
-      />
+      <ArticleAltOne imageOne={Monster2} imageTwo={Monster2} />
+      <ArticleAltTwo imageOne={Monster2} imageTwo={Monster2} />
     </section>
   );
 };
