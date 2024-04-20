@@ -40,7 +40,7 @@ const Work = () => {
   }, []);
 
   return (
-    <section id="projects" className="h-full flex flex-col py-40 space-y-44 antialiased snap-start scroll-smooth overflow-y-scroll overflow-x-hidden bg-white">
+    <section id="projects" className="h-full flex flex-col py-40 space-y-44 antialiased snap-start scroll-smooth overflow-y-scroll overflow-x-hidden bg-white scrollbar-hide">
       <Article
         imageOne={Monster1}
         imageTwo={Monster2}
