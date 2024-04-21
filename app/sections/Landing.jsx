@@ -92,6 +92,7 @@ const Landing = () => {
           <motion.text className="text-3xl font-extrabold z-50">
             <motion.textPath
               href="#text-curvature-1"
+              aria-label="Defines an SVG path for animated text, services no other purpose"
               startOffset={offset + "%"}
               onAnimationComplete={() => {
                 setAnimating(false);

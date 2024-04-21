@@ -31,7 +31,7 @@ function Article({ imageOne, imageTwo, github, deployment, text, shortText, titl
                 <h2 className="h-full w-full">
                   <span>Tools</span> of the trade
                   <div className="flex items-center justify-center h-full w-full">
-                    <a className="w-[35px] mr-8" href={github}>
+                    <a className="w-[35px] mr-8" href={github} aria-label="Link to github repo">
                       <svg
                         className="w-full fill-white hover:fill-slate-500 transform duration-300 ease-in-out"
                         viewBox="0 0 24 24"
@@ -45,7 +45,7 @@ function Article({ imageOne, imageTwo, github, deployment, text, shortText, titl
                         <path d="m12 1a10.89 10.89 0 0 0 -11 10.77 10.79 10.79 0 0 0 7.52 10.23c.55.1.75-.23.75-.52s0-.93 0-1.83c-3.06.65-3.71-1.44-3.71-1.44a2.86 2.86 0 0 0 -1.22-1.58c-1-.66.08-.65.08-.65a2.31 2.31 0 0 1 1.68 1.11 2.37 2.37 0 0 0 3.2.89 2.33 2.33 0 0 1 .7-1.44c-2.44-.27-5-1.19-5-5.32a4.15 4.15 0 0 1 1.11-2.91 3.78 3.78 0 0 1 .11-2.84s.93-.29 3 1.1a10.68 10.68 0 0 1 5.5 0c2.1-1.39 3-1.1 3-1.1a3.78 3.78 0 0 1 .11 2.84 4.15 4.15 0 0 1 1.17 2.89c0 4.14-2.58 5.05-5 5.32a2.5 2.5 0 0 1 .75 2v2.95s.2.63.75.52a10.8 10.8 0 0 0 7.5-10.22 10.89 10.89 0 0 0 -11-10.77" />
                       </svg>
                     </a>
-                    <a className="w-[39px]" href={deployment}>
+                    <a className="w-[39px]" href={deployment} aria-label="Link to deployed version of site">
                       <svg
                         className="w-full fill-white hover:fill-slate-500 transform duration-300 ease-in-out"
                         viewBox="0 0 24 24"
