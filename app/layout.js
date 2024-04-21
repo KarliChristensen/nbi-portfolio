@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
   
   return (
     <html lang="en">
+    <title> Webdeveloper Portfolio for Karli Christensen</title>
       <ContextProvider>
         <body className={inter.className}>
           {isLoading && isHome ? (

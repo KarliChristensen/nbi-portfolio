@@ -72,6 +72,7 @@ const Landing = () => {
 
   return (
     <section id="home" className="h-dvh w-screen snap-start flex relative">
+
       <div className="animateBg"></div>
       <div className="animateBg animateBg2"></div>
       <div className="animateBg animateBg3"></div>
