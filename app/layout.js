@@ -20,10 +20,14 @@ export default function RootLayout({ children }) {
       return;
     }
   }, [isLoading]);
-  
+
   return (
     <html lang="en">
-    <title> Webdeveloper Portfolio for Karli Christensen</title>
+      <title> Webdeveloper Portfolio for Karli Christensen</title>
+      <meta
+        name="description"
+        content="Portfolio for Karli Christensen - frontend webdeveloper, translator, word wizardry galore"
+      ></meta>
       <ContextProvider>
         <body className={inter.className}>
           {isLoading && isHome ? (
