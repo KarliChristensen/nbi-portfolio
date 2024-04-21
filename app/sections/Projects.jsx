@@ -62,6 +62,9 @@ const Work = () => {
         text={
           "A site I put together for the launch of a children's book I co-wrote with my wife on the subject of becoming a parent, and not knowing what ever loving hell you're doing."
         }
+        shortText={
+          "A site I put together for the launch of a children's book I co-wrote with my wife."
+        }
         github={"https://github.com/KarliChristensen/monster-book"}
         deployment={"https://monster-taupe.vercel.app/"}
       />
@@ -70,11 +73,14 @@ const Work = () => {
         imageTwo={Padle2}
         title={
           <h2>
-            Padle App - The Padle <span>League</span> Manager
+            Padle <span>App</span>
           </h2>
         }
         text={
           "At the end of the Ironhack boot camp, students are tasked with completing a fully functional CRUD project, building the front and backend separately before deploying these inside of a 3-month time-limit."
+        }
+        shortText={
+          "At the end of the Ironhack boot camp, students are tasked with completing a fully functional CRUD project, building the front and backend separately."
         }
         github={"https://github.com/KarliChristensen/padel-app-client"}
         deployment={"https://adorable-concha-1ef0b2.netlify.app/"}
@@ -84,11 +90,14 @@ const Work = () => {
         imageTwo={SecondS2}
         title={
           <h2>
-            Second Serving - Giving <span>Food</span> A Second Home
+            Second <span>Serving</span>
           </h2>
         }
         text={
           "A full-stack CRUD project made as part of a 3-man group for Ironhack. Features a user messaging service, cart, sales and purchase functionality."
+        }
+        shortText={
+          "A full-stack CRUD project made as part of a 3-man group for Ironhack."
         }
         github={"https://github.com/KarliChristensen/Second-Serving"}
         deployment={"https://bewildered-wig-mite.cyclic.app/"}
@@ -103,6 +112,9 @@ const Work = () => {
         }
         text={
           "An expanded series of projects, this being the second version - Built after setting myself a 48-hour time limit, to produce something viable and reproducible - The one you're on, is the 5th iteration, though not much of the original design remains."
+        }
+        shortText={
+          "An expanded series of projects, this being the second version."
         }
         github={"https://github.com/KarliChristensen/SPPortfolio"}
         deployment={"https://master--heartfelt-cendol-ac77bd.netlify.app/"}

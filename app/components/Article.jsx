@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-function Article({ imageOne, imageTwo, github, deployment, text, title }) {
+function Article({ imageOne, imageTwo, github, deployment, text, shortText, title }) {
   return (
     <article className="article md:px-0 w-full md:py-20 flex justify-center">
       <div className="relative flex justify-center w-full m-5 md:m-0">
@@ -15,6 +15,7 @@ function Article({ imageOne, imageTwo, github, deployment, text, title }) {
             <figcaption>
               {title}
               <p className="hidden sm:block">{text}</p>
+              <p className="block sm:hidden">{shortText}</p>
             </figcaption>
           </figure>
         </div>
