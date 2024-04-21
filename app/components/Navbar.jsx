@@ -2,8 +2,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BigK from "../android-chrome-192x192.png";
+import { useAppContext } from "../components/Context";
 
 const Navbar = () => {
+  const { activeSection } = useAppContext();
+  console.log;
+
   return (
     <header className="hidden sm:block absolute top-0 w-full h-28 z-50">
       <div className="h-full w-full px-10 flex justify-between items-center">
@@ -18,12 +22,22 @@ const Navbar = () => {
         </a>
         <ul className="flex font-bold raleway justify-between w-44">
           <li>
-            <Link className="navbarLink" href="/about">
+            <Link
+              className={`navbarLink ${
+                activeSection === "home" ? "" : "active"
+              }`}
+              href="/about"
+            >
               About me
             </Link>
           </li>
           <li>
-            <Link className="navbarLink" href="/projects">
+            <Link
+              className={`navbarLink ${
+                activeSection === "home" ? "" : "active"
+              }`}
+              href="/projects"
+            >
               Projects
             </Link>
           </li>

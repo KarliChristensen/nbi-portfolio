@@ -9,11 +9,10 @@ const Landing = () => {
   const [animating, setAnimating] = useState(false);
   const [svgObject, setSvgObject] = useState({});
   const { activeSection } = useAppContext();
-  3;
 
   const handleMouseOverWrangler = (event) => {
     const wranglerSpan = event.target;
-    wranglerSpan.style.color = "black";
+    wranglerSpan.style.color = "white";
     wranglerSpan.style.webkitTextStroke = "0px rgb(255 255 255)";
     wranglerSpan.style.transition = `all .3s ease`;
     if (!animating) {
@@ -24,7 +23,7 @@ const Landing = () => {
   const handleMouseOverSlayer = () => {
     const slayerSpans = document.querySelectorAll(".slayer");
     slayerSpans.forEach((span, index) => {
-      span.style.color = "black";
+      span.style.color = "white";
       span.style.transition = `all .3s ease`;
       const transformStyles = [
         "rotate(5deg) translate(-20%, 15%)",
@@ -43,7 +42,7 @@ const Landing = () => {
     const slayerSpans = document.querySelectorAll(".slayer");
     wranglerSpan.style.color = "transparent";
     wranglerSpan.classList.remove("hover-effect");
-    wranglerSpan.style.webkitTextStroke = "2px black";
+    wranglerSpan.style.webkitTextStroke = "2px white";
     slayerSpans.forEach((span) => {
       span.style.color = "transparent";
       span.style.transform = "none";
@@ -73,7 +72,10 @@ const Landing = () => {
 
   return (
     <section id="home" className="h-dvh w-screen snap-start flex relative">
-      <div className="w-full h-full flex flex-col justify-center items-center text-center bg-newBeige">
+      <div className="animateBg"></div>
+      <div className="animateBg animateBg2"></div>
+      <div className="animateBg animateBg3"></div>
+      <div className="w-full h-full flex flex-col justify-center items-center text-center">
         <svg
           className={`${
             activeSection === "home" ? "block" : "hidden"
@@ -107,9 +109,9 @@ const Landing = () => {
 
         <div className="text-center mx-5 md:w-1/2 min-h-[255px] sm:min-h-[400px] md:min-h-[450] lg:min-h-[500] z-10">
           <TypeIt
-            className="clampDefault -w-32 font-roboto font-extrabold"
+            className="clampDefault -w-32 font-roboto font-extrabold text-white"
             options={{
-              speed: 0, //50
+              speed: 50, //50
               waitUntilVisible: true,
               lifeLike: true,
               afterComplete: async (instance) => {
@@ -134,9 +136,6 @@ const Landing = () => {
                     });
                   }
                 }
-                setTimeout(function () {
-                  instance.destroy();
-                }, 1000);
               },
             }}
             getAfterInit={(instance) => {
@@ -158,17 +157,17 @@ const Landing = () => {
                 .delete(1)
                 .break()
                 .type(
-                  `<span style="color: #4684e9;"><strong><em>extraordinaire</em></strong></span>`
+                  `<span><strong><em>extraordinaire</em></strong></span>`
                 )
                 .break()
                 .break()
                 .move(null, { to: "END" })
                 .type(
-                  `<span style="white-space: nowrap;"><span id='wrangler' style='-webkit-text-stroke: 2px black; color: rgba(0, 0, 0, 0);'>Wrangler</span> of</span`
+                  `<span style="white-space: nowrap;"><span id='wrangler' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0);'>Wrangler</span> of</span`
                 )
                 .break()
                 .type(
-                  "<span><span style='white-space: nowrap; color: #4684e9;'>JS & HTML,</span><br><span style='white-space: nowrap;'><span class='slayer' style='-webkit-text-stroke: 2px black; color: rgba(0, 0, 0, 0); display: inline-block;'>S</span><span class='slayer' style='-webkit-text-stroke: 2px black; color: rgba(0, 0, 0, 0); display: inline-block;'>l</span><span class='slayer' style='-webkit-text-stroke: 2px black; color: rgba(0, 0, 0, 0); display: inline-block;'>a</span><span class='slayer' style='-webkit-text-stroke: 2px black; color: rgba(0, 0, 0, 0); display: inline-block;'>y</span><span class='slayer' style='-webkit-text-stroke: 2px black; color: rgba(0, 0, 0, 0); display: inline-block;'>e</span><span class='slayer' style='-webkit-text-stroke: 2px black; color: rgba(0, 0, 0, 0); display: inline-block;'>r</span> of<span style='color: #4684e9;'> CSS</span></span>",
+                  "<span><span style='white-space: nowrap'>JS & HTML,</span><br><span style='white-space: nowrap;'><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>S</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>l</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>a</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>y</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>e</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>r</span> of<span> CSS</span></span>",
                   { speed: 50 }
                 );
               return instance;

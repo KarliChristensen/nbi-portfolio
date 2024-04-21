@@ -6,16 +6,16 @@ import Image from "next/image";
 import Logo from "../android-chrome-192x192.png";
 
 const Splash = ({ finishLoading }) => {
-  const [isMounted, setIsMounted] = useState(false);
-
+  const [isMounted, setIsMounted] = useState(true);
   const animate = () => {
     const loader = anime.timeline({
       complete: () => finishLoading(),
     });
+
     loader.add({
       targets: "#logo",
       delay: 0,
-      scale: 1.10,
+      scale: 1.1,
       duration: 600,
       easing: "easeInOutExpo",
     });
@@ -29,7 +29,7 @@ const Splash = ({ finishLoading }) => {
     loader.add({
       targets: "#logo",
       delay: 0,
-      scale: 1.10,
+      scale: 1.1,
       duration: 600,
       easing: "easeInOutExpo",
     });
@@ -49,10 +49,7 @@ const Splash = ({ finishLoading }) => {
   }, []);
 
   return (
-    <div
-      className="flex h-screen items-center justify-center"
-      isMounted={isMounted}
-    >
+    <div className="flex h-screen items-center justify-center">
       <Image id="logo" src={Logo} alt="logo" width={100} height={100} />
     </div>
   );

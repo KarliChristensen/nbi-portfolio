@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="h-28 px-20 w-full bg-newBeige flex items-center snap-start justify-between scrollbar-hide">
+    <div className="h-28 px-20 w-full bg-green-100 flex items-center snap-start justify-between scrollbar-hide">
       <h2 className="raleway text-lg">Karli Christensen &copy;</h2>
       <div className="flex space-x-10">
         <a href="here">

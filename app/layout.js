@@ -16,9 +16,11 @@ export default function RootLayout({ children }) {
   const [isLoading, setIsLoading] = useState(isHome);
 
   useEffect(() => {
-    if (isLoading) return;
+    if (isLoading) {
+      return;
+    }
   }, [isLoading]);
-
+  
   return (
     <html lang="en">
       <ContextProvider>
