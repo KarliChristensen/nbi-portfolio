@@ -7,8 +7,8 @@ function page() {
         <p className="text-white font-serif font-bold text-xl md:text-3xl leading-9 mr-8 md:mr-14">
           Hi, I&#39;m Karli! <br />
           <br />
-          Back in 2019 when Corona wasn&#39;t yet a concern I made my living as a
-          translator, subtitler, copywriter, and transcriptionist. Covid came
+          Back in 2019 when Covid wasn&#39;t yet a concern I made my living as a
+          translator, subtitler, copywriter, and transcriptionist. The pandemic came
           and went, and with the world changing, and my clients adjusting to the
           new market, I found it an opportune time to realign. With a bit of
           guidance and help from friends, I made the move, the decision and then
