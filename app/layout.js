@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import Navbar from "./components/Navbar";
 import ContextProvider from "./components/Context";
 import Splash from "./components/Splash";
+import HeadAddOn from "./components/HeadAddOn";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -23,11 +24,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <title> Webdeveloper Portfolio for Karli Christensen</title>
-      <meta
-        name="description"
-        content="Portfolio for Karli Christensen - frontend webdeveloper, translator, word wizardry galore"
-      ></meta>
+      <HeadAddOn />
       <ContextProvider>
         <body className={inter.className}>
           {isLoading && isHome ? (
