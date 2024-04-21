@@ -5,14 +5,14 @@ function page() {
     <div id="about" className="flex items-center pt-28 w-full h-screen bg-red-500/95">
       <div className="ml-[15%] md:w-[60%] lg:w-[40%]">
         <p className="text-white raleway text-2xl  leading-9">
-          Hi, I'm Karli! <br />
+          Hi, I&#39;m Karli! <br />
           <br />
-          Back in 2019 when Corona wasn’t yet a concern I made my living as a
+          Back in 2019 when Corona wasn&#39;t yet a concern I made my living as a
           translator, subtitler, copywriter, and transcriptionist. Covid came
           and went, and with the world changing, and my clients adjusting to the
           new market, I found it an opportune time to realign. With a bit of
           guidance and help from friends, I made the move, the decision and then
-          the leap towards becoming a developer. Since 2023 I’ve been providing
+          the leap towards becoming a developer. Since 2023 I&#39;ve been providing
           mediocre front-end code containing excellent copywriting and exquisite
           flow while I still find my feet in the industry.
         </p>
