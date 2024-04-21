@@ -54,6 +54,12 @@
   transform: translateX(0%);
 }
 
+/*** Font ***/
+
+.raleway {
+  font-family: "Raleway", Arial, sans-serif;
+}
+
 /*** Navbar Link Animation ***/
 
 .navbarLink {

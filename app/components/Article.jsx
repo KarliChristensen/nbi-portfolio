@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
+
 function Article({ imageOne, imageTwo, github, deployment, text, title }) {
   return (
     <article className="article md:px-0 w-full md:py-20 flex justify-center">

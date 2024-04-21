@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useAppContext } from "./components/Context";
 import Landing from "./sections/Landing";
 import Projects from "./sections/Projects";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const { updateActiveSection } = useAppContext();
@@ -35,12 +36,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main
-      className="h-screen overflow-x-hidden snap-y snap-mandatory antialiased scroll-smooth scrollbar-hide"
-    >
+    <main className="h-screen overflow-x-hidden snap-y snap-mandatory antialiased scroll-smooth scrollbar-hide">
       <Landing />
       <Projects />
-      {/*       <About /> */}
+      <Footer />
     </main>
   );
 }

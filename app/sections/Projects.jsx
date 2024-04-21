@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect } from "react";
-import { projectLinks } from "../config";
 import Monster1 from "../../public/images/Monster.png";
 import Monster2 from "../../public/images/Monster2.png";
 import Article from "../components/Article";
@@ -14,7 +13,7 @@ const Work = () => {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.3,
+      threshold: 0.5,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -44,7 +43,7 @@ const Work = () => {
   return (
     <section
       id="projects"
-      className="h-full flex flex-col py-40 space-y-44 antialiased snap-start scroll-smooth overflow-y-scroll overflow-x-hidden bg-white scrollbar-hide"
+      className="h-full flex flex-col py-40 space-y-32 antialiased snap-start scroll-smooth overflow-y-scroll overflow-x-hidden bg-white scrollbar-hide"
     >
       <Article
         imageOne={Monster1}

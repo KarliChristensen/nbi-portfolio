@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import TypeIt from "typeit-react";
 import { motion } from "framer-motion";
 import { svgElements } from "../config";
 import { useAppContext } from "../components/Context";
-import Squiggly from "../../public/graphics/Squiggly.png";
-import Straight from "../../public/graphics/Straight.png";
 
 const Landing = () => {
   const [offset, setOffset] = useState(0);
@@ -76,44 +73,43 @@ const Landing = () => {
 
   return (
     <section id="home" className="h-dvh w-screen snap-start flex relative">
-      <div className="w-24 md:w-1/4 min-w-[350px] hidden lg:block h-screen bg-newBlue"></div>
-      <div className="w-screen h-screen flex flex-col md:flex-row justify-center md:justify-start items-center text-center md:text-start bg-newBeige">
-        {" "}
-        <div className={`${activeSection === "home" ? "block" : "hidden"}`}>
-{/*           <svg
-            className="fixed bottom-0 left-0 h-screen w-screen"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox={svgObject.viewBoxConfig}
-          >
-            <path
-              className="fill-transparent fixed left-0 "
-              id="text-curvature-1"
-              d={svgObject.svgPath}
-            ></path>
-            <motion.text className="text-3xl font-extrabold z-20">
-              <motion.textPath
-                href="#text-curvature-1"
-                startOffset={offset + "%"}
-                onAnimationComplete={() => {
-                  setAnimating(false);
-                  setSvgObject({});
-                }}
-                transition={{
-                  duration: 0.5,
-                  repeat: 0,
-                }}
-                style={{ fill: "#f2c064" }} // Change the color here
-              >
-                {svgObject.textString}
-              </motion.textPath>
-            </motion.text>
-          </svg> */}
-        </div>
-        <div className="mx-5 md:w-1/2 min-h-[255px] sm:min-h-[400px] md:min-h-[450] lg:min-h-[500] z-10">
+      <div className="w-full h-full flex flex-col justify-center items-center text-center bg-newBeige">
+        <svg
+          className={`${
+            activeSection === "home" ? "block" : "hidden"
+          } fixed bottom-0 left-0 h-full w-full`}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 10 10"
+        >
+          <path
+            className="fill-transparent fixd left-0 "
+            id="text-curvature-1"
+            d={svgObject.svgPath}
+          ></path>
+          <motion.text className="text-3xl font-extrabold z-50">
+            <motion.textPath
+              href="#text-curvature-1"
+              startOffset={offset + "%"}
+              onAnimationComplete={() => {
+                setAnimating(false);
+                setSvgObject({});
+              }}
+              transition={{
+                duration: 0.5,
+                repeat: 0,
+              }}
+              style={{ fill: "#f2c064" }} // Change the color here
+            >
+              {svgObject.textString}
+            </motion.textPath>
+          </motion.text>
+        </svg>
+
+        <div className="text-center mx-5 md:w-1/2 min-h-[255px] sm:min-h-[400px] md:min-h-[450] lg:min-h-[500] z-10">
           <TypeIt
             className="clampDefault -w-32 font-roboto font-extrabold"
             options={{
-              speed: 50, //50
+              speed: 0, //50
               waitUntilVisible: true,
               lifeLike: true,
               afterComplete: async (instance) => {
@@ -179,12 +175,12 @@ const Landing = () => {
             }}
           />
         </div>
-        <div className="scroll_indicator flex flex-col absolute bottom-0 md:hidden">
-          <p className="text-end bottom-0 mb-8 text-white font-roboto font-extrabold">
-            Scroll
-          </p>
-          <span className="bg-white w-[2px] h-[59px] self-center"></span>
-        </div>
+      </div>
+      <div className="scroll_indicator flex flex-col absolute bottom-0 inset-x-0">
+        <p className="text-center bottom-0 mb-6 text-white raleway font-extrabold text-xl">
+          Scroll
+        </p>
+        <span className="bg-white w-[2px] h-[59px] self-center"></span>
       </div>
     </section>
   );
