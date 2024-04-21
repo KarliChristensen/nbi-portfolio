@@ -7,7 +7,7 @@ import { useAppContext } from "../components/Context";
 
 const Navbar = () => {
   const { activeSection } = useAppContext();
-  console.log;
+  console.log(activeSection)
 
   return (
     <header className="hidden sm:block absolute top-0 w-full h-28 z-50">

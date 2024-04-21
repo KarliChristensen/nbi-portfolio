@@ -18,7 +18,7 @@ function Article({ imageOne, imageTwo, github, deployment, text, title }) {
             </figcaption>
           </figure>
         </div>
-        <div className="articleSecondaryDiv w-full absolute hidden top-[-20%] inset-x-[57%] md:block z-1">
+        <div className="articleSecondaryDiv w-full absolute hidden bottom-[-15%] inset-x-[57%] md:block z-1">
           <div className="max-w-[450px] md:max-w-[350px]">
             <figure className="overlayHover w-full max-w-[1000px] imgTiltTwo rounded-md">
               <Image
