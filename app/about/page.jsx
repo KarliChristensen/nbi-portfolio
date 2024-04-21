@@ -3,8 +3,8 @@ import React from "react";
 function page() {
   return (
     <div id="about" className="flex items-center pt-28 w-full h-screen bg-red-500/95">
-      <div className="ml-[15%] md:w-[60%] lg:w-[40%]">
-        <p className="text-white raleway text-2xl  leading-9">
+      <div className="ml-[15%] md:w-[60%] lg:w-[70%]">
+        <p className="text-white font-serif font-bold text-xl md:text-3xl leading-9 mr-8 md:mr-14">
           Hi, I&#39;m Karli! <br />
           <br />
           Back in 2019 when Corona wasn&#39;t yet a concern I made my living as a
