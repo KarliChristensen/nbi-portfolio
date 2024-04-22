@@ -63,7 +63,7 @@ const Work = () => {
           "A site I put together for the launch of a children's book I co-wrote with my wife on the subject of becoming a parent, and not knowing what ever loving hell you're doing."
         }
         shortText={
-          "A site I put together for the launch of a children's book I co-wrote with my wife."
+          "A site for a children's I co-wrote with my wife."
         }
         github={"https://github.com/KarliChristensen/monster-book"}
         deployment={"https://monster-taupe.vercel.app/"}
@@ -114,7 +114,7 @@ const Work = () => {
           "An expanded series of projects, this being the second version - Built after setting myself a 48-hour time limit, to produce something viable and reproducible - The one you're on, is the 5th iteration, though not much of the original design remains."
         }
         shortText={
-          "An expanded series of projects, this being the second version."
+          "v2 of a series, this one is v5."
         }
         github={"https://github.com/KarliChristensen/SPPortfolio"}
         deployment={"https://master--heartfelt-cendol-ac77bd.netlify.app/"}

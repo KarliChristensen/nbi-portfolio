@@ -1,5 +1,6 @@
 import React from "react";
 
+
 function page() {
   return (
     <div
@@ -7,7 +8,7 @@ function page() {
       className="flex items-center pt-28 w-full h-screen bg-red-500/95"
     >
       <div className="ml-[15%] md:w-[60%] lg:w-[70%]">
-        <p className="text-white font-serif font-bold text-xl md:text-3xl leading-9 mr-8 md:mr-14">
+        <p className="text-white font-serif font-bold text-sm sm:text-xl md:text-3xl leading-6 sm:leading-9 mr-8 md:mr-14">
           Hi, I&#39;m Karli! <br />
           <br />
           Back in 2019 when Covid wasn&#39;t yet a concern I made my living as a

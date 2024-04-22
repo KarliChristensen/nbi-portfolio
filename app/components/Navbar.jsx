@@ -9,8 +9,8 @@ const Navbar = () => {
   const { activeSection } = useAppContext();
 
   return (
-    <header className="hidden sm:block absolute top-0 w-full h-28 z-50">
-      <div className="h-full w-full px-10 flex justify-between items-center">
+    <header className="sm:block absolute top-0 w-full h-12 sm:h-28 z-50 bg-green-400/60 sm:bg-transparent">
+      <div className="h-full w-full px-2 sm:px-10 flex justify-between items-center">
         <a href="/" aria-label="Link to Home">
           <Image
             className={`hover:scale-110 transform ease-in-out duration-300 ${

@@ -76,38 +76,6 @@ const Landing = () => {
       <div className="animateBg animateBg2"></div>
       <div className="animateBg animateBg3"></div>
       <div className="w-full h-full flex flex-col justify-center items-center text-center">
-        <svg
-          className={`${
-            activeSection === "home" ? "block" : "hidden"
-          } fixed bottom-0 left-0 h-full w-full`}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 10 10"
-        >
-          <path
-            className="fill-transparent fixd left-0 "
-            id="text-curvature-1"
-            d={svgObject.svgPath}
-          ></path>
-          <motion.text className="text-3xl font-extrabold z-50">
-            <motion.textPath
-              href="#text-curvature-1"
-              aria-label="Defines an SVG path for animated text, services no other purpose"
-              startOffset={offset + "%"}
-              onAnimationComplete={() => {
-                setAnimating(false);
-                setSvgObject({});
-              }}
-              transition={{
-                duration: 0.5,
-                repeat: 0,
-              }}
-              style={{ fill: "#f2c064" }} // Change the color here
-            >
-              {svgObject.textString}
-            </motion.textPath>
-          </motion.text>
-        </svg>
-
         <div className="text-center mx-5 md:w-1/2 min-h-[255px] sm:min-h-[400px] md:min-h-[450] lg:min-h-[500] z-10">
           <TypeIt
             className="clampDefault -w-32 font-roboto font-extrabold text-white"
