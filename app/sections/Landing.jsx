@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TypeIt from "typeit-react";
+import Head from "next/head";
 import { motion } from "framer-motion";
 import { svgElements } from "../config";
 import { useAppContext } from "../components/Context";
@@ -71,119 +72,128 @@ const Landing = () => {
   }, [animating]);
 
   return (
-    <section id="home" className="h-dvh w-screen snap-start flex relative">
+    <>
+      <Head>
+        <title>Karli Christensen - Portfolio</title>
+        <meta
+          name="description"
+          content="Web Developer Portfolio for Karli Christensen"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <section id="home" className="h-dvh w-screen snap-start flex relative">
+        <div className="animateBg"></div>
+        <div className="animateBg animateBg2"></div>
+        <div className="animateBg animateBg3"></div>
+        <div className="w-full h-full flex flex-col justify-center items-center text-center">
+          <svg
+            className={`${
+              activeSection === "home" ? "block" : "hidden"
+            } fixed bottom-0 left-0 h-full w-full`}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 10 10"
+          >
+            <path
+              className="fill-transparent fixd left-0 "
+              id="text-curvature-1"
+              d={svgObject.svgPath}
+            ></path>
+            <motion.text className="text-3xl font-extrabold z-50">
+              <motion.textPath
+                href="#text-curvature-1"
+                aria-label="Defines an SVG path for animated text, services no other purpose"
+                startOffset={offset + "%"}
+                onAnimationComplete={() => {
+                  setAnimating(false);
+                  setSvgObject({});
+                }}
+                transition={{
+                  duration: 0.5,
+                  repeat: 0,
+                }}
+                style={{ fill: "#f2c064" }} // Change the color here
+              >
+                {svgObject.textString}
+              </motion.textPath>
+            </motion.text>
+          </svg>
 
-      <div className="animateBg"></div>
-      <div className="animateBg animateBg2"></div>
-      <div className="animateBg animateBg3"></div>
-      <div className="w-full h-full flex flex-col justify-center items-center text-center">
-        <svg
-          className={`${
-            activeSection === "home" ? "block" : "hidden"
-          } fixed bottom-0 left-0 h-full w-full`}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 10 10"
-        >
-          <path
-            className="fill-transparent fixd left-0 "
-            id="text-curvature-1"
-            d={svgObject.svgPath}
-          ></path>
-          <motion.text className="text-3xl font-extrabold z-50">
-            <motion.textPath
-              href="#text-curvature-1"
-              aria-label="Defines an SVG path for animated text, services no other purpose"
-              startOffset={offset + "%"}
-              onAnimationComplete={() => {
-                setAnimating(false);
-                setSvgObject({});
-              }}
-              transition={{
-                duration: 0.5,
-                repeat: 0,
-              }}
-              style={{ fill: "#f2c064" }} // Change the color here
-            >
-              {svgObject.textString}
-            </motion.textPath>
-          </motion.text>
-        </svg>
-
-        <div className="text-center mx-5 md:w-1/2 min-h-[255px] sm:min-h-[400px] md:min-h-[450] lg:min-h-[500] z-10">
-          <TypeIt
-            className="clampDefault -w-32 font-roboto font-extrabold text-white"
-            options={{
-              speed: 50, //50
-              waitUntilVisible: true,
-              lifeLike: true,
-              afterComplete: async (instance) => {
-                if (!instance._complete) {
-                  const wranglerSpan = document.getElementById("wrangler");
-                  const slayerSpans = document.getElementsByClassName("slayer");
-                  if (wranglerSpan) {
-                    wranglerSpan.addEventListener(
-                      "mouseover",
-                      handleMouseOverWrangler
-                    );
-                    wranglerSpan.addEventListener("mouseout", handleMouseOut);
-                  }
-
-                  if (slayerSpans) {
-                    Array.from(slayerSpans).forEach((slayerSpan) => {
-                      slayerSpan.addEventListener(
+          <div className="text-center mx-5 md:w-1/2 min-h-[255px] sm:min-h-[400px] md:min-h-[450] lg:min-h-[500] z-10">
+            <TypeIt
+              className="clampDefault -w-32 font-roboto font-extrabold text-white"
+              options={{
+                speed: 50, //50
+                waitUntilVisible: true,
+                lifeLike: true,
+                afterComplete: async (instance) => {
+                  if (!instance._complete) {
+                    const wranglerSpan = document.getElementById("wrangler");
+                    const slayerSpans =
+                      document.getElementsByClassName("slayer");
+                    if (wranglerSpan) {
+                      wranglerSpan.addEventListener(
                         "mouseover",
-                        handleMouseOverSlayer
+                        handleMouseOverWrangler
                       );
-                      slayerSpan.addEventListener("mouseout", handleMouseOut);
-                    });
+                      wranglerSpan.addEventListener("mouseout", handleMouseOut);
+                    }
+
+                    if (slayerSpans) {
+                      Array.from(slayerSpans).forEach((slayerSpan) => {
+                        slayerSpan.addEventListener(
+                          "mouseover",
+                          handleMouseOverSlayer
+                        );
+                        slayerSpan.addEventListener("mouseout", handleMouseOut);
+                      });
+                    }
                   }
-                }
-              },
-            }}
-            getAfterInit={(instance) => {
-              instance
-                .type("Hi,  I'm Karli!")
-                .pause(1500)
-                .delete(16)
-                .type("I'm a translator.")
-                .pause(750)
-                .delete(11, { speed: 500 })
-                .pause(500)
-                .type(" developer.", { speed: 500 })
-                .pause(500)
-                .move(-10)
-                .delete(7)
-                .pause(200)
-                .type(`<span>Frontend</span> `, { speed: 100 })
-                .move(null, { to: "END" })
-                .delete(1)
-                .break()
-                .type(
-                  `<span><strong><em>extraordinaire</em></strong></span>`
-                )
-                .break()
-                .break()
-                .move(null, { to: "END" })
-                .type(
-                  `<span style="white-space: nowrap;"><span id='wrangler' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0);'>Wrangler</span> of</span`
-                )
-                .break()
-                .type(
-                  "<span><span style='white-space: nowrap'>JS & HTML,</span><br><span style='white-space: nowrap;'><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>S</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>l</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>a</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>y</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>e</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>r</span> of<span> CSS</span></span>",
-                  { speed: 50 }
-                );
-              return instance;
-            }}
-          />
+                },
+              }}
+              getAfterInit={(instance) => {
+                instance
+                  .type("Hi,  I'm Karli!")
+                  .pause(1500)
+                  .delete(16)
+                  .type("I'm a translator.")
+                  .pause(750)
+                  .delete(11, { speed: 500 })
+                  .pause(500)
+                  .type(" developer.", { speed: 500 })
+                  .pause(500)
+                  .move(-10)
+                  .delete(7)
+                  .pause(200)
+                  .type(`<span>Frontend</span> `, { speed: 100 })
+                  .move(null, { to: "END" })
+                  .delete(1)
+                  .break()
+                  .type(`<span><strong><em>extraordinaire</em></strong></span>`)
+                  .break()
+                  .break()
+                  .move(null, { to: "END" })
+                  .type(
+                    `<span style="white-space: nowrap;"><span id='wrangler' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0);'>Wrangler</span> of</span`
+                  )
+                  .break()
+                  .type(
+                    "<span><span style='white-space: nowrap'>JS & HTML,</span><br><span style='white-space: nowrap;'><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>S</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>l</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>a</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>y</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>e</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>r</span> of<span> CSS</span></span>",
+                    { speed: 50 }
+                  );
+                return instance;
+              }}
+            />
+          </div>
         </div>
-      </div>
-      <div className="scroll_indicator flex flex-col absolute bottom-0 inset-x-0">
-        <p className="text-center bottom-0 mb-6 text-white raleway font-extrabold text-xl">
-          Scroll
-        </p>
-        <span className="bg-white w-[2px] h-[59px] self-center"></span>
-      </div>
-    </section>
+        <div className="scroll_indicator flex flex-col absolute bottom-0 inset-x-0">
+          <p className="text-center bottom-0 mb-6 text-white raleway font-extrabold text-xl">
+            Scroll
+          </p>
+          <span className="bg-white w-[2px] h-[59px] self-center"></span>
+        </div>
+      </section>
+    </>
   );
 };
 
