@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import { useEffect } from "react";
 import Monster from "../../public/images/Monster.png";
 import Monster2 from "../../public/images/Monster2.png";

@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-    <title>Karli Christensen - Portfolio</title>
+      <title>Karli Christensen - Portfolio</title>
       <ContextProvider>
         <body className={inter.className}>
           {isLoading && isHome ? (

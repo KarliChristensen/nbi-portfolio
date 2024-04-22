@@ -2,7 +2,6 @@
 
 import React, { useEffect } from "react";
 import { useAppContext } from "./components/Context";
-
 import Landing from "./sections/Landing";
 import Projects from "./sections/Projects";
 import Footer from "./components/Footer";

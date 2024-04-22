@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import TypeIt from "typeit-react";
-import Head from "next/head";
 import { motion } from "framer-motion";
 import { svgElements } from "../config";
 import { useAppContext } from "../components/Context";
