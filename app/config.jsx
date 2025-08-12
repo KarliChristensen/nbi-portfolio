@@ -1,14 +1,3 @@
-/* Icon images */
-
-import JSIcon from "../public/icons/file-type-js-official.256x256.png";
-import HTMLIcon from "../public/icons/file-type-html.226x256.png";
-import CSSIcon from "../public/icons/file-type-css.226x256.png";
-import NodeJS from "../public/icons/node-js.227x256.png";
-import React from "../public/icons/react.256x228.png";
-import Mongo from "../public/icons/mongodb-original.116x256.png";
-import Tailwind from "../public/icons/tailwind-css.256x154.png";
-import Git from "../public/icons/git.256x256.png";
-
 /* Project images */
 
 import Gogoes from "../public/images/Gogos.png";
@@ -132,49 +121,6 @@ module.exports = {
       text: "A WIP volunteer project from Cape Town, South Africa. The specifications for this project included a customizable layout with comprehensive documentation and thus relies on a template.",
       tools: [],
       deployment: "Deployed with Github",
-    },
-  ],
-
-  techStack: [
-    {
-      icon: JSIcon,
-      altText: "JavaScript icon",
-      width: 0,
-    },
-    {
-      icon: HTMLIcon,
-      altText: "HTML icon",
-      width: 0,
-    },
-    {
-      icon: CSSIcon,
-      altText: "CSS icon",
-      width: 0,
-    },
-    {
-      icon: NodeJS,
-      altText: "NodeJS icon",
-      width: 0,
-    },
-    {
-      icon: React,
-      altText: "React icon",
-      width: 0,
-    },
-    {
-      icon: Mongo,
-      altText: "Mongo icon",
-      width: 0,
-    },
-    {
-      icon: Tailwind,
-      altText: "Tailwind icon",
-      width: 40,
-    },
-    {
-      icon: Git,
-      altText: "Git icon",
-      width: 0,
     },
   ],
 };

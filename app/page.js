@@ -3,18 +3,17 @@
 import React, { useEffect } from "react";
 import { useAppContext } from "./components/Context";
 import Landing from "./sections/Landing";
-import Work from "./sections/Work";
-import About from "./sections/About";
+import Projects from "./sections/Projects";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const { updateActiveSection } = useAppContext();
 
   useEffect(() => {
     let home = document.getElementById("home");
-    let about = document.getElementById("about");
-    let skills = document.getElementById("work");
+    let projects = document.getElementById("projects");
 
-    let sections = [about, home, skills];
+    let sections = [home, projects];
 
     const observerOptions = {
       root: null,
@@ -36,10 +35,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="h-screen overflow-y-scroll overflow-x-hidden snap-y snap-mandatory antialiased scroll-smooth scrollbar-hide">
+    <main className="h-screen overflow-x-hidden snap-y snap-mandatory antialiased scroll-smooth scrollbar-hide">
       <Landing />
-      <About />
-      <Work />
+      <Projects />
+      <Footer />
     </main>
   );
 }
