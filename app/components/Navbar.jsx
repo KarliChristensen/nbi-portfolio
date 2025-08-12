@@ -31,7 +31,7 @@ const Navbar = () => {
             height={40}
           />
         </a>
-        <ul className="flex font-bold raleway justify-between w-44">
+        <ul className="flex font-bold raleway justify-between">
           <li>
             <Link
               className={`navbarLink ${
@@ -41,17 +41,6 @@ const Navbar = () => {
               aria-label="Link to About"
             >
               About me
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={`navbarLink ${
-                activeSection === "home" ? "" : "active"
-              }`}
-              href="/projects"
-              aria-label="Link to Projects"
-            >
-              Projects
             </Link>
           </li>
         </ul>

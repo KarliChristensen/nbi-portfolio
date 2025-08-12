@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="h-14 md:h-28 px-5 md:px-20 w-full bg-green-100 flex items-center snap-start justify-between scrollbar-hide">
+    <div className="h-14 md:h-28 px-5 md:px-20 w-full bg-green-500 flex items-center snap-start justify-between scrollbar-hide">
       <h2 className="raleway text-lg whitespace-nowrap">Karli Christensen &copy;</h2>
       <div className="flex space-x-1 md:space-x-10">
         <a href="https://github.com/KarliChristensen" aria-label="Karli Christensen's github profile">
