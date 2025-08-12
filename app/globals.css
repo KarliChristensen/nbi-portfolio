@@ -308,3 +308,110 @@ figure.overlayHover:hover figcaption::before {
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
 }
+
+/*** CV Update ***/
+
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content-wrapper {
+  display: flex;
+  width: 200vw;
+  height: 100vh;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.content-wrapper.slide-to-main {
+  transform: translateX(0);
+}
+
+.content-wrapper.slide-to-about {
+  transform: translateX(-100vw);
+}
+
+.main-content,
+.about-content {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+}
+
+.main-content {
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.about-content {
+  overflow-y: auto;
+}
+
+.section {
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+.spatial-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.spatial-grid {
+  width: 200vw;  /* 2 columns */
+  height: 200vh; /* 2 rows */
+  display: grid;
+  grid-template-columns: 100vw 100vw;
+  grid-template-rows: 100vh 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Specific section positioning */
+.landing-section {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.about-section {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.projects-section {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.empty-section {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* Allow vertical scrolling within the landing section */
+.landing-section {
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Your existing section styles for landing page */
+.landing-section .section {
+  height: 100vh;
+  scroll-snap-align: start;
+}
+

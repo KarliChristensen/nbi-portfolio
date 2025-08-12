@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import Navbar from "./components/Navbar";
 import ContextProvider from "./components/Context";
 import Splash from "./components/Splash";
+import SpatialNavigation from "./components/SpatialNavigation";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -13,13 +14,39 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const [isLoading, setIsLoading] = useState(isHome);
+  
+  const [isMounted, setIsMounted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (isLoading) {
-      return;
+    setIsMounted(true);
+    
+    if (isHome) {
+      const hasShownSplash = sessionStorage.getItem("splashShown");
+      if (!hasShownSplash) {
+        setIsLoading(true);
+      }
     }
-  }, [isLoading]);
+  }, [isHome]);
+
+  const handleFinishLoading = () => {
+    sessionStorage.setItem("splashShown", "true");
+    setIsLoading(false);
+  };
+
+  if (!isMounted) {
+    return (
+      <html lang="en">
+        <title>Karli Christensen - Portfolio</title>
+        <ContextProvider>
+          <body className={inter.className}>
+            <Navbar />
+            {children}
+          </body>
+        </ContextProvider>
+      </html>
+    );
+  }
 
   return (
     <html lang="en">
@@ -27,11 +54,15 @@ export default function RootLayout({ children }) {
       <ContextProvider>
         <body className={inter.className}>
           {isLoading && isHome ? (
-            <Splash finishLoading={() => setIsLoading(false)} />
+            <Splash finishLoading={handleFinishLoading} />
           ) : (
             <>
               <Navbar />
-              {children}
+              <SpatialNavigation 
+                landingContent={pathname === "/" ? children : <div>Landing Page Content</div>}
+                aboutContent={pathname === "/about" ? children : <div>About Page Content</div>}
+                projectsContent={pathname === "/projects" ? children : <div>Projects Page Content</div>}
+              />
             </>
           )}
         </body>
