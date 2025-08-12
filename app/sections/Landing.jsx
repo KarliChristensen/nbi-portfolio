@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import TypeIt from "typeit-react";
-import { svgElements } from "../config";
 import { useAppContext } from "../components/Context";
 
 const Landing = () => {
   const [offset, setOffset] = useState(0);
   const [animating, setAnimating] = useState(false);
-  const [svgObject, setSvgObject] = useState({});
   const { activeSection } = useAppContext();
 
   const handleMouseOverWrangler = (event) => {
@@ -47,27 +45,6 @@ const Landing = () => {
       span.style.transform = "none";
     });
   };
-
-  useEffect(() => {
-    let intervalId;
-    if (animating) {
-      const randomIndex = Math.floor(Math.random() * svgElements.length);
-      setSvgObject(svgElements[randomIndex]);
-      intervalId = setInterval(() => {
-        setOffset((prevOffset) => {
-          if (prevOffset >= 100) {
-            clearInterval(intervalId);
-            setAnimating(false);
-            setSvgObject({});
-            return 0;
-          } else {
-            return prevOffset + 1;
-          }
-        });
-      }, 35);
-    }
-    return () => clearInterval(intervalId);
-  }, [animating]);
 
   return (
     <section id="home" className="h-dvh w-screen snap-start flex relative">

@@ -1,6 +1,7 @@
 "use client";
 
-import { React, useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 
 // Define the spatial layout
