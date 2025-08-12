@@ -5,7 +5,6 @@ import { Inter } from "next/font/google";
 import Navbar from "./components/Navbar";
 import ContextProvider from "./components/Context";
 import Splash from "./components/Splash";
-import SpatialNavigation from "./components/SpatialNavigation";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -14,13 +13,12 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  
   const [isMounted, setIsMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-    
+
     if (isHome) {
       const hasShownSplash = sessionStorage.getItem("splashShown");
       if (!hasShownSplash) {
@@ -58,11 +56,7 @@ export default function RootLayout({ children }) {
           ) : (
             <>
               <Navbar />
-              <SpatialNavigation 
-                landingContent={pathname === "/" ? children : <div>Landing Page Content</div>}
-                aboutContent={pathname === "/about" ? children : <div>About Page Content</div>}
-                projectsContent={pathname === "/projects" ? children : <div>Projects Page Content</div>}
-              />
+              {children}
             </>
           )}
         </body>

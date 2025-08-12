@@ -105,6 +105,12 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
     return `translate(${translateX}vw, ${translateY}vh)`;
   };
 
+  // Create navigation props object to pass to content components
+  const navigationProps = {
+    navigateToSection,
+    isTransitioning
+  };
+
   return (
     <div className="spatial-container">
       <div 
@@ -119,26 +125,23 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
         {/* Top Row */}
         <div className="section landing-section" data-coords="0,0">
           {React.cloneElement(landingContent, { 
-            navigateToSection, 
-            currentSection: currentSection === 'landing' ? 'active' : 'inactive',
-            isTransitioning 
+            ...navigationProps,
+            sectionStatus: currentSection === 'landing' ? 'active' : 'inactive'
           })}
         </div>
         
         <div className="section about-section" data-coords="1,0">
           {React.cloneElement(aboutContent, { 
-            navigateToSection,
-            currentSection: currentSection === 'about' ? 'active' : 'inactive',
-            isTransitioning 
+            ...navigationProps,
+            sectionStatus: currentSection === 'about' ? 'active' : 'inactive'
           })}
         </div>
         
         {/* Bottom Row */}
         <div className="section projects-section" data-coords="0,1">
           {React.cloneElement(projectsContent, { 
-            navigateToSection,
-            currentSection: currentSection === 'projects' ? 'active' : 'inactive',
-            isTransitioning 
+            ...navigationProps,
+            sectionStatus: currentSection === 'projects' ? 'active' : 'inactive'
           })}
         </div>
         

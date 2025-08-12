@@ -9,7 +9,13 @@ import BigKW from "../android-chrome-192x192w.png";
 import { useAppContext } from "../components/Context";
 import { useRouter } from "next/navigation";
 
-const Navbar = () => {
+// Extract spatial navigation props and prevent them from reaching DOM
+const Navbar = ({ 
+  navigateToSection, 
+  sectionStatus, 
+  isTransitioning,
+  ...restProps 
+}) => {
   const { activeSection } = useAppContext();
   const router = useRouter();
   const [splashShown, setSplashShown] = useState(null);
@@ -18,36 +24,25 @@ const Navbar = () => {
     setSplashShown(sessionStorage.getItem("splashShown"));
   }, []);
 
-  const NavbarLink = ({
-    section,
-    children,
-    navigateToSection,
-    activeSection,
-  }) => {
-    return (
-      <button
-        className={`navbarLink ${activeSection === section ? "active" : ""}`}
-        onClick={() => navigateToSection(section)}
-        aria-label={`Navigate to ${section}`}
-      >
-        {children}
-      </button>
-    );
+  const handleAboutClick = (e) => {
+    if (navigateToSection) {
+      e.preventDefault(); // Prevent default Link behavior
+      navigateToSection("about");
+    }
+    // If navigateToSection is not available, let Link handle navigation normally
   };
-  const handleNavClick = (target) => {
-    if (target === "about") {
-      // Trigger slide to about
-      if (typeof navigateToSection !== "undefined") {
-        navigateToSection("about");
-      } else {
-        router.push("/about");
-      }
+
+  const handleProjectsClick = (e) => {
+    if (navigateToSection) {
+      e.preventDefault(); // Prevent default Link behavior
+      navigateToSection("projects");
     } else {
-      // Handle regular section navigation
-      if (typeof navigateToSection !== "undefined") {
-        navigateToSection(target);
+      // Fallback behavior for when spatial navigation isn't available
+      e.preventDefault();
+      if (window.location.pathname !== "/") {
+        router.push("/#projects");
       } else {
-        document.getElementById(target)?.scrollIntoView({
+        document.getElementById("projects")?.scrollIntoView({
           behavior: "smooth",
         });
       }
@@ -55,10 +50,13 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sm:block absolute top-0 w-full h-12 sm:h-28 z-50 bg-green-400/60 sm:bg-transparent">
+    <header 
+      className="sm:block absolute top-0 w-full h-12 sm:h-28 z-50 bg-green-400/60 sm:bg-transparent"
+      {...restProps}
+    >
       <div className="h-full w-full px-2 sm:px-10 flex justify-between items-center">
         <Link
-          href={sessionStorage.getItem("splashShown") === "true" ? "/" : "/#home"}
+          href="/#home"
           aria-label="Link to Home"
         >
           <Image
@@ -88,6 +86,7 @@ const Navbar = () => {
               }`}
               href="/about"
               aria-label="Link to About"
+              onClick={handleAboutClick}
             >
               About me
             </Link>
@@ -99,19 +98,7 @@ const Navbar = () => {
               }`}
               href="/#projects"
               aria-label="Link to Projects"
-              onClick={(e) => {
-                e.preventDefault();
-
-                if (window.location.pathname !== "/") {
-                  // Navigate to home with hash
-                  router.push("/#projects");
-                } else {
-                  // Already on home, just scroll
-                  document.getElementById("projects")?.scrollIntoView({
-                    behavior: "smooth",
-                  });
-                }
-              }}
+              onClick={handleProjectsClick}
             >
               Projects
             </Link>
