@@ -4,46 +4,46 @@ import { useState, useEffect, useCallback } from 'react';
 import React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 
-// Define the spatial layout
+// Define the L-shaped spatial layout
 const SECTIONS = {
-  landing: { x: 0, y: 0, route: '/' },
-  about: { x: 1, y: 0, route: '/about' },
-  projects: { x: 0, y: 1, route: '/projects' }
+  landing: { x: 0, y: 0, route: '/#home' },
+  about: { x: 1, y: 0, route: '/#about' },      // Right of landing
+  projects: { x: 0, y: 1, route: '/#projects' }  // Below landing
 };
 
-// Calculate path between two sections
+// Calculate path between two sections for L-shaped layout
 const calculatePath = (from, to) => {
   const fromCoords = SECTIONS[from];
   const toCoords = SECTIONS[to];
-  const path = [from];
   
-  let current = { ...fromCoords };
-  let currentSection = from;
+  // If we're already at the target, no path needed
+  if (from === to) return [from];
   
-  // Move horizontally first, then vertically
-  while (current.x !== toCoords.x || current.y !== toCoords.y) {
-    if (current.x < toCoords.x) {
-      current.x++;
-    } else if (current.x > toCoords.x) {
-      current.x--;
-    } else if (current.y < toCoords.y) {
-      current.y++;
-    } else if (current.y > toCoords.y) {
-      current.y--;
-    }
-    
-    // Find section at current coordinates
-    const nextSection = Object.keys(SECTIONS).find(section => 
-      SECTIONS[section].x === current.x && SECTIONS[section].y === current.y
-    );
-    
-    if (nextSection && nextSection !== currentSection) {
-      path.push(nextSection);
-      currentSection = nextSection;
-    }
+  // For L-shaped navigation, we need to handle specific cases
+  // since we can't move diagonally and must go through existing sections
+  
+  if (from === 'projects' && to === 'about') {
+    // projects (0,1) -> landing (0,0) -> about (1,0)
+    return ['projects', 'landing', 'about'];
   }
   
-  return path;
+  if (from === 'about' && to === 'projects') {
+    // about (1,0) -> landing (0,0) -> projects (0,1)
+    return ['about', 'landing', 'projects'];
+  }
+  
+  // Direct movements (adjacent sections)
+  if (
+    (from === 'landing' && to === 'about') ||
+    (from === 'about' && to === 'landing') ||
+    (from === 'landing' && to === 'projects') ||
+    (from === 'projects' && to === 'landing')
+  ) {
+    return [from, to];
+  }
+  
+  // Fallback - shouldn't happen with current L-shaped layout
+  return [from, to];
 };
 
 const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) => {
@@ -108,7 +108,8 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
   // Create navigation props object to pass to content components
   const navigationProps = {
     navigateToSection,
-    isTransitioning
+    isTransitioning,
+    currentSection
   };
 
   return (
@@ -120,9 +121,9 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
           transition: isTransitioning ? 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
         }}
       >
-        {/* Grid Layout: Landing(0,0) About(1,0) Projects(0,1) */}
+        {/* L-shaped Layout: Landing(0,0) About(1,0) Projects(0,1) */}
         
-        {/* Top Row */}
+        {/* Top Left - Landing */}
         <div className="section landing-section" data-coords="0,0">
           {React.cloneElement(landingContent, { 
             ...navigationProps,
@@ -130,6 +131,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
           })}
         </div>
         
+        {/* Top Right - About */}
         <div className="section about-section" data-coords="1,0">
           {React.cloneElement(aboutContent, { 
             ...navigationProps,
@@ -137,7 +139,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
           })}
         </div>
         
-        {/* Bottom Row */}
+        {/* Bottom Left - Projects */}
         <div className="section projects-section" data-coords="0,1">
           {React.cloneElement(projectsContent, { 
             ...navigationProps,
@@ -145,7 +147,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
           })}
         </div>
         
-        {/* Empty space at (1,1) */}
+        {/* Empty space at (1,1) - Bottom Right */}
         <div className="section empty-section" data-coords="1,1">
         </div>
       </div>

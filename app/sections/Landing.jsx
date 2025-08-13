@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import TypeIt from "typeit-react";
+import Navbar from "../components/Navbar";
 import { useAppContext } from "../components/Context";
 
-const Landing = () => {
+const Landing = ({ 
+  navigateToSection, 
+  sectionStatus, 
+  isTransitioning,
+  currentSection,
+  ...restProps 
+}) => {
   const [offset, setOffset] = useState(0);
   const [animating, setAnimating] = useState(false);
   const { activeSection } = useAppContext();
@@ -46,8 +53,31 @@ const Landing = () => {
     });
   };
 
+  // Handle navigation
+  const handleAboutClick = () => {
+    if (navigateToSection) {
+      navigateToSection('about');
+    }
+  };
+
+  const handleProjectsClick = () => {
+    if (navigateToSection) {
+      navigateToSection('projects');
+    }
+  };
+
   return (
-    <section id="home" className="h-dvh w-screen snap-start flex relative">
+    <section 
+      id="home" 
+      className="h-dvh w-screen snap-start flex relative"
+      {...restProps}
+    >
+          <Navbar
+        currentSection="landing"
+        navigateToSection={navigateToSection}
+        sectionStatus={sectionStatus}
+        isTransitioning={isTransitioning}
+      />
       <div className="animateBg"></div>
       <div className="animateBg animateBg2"></div>
       <div className="animateBg animateBg3"></div>
@@ -117,10 +147,12 @@ const Landing = () => {
             }}
           />
         </div>
+        
       </div>
+
       <div className="scroll_indicator flex flex-col absolute bottom-0 inset-x-0">
         <p className="text-center bottom-0 mb-6 text-white raleway font-extrabold text-xl">
-          Scroll
+          Navigate
         </p>
         <span className="bg-white w-[2px] h-[59px] self-center"></span>
       </div>

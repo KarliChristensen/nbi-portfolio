@@ -3,20 +3,19 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import BigK from "../android-chrome-192x192.png";
 import BigKW from "../android-chrome-192x192w.png";
 import { useAppContext } from "../components/Context";
 import { useRouter } from "next/navigation";
 
-// Extract spatial navigation props and prevent them from reaching DOM
 const Navbar = ({ 
   navigateToSection, 
   sectionStatus, 
   isTransitioning,
+  currentSection,
   ...restProps 
-}) => {
-  const { activeSection } = useAppContext();
+} = {}) => {
+  const { activeSection: contextActiveSection } = useAppContext();
   const router = useRouter();
   const [splashShown, setSplashShown] = useState(null);
 
@@ -24,44 +23,57 @@ const Navbar = ({
     setSplashShown(sessionStorage.getItem("splashShown"));
   }, []);
 
-  const handleAboutClick = (e) => {
+  const activeSection = currentSection || contextActiveSection;
+
+  const handleHomeClick = (e) => {
+    e.preventDefault();
     if (navigateToSection) {
-      e.preventDefault(); // Prevent default Link behavior
-      navigateToSection("about");
+      navigateToSection("landing");
+    } else {
+      router.push("/#");
     }
-    // If navigateToSection is not available, let Link handle navigation normally
   };
 
-  const handleProjectsClick = (e) => {
+  const handleAboutClick = (e) => {
+    e.preventDefault();
     if (navigateToSection) {
-      e.preventDefault(); // Prevent default Link behavior
-      navigateToSection("projects");
+      navigateToSection("about");
     } else {
-      // Fallback behavior for when spatial navigation isn't available
-      e.preventDefault();
-      if (window.location.pathname !== "/") {
-        router.push("/#projects");
-      } else {
-        document.getElementById("projects")?.scrollIntoView({
-          behavior: "smooth",
-        });
-      }
+      router.push("/#about");
     }
   };
+
+  const handleProjectsClick = () => {
+    if (navigateToSection) {
+      navigateToSection('projects');
+    }
+  };
+
+  const getSectionForStyling = () => {
+    if (currentSection) {
+      const sectionMap = {
+        'landing': 'home',
+        'about': 'about',
+        'projects': 'projects'
+      };
+      return sectionMap[currentSection] || currentSection;
+    }
+    return contextActiveSection;
+  };
+
+  const currentSectionForStyling = getSectionForStyling();
 
   return (
-    <header 
-      className="sm:block absolute top-0 w-full h-12 sm:h-28 z-50 bg-green-400/60 sm:bg-transparent"
-      {...restProps}
-    >
+    <header className="hidden md:block absolute top-0 w-full h-12 sm:h-28 z-50 bg-green-400/60 sm:bg-transparent">
       <div className="h-full w-full px-2 sm:px-10 flex justify-between items-center">
-        <Link
-          href="/#home"
-          aria-label="Link to Home"
+        <button
+          onClick={handleHomeClick}
+          aria-label="Navigate to Home"
+          className="hover:scale-110 transform ease-in-out duration-300"
         >
           <Image
-            className={`hover:scale-110 transform ease-in-out duration-300 ${
-              activeSection === "home" ? "hidden" : "block"
+            className={`${
+              currentSectionForStyling === "home" ? "hidden" : "block"
             }`}
             src={BigK}
             alt="Logo"
@@ -69,39 +81,40 @@ const Navbar = ({
             height={40}
           />
           <Image
-            className={`hover:scale-110 transform ease-in-out duration-300 ${
-              activeSection === "home" ? "block" : "hidden"
+            className={`${
+              currentSectionForStyling === "home" ? "block" : "hidden"
             }`}
             src={BigKW}
             alt="Logo"
             width={40}
             height={40}
           />
-        </Link>
+        </button>
         <ul className="flex font-bold raleway w-44 justify-between">
           <li>
-            <Link
+            <button
               className={`navbarLink ${
-                activeSection === "home" ? "" : "active"
+                currentSectionForStyling === "about" ? "active" : 
+                currentSectionForStyling === "home" ? "" : "active"
               }`}
-              href="/about"
-              aria-label="Link to About"
               onClick={handleAboutClick}
+              aria-label="Navigate to About"
             >
-              About me
-            </Link>
+              About
+            </button>
+            
           </li>
           <li>
-            <Link
+            <button
               className={`navbarLink ${
-                activeSection === "home" ? "" : "active"
+                currentSectionForStyling === "projects" ? "active" : 
+                currentSectionForStyling === "home" ? "" : "active"
               }`}
-              href="/#projects"
-              aria-label="Link to Projects"
               onClick={handleProjectsClick}
+              aria-label="Navigate to Projects"
             >
               Projects
-            </Link>
+            </button>
           </li>
         </ul>
       </div>

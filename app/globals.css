@@ -364,24 +364,19 @@ figure.overlayHover:hover figcaption::before {
 }
 
 .spatial-grid {
-  width: 200vw;  /* 2 columns */
-  height: 200vh; /* 2 rows */
   display: grid;
-  grid-template-columns: 100vw 100vw;
-  grid-template-rows: 100vh 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
+  grid-template-columns: 100vw 100vw; /* 2 columns */
+  grid-template-rows: 100vh 100vh;    /* 2 rows */
+  width: 200vw;  /* 2 columns wide */
+  height: 200vh; /* 2 rows tall */
 }
-
 .section {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
   position: relative;
+  overflow: auto;
 }
 
-/* Specific section positioning */
 .landing-section {
   grid-column: 1;
   grid-row: 1;
@@ -401,17 +396,3 @@ figure.overlayHover:hover figcaption::before {
   grid-column: 2;
   grid-row: 2;
 }
-
-/* Allow vertical scrolling within the landing section */
-.landing-section {
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-/* Your existing section styles for landing page */
-.landing-section .section {
-  height: 100vh;
-  scroll-snap-align: start;
-}
-

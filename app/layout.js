@@ -55,7 +55,7 @@ export default function RootLayout({ children }) {
             <Splash finishLoading={handleFinishLoading} />
           ) : (
             <>
-              <Navbar />
+              {/*    <Navbar /> */}
               {children}
             </>
           )}

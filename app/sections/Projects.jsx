@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
+import Navbar from "../components/Navbar";
 import Monster from "../../public/images/Monster.png";
 import Monster2 from "../../public/images/Monster2.png";
 import Padle from "../../public/images/PadleClient.png";
@@ -12,7 +13,13 @@ import Article from "../components/Article";
 import ArticleAltOne from "../components/ArticleAltOne";
 import ArticleAltTwo from "../components/ArticleAltTwo";
 
-const Work = () => {
+const Projects = ({
+  navigateToSection,
+  sectionStatus,
+  isTransitioning,
+  currentSection,
+  ...restProps
+}) => {
   useEffect(() => {
     const article = document.querySelectorAll("article");
 
@@ -46,11 +53,32 @@ const Work = () => {
     };
   }, []);
 
+  const handleLandingClick = () => {
+    if (navigateToSection) {
+      navigateToSection("landing");
+    }
+  };
+
+  const handleAboutClick = () => {
+    if (navigateToSection) {
+      navigateToSection("about");
+    }
+  };
+
   return (
     <section
       id="projects"
-      className="h-full flex flex-col py-40 space-y-32 antialiased snap-start scroll-smooth overflow-y-scroll overflow-x-hidden bg-white scrollbar-hide"
+      className="h-full flex flex-col py-40 space-y-32 antialiased snap-start scroll-smooth overflow-y-scroll overflow-x-hidden bg-white scrollbar-hide relative"
+      {...restProps}
     >
+      <Navbar
+        currentSection="projects"
+        className="sticky top-0 w-full z-50"
+        navigateToSection={navigateToSection}
+        sectionStatus={sectionStatus}
+        isTransitioning={isTransitioning}
+      />
+
       <Article
         imageOne={Monster}
         imageTwo={Monster2}
@@ -62,9 +90,7 @@ const Work = () => {
         text={
           "A site I put together for the launch of a children's book I co-wrote with my wife on the subject of becoming a parent, and not knowing what ever loving hell you're doing."
         }
-        shortText={
-          "A site for a children's I co-wrote with my wife."
-        }
+        shortText={"A site for a children's I co-wrote with my wife."}
         github={"https://github.com/KarliChristensen/monster-book"}
         deployment={"https://monster-taupe.vercel.app/"}
       />
@@ -113,9 +139,7 @@ const Work = () => {
         text={
           "An expanded series of projects, this being the second version - Built after setting myself a 48-hour time limit, to produce something viable and reproducible - The one you're on, is the 5th iteration, though not much of the original design remains."
         }
-        shortText={
-          "v2 of a series, this one is v5."
-        }
+        shortText={"v2 of a series, this one is v5."}
         github={"https://github.com/KarliChristensen/SPPortfolio"}
         deployment={"https://master--heartfelt-cendol-ac77bd.netlify.app/"}
       />
@@ -123,4 +147,4 @@ const Work = () => {
   );
 };
 
-export default Work;
+export default Projects;
