@@ -9,7 +9,7 @@ const About = ({
   ...restProps
 }) => {
   return (
-    <div
+    <section
       id="about"
       className="flex items-center pt-28 w-full h-screen bg-red-500/95"
       {...restProps}
@@ -104,7 +104,7 @@ const About = ({
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
