@@ -15,6 +15,7 @@ function About({
       {...restProps}
     >
       <Navbar
+        currentSection="about"
         navigateToSection={navigateToSection}
         sectionStatus={sectionStatus}
         isTransitioning={isTransitioning}
