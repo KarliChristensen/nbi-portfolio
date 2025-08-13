@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 
-function About({
+const About = ({
   navigateToSection,
   sectionStatus,
   isTransitioning,
   currentSection,
   ...restProps
-}) {
+}) => {
   return (
     <div
       id="about"
