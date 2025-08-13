@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 
-// Extract spatial navigation props properly
 function About({
   navigateToSection,
   sectionStatus,

@@ -16,6 +16,7 @@
     "react-dom": "^18",
     "react-icons": "^5.1.0",
     "react-intersection-observer": "^9.8.1",
+    "sharp": "^0.34.3",
     "typeit-react": "^2.7.1"
   },
   "devDependencies": {
