@@ -25,6 +25,7 @@
 
 #wrangler.hover-effect,
 #slayer.hover-effect {
+  transition: transform 0.4s ease-in-out;
   color: white;
   font-size: 3rem;
 }
@@ -309,6 +310,20 @@ figure.overlayHover:hover figcaption::before {
   transition-delay: 0s;
 }
 
+/*** TypeIT Animation ***/
+
+.strike-through {
+  text-decoration: line-through;
+  transition: text-decoration 0.3s ease;
+}
+
+.selected {
+  background-color: blue;
+  color: white;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
 /*** CV Update ***/
 
 .app-container {
@@ -355,8 +370,6 @@ figure.overlayHover:hover figcaption::before {
   height: 100vh;
   scroll-snap-align: start;
 }
-
-/* Add these styles to your existing globals.css */
 
 /* Enhanced Spatial Navigation Styles */
 .spatial-container {
@@ -458,25 +471,55 @@ figure.overlayHover:hover figcaption::before {
   pointer-events: auto;
 }
 
-/* Mobile adjustments */
+/* Mobile adjustments - PRESERVE SPATIAL NAVIGATION */
 @media (max-width: 768px) {
+  /* Keep spatial navigation working but adjust touch sensitivity */
   .spatial-container {
-    /* Disable spatial navigation on mobile, use regular scroll */
-    overflow-y: auto;
-    height: auto;
+    /* Maintain spatial navigation structure */
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    /* Add touch-action to improve touch handling */
+    touch-action: pan-y;
   }
   
   .spatial-grid {
-    display: block;
-    width: 100vw;
-    height: auto;
-    transform: none !important;
+    /* Keep grid layout for spatial navigation */
+    display: grid;
+    grid-template-columns: 100vw 100vw;
+    grid-template-rows: 100vh 100vh;
+    width: 200vw;
+    height: 200vh;
+    will-change: transform;
+    /* Ensure transforms still work */
   }
   
   .section {
     width: 100vw;
     height: 100vh;
-    overflow: visible;
+    overflow: hidden;
+  }
+  
+  /* Projects section specific mobile adjustments */
+  .projects-section {
+    /* Allow scrolling when active */
+    overflow-y: auto;
+  }
+  
+  /* Adjust transition timing for mobile */
+  .spatial-grid {
+    transition-duration: 0.5s; /* Slightly faster on mobile */
+  }
+  
+  /* Hide desktop-only elements on mobile */
+  .hidden.md\\:flex,
+  .hidden.md\\:block {
+    display: none !important;
+  }
+  
+  /* Ensure mobile navigation elements are visible */
+  .md\\:hidden {
+    display: flex !important;
   }
 }
 

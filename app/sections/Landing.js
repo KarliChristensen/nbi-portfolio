@@ -143,7 +143,9 @@ const Landing = ({
                 .pause(200)
                 .type(`<span>Frontend</span> `, { speed: 100 })
                 .move(null, { to: "END" })
-                .delete(1)
+                .pause(500)
+                .delete(20)
+                .type("<span>Data Technician</span>", { speed: 100 })
                 .break()
                 .type(`<span><strong><em>extraordinaire</em></strong></span>`)
                 .break()
@@ -155,8 +157,15 @@ const Landing = ({
                 .break()
                 .type(
                   "<span><span style='white-space: nowrap'>JS & HTML,</span><br><span style='white-space: nowrap;'><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>S</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>l</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>a</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>y</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>e</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>r</span> of<span> CSS</span></span>",
-                  { speed: 50 }
-                );
+                  { speed: 50 })
+                .break()
+                .break()
+                .type("Cable weaver", { speed: 200 })
+                .break()
+                .type("and", { speed: 100 })
+                .break()
+                .type("RAID Lead.", { speed: 200 })
+
               return instance;
             }}
           />

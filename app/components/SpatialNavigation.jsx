@@ -52,6 +52,8 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
   const containerRef = useRef(null);
   const scrollTimeoutRef = useRef(null);
   const lastWheelTime = useRef(0);
+  const wheelDeltaRef = useRef(0);
+  const navigationCooldownRef = useRef(false);
 
   // Determine current section from pathname
   useEffect(() => {
@@ -87,12 +89,16 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
     const handleWheel = (e) => {
       const now = Date.now();
       
-      // Ignore rapid wheel events (trackpad scrolling)
-      if (now - lastWheelTime.current < 100) {
+      // Prevent navigation if we're in a cooldown period
+      if (navigationCooldownRef.current) {
+        e.preventDefault();
         return;
       }
       
-      lastWheelTime.current = now;
+      // Ignore rapid wheel events (trackpad scrolling) with increased threshold
+      if (now - lastWheelTime.current < 150) {
+        return;
+      }
       
       // Only handle navigation if we're not already transitioning
       if (isTransitioning || transitionQueue.length > 0) {
@@ -105,34 +111,61 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
         const projectsElement = document.querySelector('.projects-section');
         if (projectsElement) {
           const { scrollTop, scrollHeight, clientHeight } = projectsElement;
-          const isAtTop = scrollTop <= 10;
-          const isAtBottom = scrollTop + clientHeight >= scrollHeight - 10;
+          const isAtTop = scrollTop <= 30; // Increased threshold for better mobile detection
+          const isAtBottom = scrollTop + clientHeight >= scrollHeight - 30;
           
           // Allow normal scrolling within projects section
           if (!isAtTop && !isAtBottom) {
+            // Reset accumulator when scrolling normally within content
+            wheelDeltaRef.current = 0;
             return;
           }
           
-          // Handle navigation only at scroll boundaries
+          // Handle navigation at scroll boundaries
           if (e.deltaY < 0 && isAtTop) {
             // Scrolling up from top of projects -> go to landing
+            // Accumulate wheel delta for more controlled navigation
+            wheelDeltaRef.current += e.deltaY;
+            
+            // Check if we've accumulated enough delta or if it's a significant single scroll
+            if (wheelDeltaRef.current < -80 || e.deltaY < -80) {
+              e.preventDefault();
+              lastWheelTime.current = now;
+              wheelDeltaRef.current = 0; // Reset accumulator
+              
+              // Set cooldown to prevent immediate re-triggering
+              navigationCooldownRef.current = true;
+              setTimeout(() => {
+                navigationCooldownRef.current = false;
+              }, 800);
+              
+              navigateToSection('landing');
+              return;
+            }
+            // If we haven't reached threshold yet, prevent the scroll but don't navigate
             e.preventDefault();
-            navigateToSection('landing');
             return;
           }
           
           if (e.deltaY > 0 && isAtBottom) {
-            // At bottom of projects, do nothing or handle as needed
+            // At bottom of projects, could add navigation to another section if needed
+            // For now, just allow normal behavior
             return;
+          }
+          
+          // Reset accumulator if direction changes or we're not at boundaries
+          if (e.deltaY > 0) {
+            wheelDeltaRef.current = 0;
           }
         }
       }
 
       // Handle section navigation for other sections
-      const threshold = 50; // Minimum wheel delta to trigger navigation
+      const threshold = 80; // Increased minimum wheel delta to trigger navigation
       
       if (Math.abs(e.deltaY) < threshold) return;
       
+      lastWheelTime.current = now;
       e.preventDefault();
       
       // Clear any existing scroll timeout
@@ -146,7 +179,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
       // Reset scrolling state after a delay
       scrollTimeoutRef.current = setTimeout(() => {
         setIsScrolling(false);
-      }, 150);
+      }, 200);
       
       // Determine navigation direction and target
       let targetSection = currentSection;
@@ -164,7 +197,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
       } else { // Scrolling up
         switch (currentSection) {
           case 'projects':
-            targetSection = 'landing';
+            // This case is handled above for projects section
             break;
           case 'landing':
             targetSection = 'about';
@@ -174,6 +207,12 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
       }
       
       if (targetSection !== currentSection) {
+        // Set cooldown to prevent rapid navigation
+        navigationCooldownRef.current = true;
+        setTimeout(() => {
+          navigationCooldownRef.current = false;
+        }, 800);
+        
         navigateToSection(targetSection);
       }
     };
@@ -193,7 +232,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (isTransitioning || transitionQueue.length > 0) return;
+      if (isTransitioning || transitionQueue.length > 0 || navigationCooldownRef.current) return;
       
       let targetSection = currentSection;
       
@@ -216,6 +255,11 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
       
       if (targetSection !== currentSection) {
         e.preventDefault();
+        // Set cooldown for keyboard navigation too
+        navigationCooldownRef.current = true;
+        setTimeout(() => {
+          navigationCooldownRef.current = false;
+        }, 800);
         navigateToSection(targetSection);
       }
     };
@@ -264,7 +308,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
   };
 
   const handleTouchEnd = () => {
-    if (isTransitioning || transitionQueue.length > 0) return;
+    if (isTransitioning || transitionQueue.length > 0 || navigationCooldownRef.current) return;
 
     const minSwipeDistance = 50; // minimum distance for swipe
     const deltaX = touchStart.x - touchEnd.x;
@@ -276,10 +320,19 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
       if (Math.abs(deltaX) > minSwipeDistance) {
         if (deltaX > 0) { // Swipe left
           if (currentSection === 'about') {
+            // Set cooldown for touch navigation
+            navigationCooldownRef.current = true;
+            setTimeout(() => {
+              navigationCooldownRef.current = false;
+            }, 800);
             navigateToSection('landing');
           }
         } else { // Swipe right
           if (currentSection === 'landing') {
+            navigationCooldownRef.current = true;
+            setTimeout(() => {
+              navigationCooldownRef.current = false;
+            }, 800);
             navigateToSection('about');
           }
         }
@@ -292,25 +345,41 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
           const projectsElement = document.querySelector('.projects-section');
           if (projectsElement) {
             const { scrollTop, scrollHeight, clientHeight } = projectsElement;
-            const isAtTop = scrollTop <= 10;
+            const isAtTop = scrollTop <= 30; // Increased threshold for mobile
             
-            if (deltaY < 0 && isAtTop) { // Swipe down from top
+            if (deltaY < 0 && isAtTop) { // Swipe down from top (scrolling up)
+              navigationCooldownRef.current = true;
+              setTimeout(() => {
+                navigationCooldownRef.current = false;
+              }, 800);
               navigateToSection('landing');
               return;
             }
-            // Allow normal scrolling otherwise
+            // If not at top, allow normal scrolling
             return;
           }
         }
 
         if (deltaY > 0) { // Swipe up
           if (currentSection === 'landing') {
+            navigationCooldownRef.current = true;
+            setTimeout(() => {
+              navigationCooldownRef.current = false;
+            }, 800);
             navigateToSection('about');
           }
         } else { // Swipe down
           if (currentSection === 'about') {
+            navigationCooldownRef.current = true;
+            setTimeout(() => {
+              navigationCooldownRef.current = false;
+            }, 800);
             navigateToSection('landing');
           } else if (currentSection === 'landing') {
+            navigationCooldownRef.current = true;
+            setTimeout(() => {
+              navigationCooldownRef.current = false;
+            }, 800);
             navigateToSection('projects');
           }
         }
