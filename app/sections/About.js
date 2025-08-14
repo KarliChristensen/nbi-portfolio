@@ -11,7 +11,7 @@ const About = ({
   return (
     <section
       id="about"
-      className="flex items-center pt-28 w-full h-screen bg-red-500/95"
+      className="flex items-center py-28 w-full h-screen bg-red-500/95"
       {...restProps}
     >
       <Navbar
@@ -47,7 +47,7 @@ const About = ({
         </p>
 
         <div>
-          <div className="flex justify-between mr-8 py-10">
+          <div className="flex justify-between mr-8 pt-10 mb-3">
             <a
               className="text-white font-bold flex items-center hover:text-gray-200 transition-colors"
               href="mailto:karlichristensen@proton.me"

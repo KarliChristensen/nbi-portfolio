@@ -3,16 +3,30 @@ import TypeIt from "typeit-react";
 import Navbar from "../components/Navbar";
 import { useAppContext } from "../components/Context";
 
-const Landing = ({ 
-  navigateToSection, 
-  sectionStatus, 
+const Landing = ({
+  navigateToSection,
+  sectionStatus,
   isTransitioning,
   currentSection,
-  ...restProps 
+  ...restProps
 }) => {
   const [offset, setOffset] = useState(0);
   const [animating, setAnimating] = useState(false);
   const { activeSection } = useAppContext();
+
+  const getSectionForStyling = () => {
+    if (currentSection) {
+      const sectionMap = {
+        landing: "home",
+        about: "about",
+        projects: "projects",
+      };
+      return sectionMap[currentSection] || currentSection;
+    }
+    return contextActiveSection;
+  };
+
+  const currentSectionForStyling = getSectionForStyling();
 
   const handleMouseOverWrangler = (event) => {
     const wranglerSpan = event.target;
@@ -56,23 +70,23 @@ const Landing = ({
   // Handle navigation
   const handleAboutClick = () => {
     if (navigateToSection) {
-      navigateToSection('about');
+      navigateToSection("about");
     }
   };
 
   const handleProjectsClick = () => {
     if (navigateToSection) {
-      navigateToSection('projects');
+      navigateToSection("projects");
     }
   };
 
   return (
-    <section 
-      id="home" 
+    <section
+      id="home"
       className="h-dvh w-screen snap-start flex relative"
       {...restProps}
     >
-          <Navbar
+      <Navbar
         currentSection="landing"
         navigateToSection={navigateToSection}
         sectionStatus={sectionStatus}
@@ -147,12 +161,37 @@ const Landing = ({
             }}
           />
         </div>
-        
       </div>
 
-      <div className="scroll_indicator flex flex-col absolute bottom-0 inset-x-0">
-        <p className="text-center bottom-0 mb-6 text-white raleway font-extrabold text-xl">
-          Navigate
+      <div className="md:hidden scroll_indicator flex flex-col absolute bottom-0 left-1/2 transform -translate-x-1/2">
+        <button
+          className={
+            "navbarLink mb-6 text-white raleway font-extrabold text-xl"
+          }
+          onClick={handleProjectsClick}
+          aria-label="Navigate to Projects"
+        >
+          Projects
+        </button>
+        <span className="bg-white w-[2px] h-[59px] self-center"></span>
+      </div>
+
+      <div className="md:hidden scroll_indicator flex absolute right-0 top-3/4 transform -translate-y-1/2">
+        <button
+          className="navbarLink mr-6 text-white raleway font-extrabold text-xl"
+          onClick={handleAboutClick}
+          aria-label="Navigate to About"
+        >
+          About
+        </button>
+        <span className="bg-white w-[50px] h-[2px] self-center"></span>
+      </div>
+      <div className="hidden md:flex scroll_indicator flex-col absolute transform bottom-0 left-1/2">
+        <p
+          className="text-center mb-6 text-white raleway font-extrabold text-xl"
+          aria-label="Navigate to Projects"
+        >
+          Projects
         </p>
         <span className="bg-white w-[2px] h-[59px] self-center"></span>
       </div>

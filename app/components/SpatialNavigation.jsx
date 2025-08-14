@@ -39,6 +39,10 @@ const calculatePath = (from, to) => {
 };
 
 const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) => {
+  // Add these new state variables
+  const [touchStart, setTouchStart] = useState({ x: 0, y: 0 });
+  const [touchEnd, setTouchEnd] = useState({ x: 0, y: 0 });
+  
   const [currentSection, setCurrentSection] = useState('landing');
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [transitionQueue, setTransitionQueue] = useState([]);
@@ -244,6 +248,76 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
     currentSection
   };
 
+  // Add touch event handlers
+  const handleTouchStart = (e) => {
+    setTouchStart({
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
+    });
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd({
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
+    });
+  };
+
+  const handleTouchEnd = () => {
+    if (isTransitioning || transitionQueue.length > 0) return;
+
+    const minSwipeDistance = 50; // minimum distance for swipe
+    const deltaX = touchStart.x - touchEnd.x;
+    const deltaY = touchStart.y - touchEnd.y;
+    
+    // Check if it's a horizontal or vertical swipe
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // Horizontal swipe
+      if (Math.abs(deltaX) > minSwipeDistance) {
+        if (deltaX > 0) { // Swipe left
+          if (currentSection === 'about') {
+            navigateToSection('landing');
+          }
+        } else { // Swipe right
+          if (currentSection === 'landing') {
+            navigateToSection('about');
+          }
+        }
+      }
+    } else {
+      // Vertical swipe
+      if (Math.abs(deltaY) > minSwipeDistance) {
+        // Check if we're in projects section with scrollable content
+        if (currentSection === 'projects') {
+          const projectsElement = document.querySelector('.projects-section');
+          if (projectsElement) {
+            const { scrollTop, scrollHeight, clientHeight } = projectsElement;
+            const isAtTop = scrollTop <= 10;
+            
+            if (deltaY < 0 && isAtTop) { // Swipe down from top
+              navigateToSection('landing');
+              return;
+            }
+            // Allow normal scrolling otherwise
+            return;
+          }
+        }
+
+        if (deltaY > 0) { // Swipe up
+          if (currentSection === 'landing') {
+            navigateToSection('about');
+          }
+        } else { // Swipe down
+          if (currentSection === 'about') {
+            navigateToSection('landing');
+          } else if (currentSection === 'landing') {
+            navigateToSection('projects');
+          }
+        }
+      }
+    }
+  };
+
   return (
     <div 
       ref={containerRef}
@@ -253,6 +327,9 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
         height: '100vh',
         width: '100vw'
       }}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <div 
         className="spatial-grid"
