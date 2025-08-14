@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 
 // Define the L-shaped spatial layout
 const SECTIONS = {
   landing: { x: 0, y: 0, route: '/#home' },
-  about: { x: 1, y: 0, route: '/#about' },      // Right of landing
-  projects: { x: 0, y: 1, route: '/#projects' }  // Below landing
+  about: { x: 1, y: 0, route: '/#about' },
+  projects: { x: 0, y: 1, route: '/#projects' }
 };
 
 // Calculate path between two sections for L-shaped layout
@@ -16,23 +16,16 @@ const calculatePath = (from, to) => {
   const fromCoords = SECTIONS[from];
   const toCoords = SECTIONS[to];
   
-  // If we're already at the target, no path needed
   if (from === to) return [from];
   
-  // For L-shaped navigation, we need to handle specific cases
-  // since we can't move diagonally and must go through existing sections
-  
   if (from === 'projects' && to === 'about') {
-    // projects (0,1) -> landing (0,0) -> about (1,0)
     return ['projects', 'landing', 'about'];
   }
   
   if (from === 'about' && to === 'projects') {
-    // about (1,0) -> landing (0,0) -> projects (0,1)
     return ['about', 'landing', 'projects'];
   }
   
-  // Direct movements (adjacent sections)
   if (
     (from === 'landing' && to === 'about') ||
     (from === 'about' && to === 'landing') ||
@@ -42,7 +35,6 @@ const calculatePath = (from, to) => {
     return [from, to];
   }
   
-  // Fallback - shouldn't happen with current L-shaped layout
   return [from, to];
 };
 
@@ -50,8 +42,12 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
   const [currentSection, setCurrentSection] = useState('landing');
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [transitionQueue, setTransitionQueue] = useState([]);
+  const [isScrolling, setIsScrolling] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const containerRef = useRef(null);
+  const scrollTimeoutRef = useRef(null);
+  const lastWheelTime = useRef(0);
 
   // Determine current section from pathname
   useEffect(() => {
@@ -67,29 +63,167 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
       const nextSection = transitionQueue[0];
       setIsTransitioning(true);
       
-      // Update visual position
       setTimeout(() => {
         setCurrentSection(nextSection);
         setTransitionQueue(prev => prev.slice(1));
         
-        // Continue with next transition or finish
         setTimeout(() => {
           setIsTransitioning(false);
           
-          // Update URL when we reach final destination
           if (transitionQueue.length === 1) {
             router.push(SECTIONS[nextSection].route, { shallow: true });
           }
-        }, 600); // Match CSS transition duration
+        }, 600);
       }, 50);
     }
   }, [transitionQueue, isTransitioning, router]);
+
+  // Enhanced wheel event handler for scroll navigation
+  useEffect(() => {
+    const handleWheel = (e) => {
+      const now = Date.now();
+      
+      // Ignore rapid wheel events (trackpad scrolling)
+      if (now - lastWheelTime.current < 100) {
+        return;
+      }
+      
+      lastWheelTime.current = now;
+      
+      // Only handle navigation if we're not already transitioning
+      if (isTransitioning || transitionQueue.length > 0) {
+        e.preventDefault();
+        return;
+      }
+
+      // Check if we're in the projects section and there's scrollable content
+      if (currentSection === 'projects') {
+        const projectsElement = document.querySelector('.projects-section');
+        if (projectsElement) {
+          const { scrollTop, scrollHeight, clientHeight } = projectsElement;
+          const isAtTop = scrollTop <= 10;
+          const isAtBottom = scrollTop + clientHeight >= scrollHeight - 10;
+          
+          // Allow normal scrolling within projects section
+          if (!isAtTop && !isAtBottom) {
+            return;
+          }
+          
+          // Handle navigation only at scroll boundaries
+          if (e.deltaY < 0 && isAtTop) {
+            // Scrolling up from top of projects -> go to landing
+            e.preventDefault();
+            navigateToSection('landing');
+            return;
+          }
+          
+          if (e.deltaY > 0 && isAtBottom) {
+            // At bottom of projects, do nothing or handle as needed
+            return;
+          }
+        }
+      }
+
+      // Handle section navigation for other sections
+      const threshold = 50; // Minimum wheel delta to trigger navigation
+      
+      if (Math.abs(e.deltaY) < threshold) return;
+      
+      e.preventDefault();
+      
+      // Clear any existing scroll timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      
+      // Set scrolling state
+      setIsScrolling(true);
+      
+      // Reset scrolling state after a delay
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 150);
+      
+      // Determine navigation direction and target
+      let targetSection = currentSection;
+      
+      if (e.deltaY > 0) { // Scrolling down
+        switch (currentSection) {
+          case 'landing':
+            targetSection = 'projects';
+            break;
+          case 'about':
+            targetSection = 'landing';
+            break;
+          // projects stays at projects (or could go somewhere else)
+        }
+      } else { // Scrolling up
+        switch (currentSection) {
+          case 'projects':
+            targetSection = 'landing';
+            break;
+          case 'landing':
+            targetSection = 'about';
+            break;
+          // about stays at about (or could go somewhere else)
+        }
+      }
+      
+      if (targetSection !== currentSection) {
+        navigateToSection(targetSection);
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('wheel', handleWheel, { passive: false });
+      
+      return () => {
+        container.removeEventListener('wheel', handleWheel);
+        if (scrollTimeoutRef.current) {
+          clearTimeout(scrollTimeoutRef.current);
+        }
+      };
+    }
+  }, [currentSection, isTransitioning, transitionQueue.length]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (isTransitioning || transitionQueue.length > 0) return;
+      
+      let targetSection = currentSection;
+      
+      switch (e.key) {
+        case 'ArrowRight':
+          if (currentSection === 'landing') targetSection = 'about';
+          break;
+        case 'ArrowLeft':
+          if (currentSection === 'about') targetSection = 'landing';
+          break;
+        case 'ArrowDown':
+          if (currentSection === 'landing') targetSection = 'projects';
+          if (currentSection === 'about') targetSection = 'landing';
+          break;
+        case 'ArrowUp':
+          if (currentSection === 'projects') targetSection = 'landing';
+          if (currentSection === 'landing') targetSection = 'about';
+          break;
+      }
+      
+      if (targetSection !== currentSection) {
+        e.preventDefault();
+        navigateToSection(targetSection);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentSection, isTransitioning, transitionQueue.length]);
 
   const navigateToSection = useCallback((targetSection) => {
     if (targetSection === currentSection || isTransitioning) return;
     
     const path = calculatePath(currentSection, targetSection);
-    // Remove current section from path since we're already there
     const transitionPath = path.slice(1);
     
     if (transitionPath.length > 0) {
@@ -97,15 +231,13 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
     }
   }, [currentSection, isTransitioning]);
 
-  // Calculate transform based on current section
   const getTransform = () => {
     const coords = SECTIONS[currentSection];
-    const translateX = -coords.x * 100; // Move left for each x unit
-    const translateY = -coords.y * 100; // Move up for each y unit
+    const translateX = -coords.x * 100;
+    const translateY = -coords.y * 100;
     return `translate(${translateX}vw, ${translateY}vh)`;
   };
 
-  // Create navigation props object to pass to content components
   const navigationProps = {
     navigateToSection,
     isTransitioning,
@@ -113,7 +245,15 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
   };
 
   return (
-    <div className="spatial-container">
+    <div 
+      ref={containerRef}
+      className="spatial-container"
+      style={{ 
+        overflow: 'hidden',
+        height: '100vh',
+        width: '100vw'
+      }}
+    >
       <div 
         className="spatial-grid"
         style={{
@@ -121,9 +261,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
           transition: isTransitioning ? 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
         }}
       >
-        {/* L-shaped Layout: Landing(0,0) About(1,0) Projects(0,1) */}
-        
-        {/* Top Left - Landing */}
+        {/* Landing Section */}
         <div className="section landing-section" data-coords="0,0">
           {React.cloneElement(landingContent, { 
             ...navigationProps,
@@ -131,7 +269,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
           })}
         </div>
         
-        {/* Top Right - About */}
+        {/* About Section */}
         <div className="section about-section" data-coords="1,0">
           {React.cloneElement(aboutContent, { 
             ...navigationProps,
@@ -139,16 +277,19 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
           })}
         </div>
         
-        {/* Bottom Left - Projects */}
-        <div className="section projects-section" data-coords="0,1">
+        {/* Projects Section */}
+        <div 
+          className="section projects-section" 
+          data-coords="0,1"
+          style={{
+            overflowY: currentSection === 'projects' ? 'auto' : 'hidden',
+            height: '100vh'
+          }}
+        >
           {React.cloneElement(projectsContent, { 
             ...navigationProps,
             sectionStatus: currentSection === 'projects' ? 'active' : 'inactive'
           })}
-        </div>
-        
-        {/* Empty space at (1,1) - Bottom Right */}
-        <div className="section empty-section" data-coords="1,1">
         </div>
       </div>
     </div>

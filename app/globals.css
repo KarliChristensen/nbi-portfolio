@@ -356,43 +356,139 @@ figure.overlayHover:hover figcaption::before {
   scroll-snap-align: start;
 }
 
+/* Add these styles to your existing globals.css */
+
+/* Enhanced Spatial Navigation Styles */
 .spatial-container {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   position: relative;
+  background: #000; /* Fallback background */
 }
 
 .spatial-grid {
   display: grid;
-  grid-template-columns: 100vw 100vw; /* 2 columns */
-  grid-template-rows: 100vh 100vh;    /* 2 rows */
-  width: 200vw;  /* 2 columns wide */
-  height: 200vh; /* 2 rows tall */
+  grid-template-columns: 100vw 100vw;
+  grid-template-rows: 100vh 100vh;
+  width: 200vw;
+  height: 200vh;
+  will-change: transform;
 }
+
 .section {
   width: 100vw;
   height: 100vh;
   position: relative;
-  overflow: auto;
+  overflow: hidden; /* Default to hidden, override for specific sections */
 }
 
+/* Specific section styles */
 .landing-section {
   grid-column: 1;
   grid-row: 1;
+  overflow: hidden;
 }
 
 .about-section {
   grid-column: 2;
   grid-row: 1;
+  overflow: hidden;
 }
 
 .projects-section {
   grid-column: 1;
   grid-row: 2;
+  /* Overflow will be controlled by JavaScript based on active state */
 }
 
 .empty-section {
   grid-column: 2;
   grid-row: 2;
+  overflow: hidden;
+}
+
+/* Custom scrollbar for projects section */
+.projects-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.projects-section::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.projects-section::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.projects-section::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Smooth scrolling for projects content */
+.projects-section {
+  scroll-behavior: smooth;
+}
+
+/* Ensure articles in projects section are properly spaced */
+.projects-section article {
+  scroll-snap-align: start;
+}
+
+/* Enhanced transition for smoother movement */
+.spatial-grid {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Prevent text selection during transitions */
+.spatial-container.transitioning {
+  user-select: none;
+  pointer-events: none;
+}
+
+.spatial-container.transitioning .section {
+  pointer-events: none;
+}
+
+/* Re-enable interactions when not transitioning */
+.spatial-container:not(.transitioning) .section {
+  pointer-events: auto;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .spatial-container {
+    /* Disable spatial navigation on mobile, use regular scroll */
+    overflow-y: auto;
+    height: auto;
+  }
+  
+  .spatial-grid {
+    display: block;
+    width: 100vw;
+    height: auto;
+    transform: none !important;
+  }
+  
+  .section {
+    width: 100vw;
+    height: 100vh;
+    overflow: visible;
+  }
+}
+
+/* Accessibility: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .spatial-grid {
+    transition-duration: 0.2s;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.spatial-container:focus-within .section.active {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: -2px;
 }

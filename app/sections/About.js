@@ -20,8 +20,8 @@ const About = ({
         sectionStatus={sectionStatus}
         isTransitioning={isTransitioning}
       />
-      <div className="mx-[15%] md:w-[60%] lg:w-[70%]">
-        <p className="text-white font-serif font-bold text-sm sm:text-xl md:text-3xl leading-6 sm:leading-9">
+      <div className="mx-[15%] md:w-[80%]">
+        <p className="text-white font-serif font-bold text-sm sm:text-xl md:text-2xl leading-6 sm:leading-9">
           Hi, I&#39;m Karli! <br />
           <br />
           Back in 2019 when Covid wasn&#39;t yet a concern I made my living as a
@@ -29,9 +29,21 @@ const About = ({
           came and went, and with the world changing, and my clients adjusting
           to the new market, I found it an opportune time to realign. With a bit
           of guidance and help from friends, I made the move, the decision and
-          then the leap towards becoming a developer. Since 2023 I&#39;ve been
-          providing mediocre front-end code containing excellent copywriting and
-          exquisite flow while I still find my feet in the industry.
+          then the leap towards becoming a frontend developer and had some
+          success there, but ultimately my transition misaligned somewhat with
+          the advent of LLM.
+          <br />
+          <br />
+          Finally, as of 2025, I&#39;ve started retraining a data technician,
+          where I can draw on all my skills, interests and experiences as both a
+          freelancer, and developer.
+          <br />
+          <br />I now provide mediocre front-end code, sublime copywriting in
+          elegant English, all the while laying down cables, talking about why{" "}
+          <q>
+            <i>have you tried rebooting it?</i>
+          </q>{" "}
+          is always an excellent first question.
         </p>
 
         <div>
@@ -51,7 +63,7 @@ const About = ({
               karlichristensen@proton.me
             </a>
 
-            <div className="hidden md:flex space-x-0 lg:space-x-10">
+            <div className="hidden md:flex space-x-2 lg:space-x-10">
               <a
                 href="https://github.com/KarliChristensen"
                 aria-label="Karli Christensen's github profile"
@@ -67,9 +79,10 @@ const About = ({
                   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
               </a>
+
               <a
-                href="mailto:karlichristensen@proton.me"
-                aria-label="Karli Christensen's email"
+                href="tel:+4593870055"
+                aria-label="Karli Christensen's Phone Number"
               >
                 <svg
                   className="stroke-white fill-none h-10 p-1 hover:stroke-slate-900 transform ease-in-out duration-300 hover:scale-110"
@@ -79,33 +92,48 @@ const About = ({
                   height={35}
                   strokeWidth="1.5"
                 >
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/karlichristensen/"
-                aria-label="Karli Christensen's LinkedIn"
-              >
-                <svg
-                  className="stroke-white fill-none h-10 p-1 hover:stroke-slate-900 transform ease-in-out duration-300 hover:scale-110"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width={35}
-                  height={35}
-                  strokeWidth="1.5"
-                >
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect x="2" y="9" width="4" height="12"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
               </a>
             </div>
           </div>
         </div>
+
+        <div className="md:hidden flex space-x-3">
+          <a
+            href="https://github.com/KarliChristensen"
+            aria-label="Karli Christensen's github profile"
+          >
+            <svg
+              className="stroke-white fill-none h-10 p-1 hover:stroke-slate-900 transform ease-in-out duration-300 hover:scale-110"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width={30}
+              height={30}
+              strokeWidth="1.5"
+            >
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a
+            href="tel:+4593870055"
+            aria-label="Karli Christensen's Phone Number"
+          >
+            <svg
+              className="stroke-white fill-none h-10 p-1 hover:stroke-slate-900 transform ease-in-out duration-300 hover:scale-110"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width={30}
+              height={30}
+              strokeWidth="1.5"
+            >
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
   );
-}
+};
 
 export default About;

@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Monster from "../../public/images/Monster.png";
 import Monster2 from "../../public/images/Monster2.png";
@@ -20,13 +20,15 @@ const Projects = ({
   currentSection,
   ...restProps
 }) => {
+  const sectionRef = useRef(null);
+
   useEffect(() => {
     const article = document.querySelectorAll("article");
 
     const observerOptions = {
-      root: null,
+      root: sectionRef.current, // Use the projects section as the root
       rootMargin: "0px",
-      threshold: 0.5,
+      threshold: 0.3, // Reduced threshold for better mobile experience
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -36,8 +38,11 @@ const Projects = ({
             ".articleDiv, .articleSecondaryDiv"
           );
           if (elem.length > 0) {
-            elem[0].classList.toggle("show");
-            elem[1].classList.toggle("show");
+            // Add a small delay to make animations feel more natural
+            setTimeout(() => {
+              elem[0]?.classList.add("show");
+              elem[1]?.classList.add("show");
+            }, 100);
           }
           observer.unobserve(entry.target);
         }
@@ -53,22 +58,20 @@ const Projects = ({
     };
   }, []);
 
-  const handleLandingClick = () => {
-    if (navigateToSection) {
-      navigateToSection("landing");
-    }
-  };
-
-  const handleAboutClick = () => {
-    if (navigateToSection) {
-      navigateToSection("about");
-    }
-  };
-
   return (
     <section
+      ref={sectionRef}
       id="projects"
-      className="h-full flex flex-col py-40 space-y-32 antialiased snap-start scroll-smooth overflow-y-scroll overflow-x-hidden bg-white scrollbar-hide relative"
+      className={`
+        h-full flex flex-col py-40 space-y-32 antialiased 
+        scroll-smooth overflow-x-hidden bg-white 
+        scrollbar-hide relative
+        ${sectionStatus === "active" ? "overflow-y-auto" : "overflow-y-hidden"}
+      `}
+      style={{
+        // Ensure the section takes full height
+        minHeight: "100vh",
+      }}
       {...restProps}
     >
       <Navbar
@@ -143,6 +146,7 @@ const Projects = ({
         github={"https://github.com/KarliChristensen/SPPortfolio"}
         deployment={"https://master--heartfelt-cendol-ac77bd.netlify.app/"}
       />
+      <div className="h-32"></div>
     </section>
   );
 };
