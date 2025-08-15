@@ -39,9 +39,9 @@ const calculatePath = (from, to) => {
 };
 
 const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) => {
-  // Add these new state variables
-  const [touchStart, setTouchStart] = useState({ x: 0, y: 0 });
-  const [touchEnd, setTouchEnd] = useState({ x: 0, y: 0 });
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   
   const [currentSection, setCurrentSection] = useState('landing');
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -54,6 +54,12 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
   const lastWheelTime = useRef(0);
   const wheelDeltaRef = useRef(0);
   const navigationCooldownRef = useRef(false);
+  const touchStartTimeRef = useRef(0);
+
+  // Detect if device supports touch
+  useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
 
   // Determine current section from pathname
   useEffect(() => {
@@ -84,8 +90,11 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
     }
   }, [transitionQueue, isTransitioning, router]);
 
-  // Enhanced wheel event handler for scroll navigation
+  // Enhanced wheel event handler for desktop scroll navigation
   useEffect(() => {
+    // Skip wheel handling on touch devices to avoid conflicts
+    if (isTouchDevice) return;
+
     const handleWheel = (e) => {
       const now = Date.now();
       
@@ -111,29 +120,24 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
         const projectsElement = document.querySelector('.projects-section');
         if (projectsElement) {
           const { scrollTop, scrollHeight, clientHeight } = projectsElement;
-          const isAtTop = scrollTop <= 30; // Increased threshold for better mobile detection
+          const isAtTop = scrollTop <= 30;
           const isAtBottom = scrollTop + clientHeight >= scrollHeight - 30;
           
           // Allow normal scrolling within projects section
           if (!isAtTop && !isAtBottom) {
-            // Reset accumulator when scrolling normally within content
             wheelDeltaRef.current = 0;
             return;
           }
           
           // Handle navigation at scroll boundaries
           if (e.deltaY < 0 && isAtTop) {
-            // Scrolling up from top of projects -> go to landing
-            // Accumulate wheel delta for more controlled navigation
             wheelDeltaRef.current += e.deltaY;
             
-            // Check if we've accumulated enough delta or if it's a significant single scroll
             if (wheelDeltaRef.current < -80 || e.deltaY < -80) {
               e.preventDefault();
               lastWheelTime.current = now;
-              wheelDeltaRef.current = 0; // Reset accumulator
+              wheelDeltaRef.current = 0;
               
-              // Set cooldown to prevent immediate re-triggering
               navigationCooldownRef.current = true;
               setTimeout(() => {
                 navigationCooldownRef.current = false;
@@ -142,18 +146,14 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
               navigateToSection('landing');
               return;
             }
-            // If we haven't reached threshold yet, prevent the scroll but don't navigate
             e.preventDefault();
             return;
           }
           
           if (e.deltaY > 0 && isAtBottom) {
-            // At bottom of projects, could add navigation to another section if needed
-            // For now, just allow normal behavior
             return;
           }
           
-          // Reset accumulator if direction changes or we're not at boundaries
           if (e.deltaY > 0) {
             wheelDeltaRef.current = 0;
           }
@@ -161,22 +161,19 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
       }
 
       // Handle section navigation for other sections
-      const threshold = 80; // Increased minimum wheel delta to trigger navigation
+      const threshold = 80;
       
       if (Math.abs(e.deltaY) < threshold) return;
       
       lastWheelTime.current = now;
       e.preventDefault();
       
-      // Clear any existing scroll timeout
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
       
-      // Set scrolling state
       setIsScrolling(true);
       
-      // Reset scrolling state after a delay
       scrollTimeoutRef.current = setTimeout(() => {
         setIsScrolling(false);
       }, 200);
@@ -192,22 +189,16 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
           case 'about':
             targetSection = 'landing';
             break;
-          // projects stays at projects (or could go somewhere else)
         }
       } else { // Scrolling up
         switch (currentSection) {
-          case 'projects':
-            // This case is handled above for projects section
-            break;
           case 'landing':
             targetSection = 'about';
             break;
-          // about stays at about (or could go somewhere else)
         }
       }
       
       if (targetSection !== currentSection) {
-        // Set cooldown to prevent rapid navigation
         navigationCooldownRef.current = true;
         setTimeout(() => {
           navigationCooldownRef.current = false;
@@ -228,8 +219,9 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
         }
       };
     }
-  }, [currentSection, isTransitioning, transitionQueue.length]);
+  }, [currentSection, isTransitioning, transitionQueue.length, isTouchDevice]);
 
+  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (isTransitioning || transitionQueue.length > 0 || navigationCooldownRef.current) return;
@@ -255,7 +247,6 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
       
       if (targetSection !== currentSection) {
         e.preventDefault();
-        // Set cooldown for keyboard navigation too
         navigationCooldownRef.current = true;
         setTimeout(() => {
           navigationCooldownRef.current = false;
@@ -292,47 +283,77 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
     currentSection
   };
 
-  // Add touch event handlers
+  // Fixed touch event handlers
   const handleTouchStart = (e) => {
+    if (!isTouchDevice || isTransitioning || transitionQueue.length > 0 || navigationCooldownRef.current) return;
+    
+    const touch = e.touches[0];
     setTouchStart({
-      x: e.touches[0].clientX,
-      y: e.touches[0].clientY
+      x: touch.clientX,
+      y: touch.clientY
     });
+    setTouchEnd(null);
+    touchStartTimeRef.current = Date.now();
   };
 
   const handleTouchMove = (e) => {
+    if (!isTouchDevice || !touchStart) return;
+    
+    const touch = e.touches[0];
     setTouchEnd({
-      x: e.touches[0].clientX,
-      y: e.touches[0].clientY
+      x: touch.clientX,
+      y: touch.clientY
     });
   };
 
   const handleTouchEnd = () => {
-    if (isTransitioning || transitionQueue.length > 0 || navigationCooldownRef.current) return;
+    if (!isTouchDevice || !touchStart || !touchEnd || isTransitioning || transitionQueue.length > 0 || navigationCooldownRef.current) {
+      setTouchStart(null);
+      setTouchEnd(null);
+      return;
+    }
 
-    const minSwipeDistance = 50; // minimum distance for swipe
-    const deltaX = touchStart.x - touchEnd.x;
-    const deltaY = touchStart.y - touchEnd.y;
+    const touchDuration = Date.now() - touchStartTimeRef.current;
     
-    // Check if it's a horizontal or vertical swipe
+    // Ignore very short touches (likely accidental)
+    if (touchDuration < 100) {
+      setTouchStart(null);
+      setTouchEnd(null);
+      return;
+    }
+
+    const minSwipeDistance = 50; // Increased threshold to reduce sensitivity
+    const deltaX = touchStart.x - touchEnd.x; // Positive = swipe left, Negative = swipe right
+    const deltaY = touchStart.y - touchEnd.y; // Positive = swipe up, Negative = swipe down
+    
+    // Check if it's a meaningful swipe (not just a tap or small movement)
+    const swipeDistance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    if (swipeDistance < minSwipeDistance) {
+      setTouchStart(null);
+      setTouchEnd(null);
+      return;
+    }
+    
+    // Determine if it's primarily horizontal or vertical
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
       // Horizontal swipe
       if (Math.abs(deltaX) > minSwipeDistance) {
-        if (deltaX > 0) { // Swipe left
+        if (deltaX < 0) { 
+          // Swipe left (moving from right to left) - go to previous/left section
           if (currentSection === 'about') {
-            // Set cooldown for touch navigation
             navigationCooldownRef.current = true;
             setTimeout(() => {
               navigationCooldownRef.current = false;
-            }, 800);
+            }, 1000);
             navigateToSection('landing');
           }
-        } else { // Swipe right
+        } else { 
+          // Swipe right (moving from left to right) - go to next/right section
           if (currentSection === 'landing') {
             navigationCooldownRef.current = true;
             setTimeout(() => {
               navigationCooldownRef.current = false;
-            }, 800);
+            }, 1000);
             navigateToSection('about');
           }
         }
@@ -340,51 +361,57 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
     } else {
       // Vertical swipe
       if (Math.abs(deltaY) > minSwipeDistance) {
-        // Check if we're in projects section with scrollable content
+        // Special handling for projects section
         if (currentSection === 'projects') {
           const projectsElement = document.querySelector('.projects-section');
           if (projectsElement) {
             const { scrollTop, scrollHeight, clientHeight } = projectsElement;
-            const isAtTop = scrollTop <= 30; // Increased threshold for mobile
+            const isAtTop = scrollTop <= 30;
             
-            if (deltaY < 0 && isAtTop) { // Swipe down from top (scrolling up)
+            // Only allow navigation from top of projects section when swiping down
+            if (deltaY < 0 && isAtTop) { // Swipe down from top
               navigationCooldownRef.current = true;
               setTimeout(() => {
                 navigationCooldownRef.current = false;
-              }, 800);
+              }, 1000);
               navigateToSection('landing');
-              return;
             }
-            // If not at top, allow normal scrolling
-            return;
+            // For all other cases in projects, allow normal scrolling
           }
-        }
-
-        if (deltaY > 0) { // Swipe up
-          if (currentSection === 'landing') {
-            navigationCooldownRef.current = true;
-            setTimeout(() => {
-              navigationCooldownRef.current = false;
-            }, 800);
-            navigateToSection('about');
-          }
-        } else { // Swipe down
-          if (currentSection === 'about') {
-            navigationCooldownRef.current = true;
-            setTimeout(() => {
-              navigationCooldownRef.current = false;
-            }, 800);
-            navigateToSection('landing');
-          } else if (currentSection === 'landing') {
-            navigationCooldownRef.current = true;
-            setTimeout(() => {
-              navigationCooldownRef.current = false;
-            }, 800);
-            navigateToSection('projects');
+        } else {
+          // Handle vertical navigation for landing and about sections
+          if (deltaY < 0) { 
+            // Swipe up - go to section above/up
+            if (currentSection === 'landing') {
+              navigationCooldownRef.current = true;
+              setTimeout(() => {
+                navigationCooldownRef.current = false;
+              }, 1000);
+              navigateToSection('about');
+            }
+          } else { 
+            // Swipe down - go to section below/down
+            if (currentSection === 'about') {
+              navigationCooldownRef.current = true;
+              setTimeout(() => {
+                navigationCooldownRef.current = false;
+              }, 1000);
+              navigateToSection('landing');
+            } else if (currentSection === 'landing') {
+              navigationCooldownRef.current = true;
+              setTimeout(() => {
+                navigationCooldownRef.current = false;
+              }, 1000);
+              navigateToSection('projects');
+            }
           }
         }
       }
     }
+
+    // Reset touch state
+    setTouchStart(null);
+    setTouchEnd(null);
   };
 
   return (

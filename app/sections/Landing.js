@@ -142,6 +142,7 @@ const Landing = ({
                 .delete(7)
                 .pause(200)
                 .type(`<span>Frontend</span> `, { speed: 100 })
+                .break()
                 .move(null, { to: "END" })
                 .pause(500)
                 .delete(20)
@@ -158,44 +159,36 @@ const Landing = ({
                 .type(
                   "<span><span style='white-space: nowrap'>JS & HTML,</span><br><span style='white-space: nowrap;'><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>S</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>l</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>a</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>y</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>e</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>r</span> of<span> CSS</span></span>",
                   { speed: 50 })
-                .break()
-                .break()
-                .type("Cable weaver", { speed: 200 })
-                .break()
-                .type("and", { speed: 100 })
-                .break()
-                .type("RAID Lead.", { speed: 200 })
-
               return instance;
             }}
           />
         </div>
       </div>
 
-      <div className="md:hidden scroll_indicator flex flex-col absolute bottom-0 left-1/2 transform -translate-x-1/2">
+      <div className="md:hidden scroll_indicator flex flex-col absolute bottom-0 left-1/2 transform -translate-x-1/2 transition ease-in-out duration-300">
         <button
           className={
-            "navbarLink mb-6 text-white raleway font-extrabold text-xl"
+            "navbarLink mb-2 md:mb-6 text-white raleway font-bold md:text-xl"
           }
           onClick={handleProjectsClick}
           aria-label="Navigate to Projects"
         >
           Projects
         </button>
-        <span className="bg-white w-[2px] h-[59px] self-center"></span>
+        <span className="bg-white w-[2px] h-[25px] md:h-[59px] self-center"></span>
       </div>
 
-      <div className="md:hidden scroll_indicator flex absolute right-0 top-3/4 transform -translate-y-1/2">
+      <div className="md:hidden scroll_indicator flex absolute right-0 top-3/4 transform -translate-y-1/2 transition ease-in-out duration-300">
         <button
-          className="navbarLink mr-6 text-white raleway font-extrabold text-xl"
+          className="navbarLink mr-2 md:mr-6 text-white raleway font-bold md:text-xl"
           onClick={handleAboutClick}
           aria-label="Navigate to About"
         >
           About
         </button>
-        <span className="bg-white w-[50px] h-[2px] self-center"></span>
+        <span className="bg-white w-[20px] md:w-[50px] h-[2px] self-center"></span>
       </div>
-      <div className="hidden md:flex scroll_indicator flex-col absolute transform bottom-0 left-1/2">
+      <div className="hidden md:flex scroll_indicator flex-col absolute transform bottom-0 left-1/2 transition ease-in-out duration-300">
         <p
           className="text-center mb-6 text-white raleway font-extrabold text-xl"
           aria-label="Navigate to Projects"
