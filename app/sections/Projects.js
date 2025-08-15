@@ -146,17 +146,33 @@ const Projects = ({
         github={"https://github.com/KarliChristensen/SPPortfolio"}
         deployment={"https://master--heartfelt-cendol-ac77bd.netlify.app/"}
       />
-      <footer className="h-full py-6 w-full flex justify-between items-center bg-blue-400/40 px-2 sm:px-10">
+      <footer className="h-full py-6 w-full flex justify-between items-center bg-slate-300/80 px-2 sm:px-10">
         <p className="text-white text-sm">
           © 2025 Karli Christensen. All rights reserved.
         </p>
         <div className="hidden sm:flex space-x-2">
           <a
+            href="mailto:karlichristensen@proton.me"
+            aria-label="Karli Christensen's email"
+          >
+            <svg
+              className="stroke-white fill-none h-10 p-1 hover:stroke-slate-500 transform ease-in-out duration-300 hover:scale-110"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width={35}
+              height={35}
+              strokeWidth="1.5"
+            >
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+          <a
             href="https://github.com/KarliChristensen"
             aria-label="Karli Christensen's github profile"
           >
             <svg
-              className="stroke-white fill-none h-10 p-1 hover:stroke-slate-900 transform ease-in-out duration-300 hover:scale-110"
+              className="stroke-white fill-none h-10 p-1 hover:stroke-slate-500 transform ease-in-out duration-300 hover:scale-110"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               width={35}
@@ -171,7 +187,7 @@ const Projects = ({
             aria-label="Karli Christensen's Phone Number"
           >
             <svg
-              className="stroke-white fill-none h-10 p-1 hover:stroke-slate-900 transform ease-in-out duration-300 hover:scale-110"
+              className="stroke-white fill-none h-10 p-1 hover:stroke-slate-500 transform ease-in-out duration-300 hover:scale-110"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               width={35}
