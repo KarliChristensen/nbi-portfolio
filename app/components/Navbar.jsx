@@ -30,7 +30,7 @@ const Navbar = ({
     if (navigateToSection) {
       navigateToSection("landing");
     } else {
-      router.push("/#");
+      window.history.pushState(null, '', '#home');
     }
   };
 
@@ -39,13 +39,16 @@ const Navbar = ({
     if (navigateToSection) {
       navigateToSection("about");
     } else {
-      router.push("/#about");
+      window.history.pushState(null, '', '#about');
     }
   };
 
-  const handleProjectsClick = () => {
+  const handleProjectsClick = (e) => {
+    e.preventDefault();
     if (navigateToSection) {
       navigateToSection('projects');
+    } else {
+      window.history.pushState(null, '', '#projects');
     }
   };
 
@@ -93,7 +96,7 @@ const Navbar = ({
         <ul className="flex font-bold raleway w-44 justify-between">
           <li>
             <button
-              className={`navbarLink ${
+              className={`navbarLink text-lg ${
                 currentSectionForStyling === "about" ? "active" : 
                 currentSectionForStyling === "home" ? "" : "active"
               }`}
@@ -106,7 +109,7 @@ const Navbar = ({
           </li>
           <li>
             <button
-              className={`navbarLink ${
+              className={`navbarLink text-lg ${
                 currentSectionForStyling === "projects" ? "active" : 
                 currentSectionForStyling === "home" ? "" : "active"
               }`}

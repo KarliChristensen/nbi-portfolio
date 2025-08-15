@@ -60,7 +60,6 @@
 
 .animateContent {
   background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 0.25em;
   box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
   left: 50%;
@@ -170,7 +169,6 @@
 
 .imgTilt {
   transform: perspective(1500px) rotateY(12deg);
-  border-radius: 1em;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   transition: transform 1s ease 0s;
 
@@ -181,7 +179,6 @@
 
 .imgTiltTwo {
   transform: perspective(1500px) rotateY(-12deg);
-  border-radius: 1em;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   transition: transform 1s ease 0s;
 
@@ -192,7 +189,6 @@
 
 .imgTiltAlt {
   transform: perspective(1500px) rotateY(-5deg);
-  border-radius: 1em;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   transition: transform 1s ease 0s;
 
@@ -203,7 +199,6 @@
 
 .imgTiltTwoAlt {
   transform: perspective(1500px) rotateY(10deg);
-  border-radius: 1em;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   transition: transform 1s ease 0s;
 
@@ -321,7 +316,6 @@ figure.overlayHover:hover figcaption::before {
   background-color: blue;
   color: white;
   padding: 0 2px;
-  border-radius: 2px;
 }
 
 /*** CV Update ***/
@@ -397,7 +391,6 @@ figure.overlayHover:hover figcaption::before {
 }
 
 /* Specific section styles */
-
 .landing-section {
   grid-column: 1;
   grid-row: 1;
@@ -438,12 +431,10 @@ figure.overlayHover:hover figcaption::before {
 
 .projects-section::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
 }
 
 .projects-section::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
 }
 
 .projects-section::-webkit-scrollbar-thumb:hover {

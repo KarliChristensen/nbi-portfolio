@@ -6,9 +6,9 @@ import { useRouter, usePathname } from 'next/navigation';
 
 // Define the L-shaped spatial layout
 const SECTIONS = {
-  landing: { x: 0, y: 0, route: '/#home' },
-  about: { x: 1, y: 0, route: '/#about' },
-  projects: { x: 0, y: 1, route: '/#projects' }
+  landing: { x: 0, y: 0, route: '#home' },
+  about: { x: 1, y: 0, route: '#about' },
+  projects: { x: 0, y: 1, route: '#projects' }
 };
 
 // Calculate path between two sections for L-shaped layout
@@ -83,12 +83,13 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
           setIsTransitioning(false);
           
           if (transitionQueue.length === 1) {
-            router.push(SECTIONS[nextSection].route, { shallow: true });
+            // Update URL hash without triggering page reload
+            window.history.pushState(null, '', SECTIONS[nextSection].route);
           }
         }, 600);
       }, 50);
     }
-  }, [transitionQueue, isTransitioning, router]);
+  }, [transitionQueue, isTransitioning]);
 
   // Enhanced wheel event handler for desktop scroll navigation
   useEffect(() => {
@@ -105,7 +106,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
       }
       
       // Ignore rapid wheel events (trackpad scrolling) with increased threshold
-      if (now - lastWheelTime.current < 150) {
+      if (now - lastWheelTime.current < 100) {
         return;
       }
       
@@ -133,7 +134,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
           if (e.deltaY < 0 && isAtTop) {
             wheelDeltaRef.current += e.deltaY;
             
-            if (wheelDeltaRef.current < -80 || e.deltaY < -80) {
+            if (wheelDeltaRef.current < -50 || e.deltaY < -50) {
               e.preventDefault();
               lastWheelTime.current = now;
               wheelDeltaRef.current = 0;
@@ -141,7 +142,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
               navigationCooldownRef.current = true;
               setTimeout(() => {
                 navigationCooldownRef.current = false;
-              }, 800);
+              }, 250);
               
               navigateToSection('landing');
               return;
@@ -193,7 +194,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
         navigationCooldownRef.current = true;
         setTimeout(() => {
           navigationCooldownRef.current = false;
-        }, 800);
+        }, 250);
         
         navigateToSection(targetSection);
       }
@@ -236,7 +237,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
         navigationCooldownRef.current = true;
         setTimeout(() => {
           navigationCooldownRef.current = false;
-        }, 800);
+        }, 250);
         navigateToSection(targetSection);
       }
     };

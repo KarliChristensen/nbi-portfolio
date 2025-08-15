@@ -165,10 +165,12 @@ const Landing = ({
         </div>
       </div>
 
+      {/* Small Screen Indicators */}
+      {/* Projects */}
       <div className="md:hidden scroll_indicator flex flex-col absolute bottom-0 left-1/2 transform -translate-x-1/2 transition ease-in-out duration-300">
         <button
           className={
-            "navbarLink mb-2 md:mb-6 text-white raleway font-bold md:text-xl"
+            "navbarLink mb-1 md:mb-6 text-white raleway text font-bold md:text-xl"
           }
           onClick={handleProjectsClick}
           aria-label="Navigate to Projects"
@@ -178,6 +180,7 @@ const Landing = ({
         <span className="bg-white w-[2px] h-[25px] md:h-[59px] self-center"></span>
       </div>
 
+      {/* About */}
       <div className="md:hidden scroll_indicator flex absolute right-0 top-3/4 transform -translate-y-1/2 transition ease-in-out duration-300">
         <button
           className="navbarLink mr-2 md:mr-6 text-white raleway font-bold md:text-xl"
@@ -188,14 +191,16 @@ const Landing = ({
         </button>
         <span className="bg-white w-[20px] md:w-[50px] h-[2px] self-center"></span>
       </div>
-      <div className="hidden md:flex scroll_indicator flex-col absolute transform bottom-0 left-1/2 transform -translate-x-1/2 transition ease-in-out duration-300">
-        <p
-          className="text-center mb-6 text-white raleway font-extrabold text-xl"
+      {/* Large Screen Indicator */}
+      <div className="hidden md:flex scroll_indicator flex-col absolute transform bottom-0 left-1/2 -translate-x-1/2 group">
+        <button
+          className="text-center mb-6 text-white raleway font-extrabold text-xl group-hover:scale-125 transition ease-in-out duration-500"
+          onClick={handleProjectsClick}
           aria-label="Navigate to Projects"
         >
           Projects
-        </p>
-        <span className="bg-white w-[2px] h-[59px] self-center"></span>
+        </button>
+        <span className="bg-white w-[2px] h-[59px] self-center group-hover:translate-y-5 transition ease-in-out duration-500"></span>
       </div>
     </section>
   );

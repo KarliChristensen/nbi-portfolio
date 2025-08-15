@@ -6,9 +6,9 @@ function Article({ imageOne, imageTwo, github, deployment, text, shortText, titl
     <article className="article md:px-0 w-full md:py-20 flex justify-center">
       <div className="relative flex justify-center w-full m-5 md:m-0">
         <div className="articleDiv group w-full flex justify-center items-center ">
-          <figure className="overlayHover w-full md:w-[80%] lg:w-[60%] max-w-[1000px] imgTilt rounded-md">
+          <figure className="overlayHover w-full md:w-[80%] lg:w-[60%] max-w-[1000px] imgTilt">
             <Image
-              className="overlayHover rounded-2xl"
+              className="overlayHover"
               src={imageOne}
               alt="Primary article imgLayover"
             />
@@ -56,9 +56,9 @@ function Article({ imageOne, imageTwo, github, deployment, text, shortText, titl
         </div>
         <div className="articleSecondaryDiv w-full absolute hidden bottom-[-15%] inset-x-[57%] md:block z-1">
           <div className="max-w-[450px] md:max-w-[350px]">
-            <figure className="overlayHover w-full max-w-[1000px] imgTiltTwo rounded-md">
+            <figure className="overlayHover w-full max-w-[1000px] imgTiltTwo">
               <Image
-                className="overlayHover rounded-2xl"
+                className="overlayHover"
                 src={imageTwo}
                 alt="Secondary article image"
               />

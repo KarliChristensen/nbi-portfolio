@@ -16,7 +16,7 @@ function Article({
         <div className="articleDiv group w-full flex justify-center items-center ">
           <figure className="overlayHover relative w-full md:w-[80%] lg:w-[60%] max-w-[1000px] imgTilt">
             <Image
-              className="overlayHover rounded-2xl"
+              className="overlayHover"
               src={imageOne}
               alt="Primary article imgLayover"
             />
@@ -66,7 +66,7 @@ function Article({
           <div className="max-w-[450px] md:max-w-[350px]">
             <figure className="overlayHover w-full max-w-[1000px] imgTiltTwo ">
               <Image
-                className="overlayHover rounded-2xl"
+                className="overlayHover"
                 src={imageTwo}
                 alt="Secondary article image"
               />
