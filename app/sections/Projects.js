@@ -95,7 +95,7 @@ const Projects = ({
           "A full-stack CRUD project with all the bells and whistles required to operate a multi-layered organization. For this project I also performed the deployment, mail server setup and user rights configuration for the organization."
         }
         shortText={
-          "A full-stack CRUD built and equipped to facilatete the day-to-day operation of a multi-layer organization."
+          "A full-stack CRUD project and equipped to facilatete the day-to-day operation of a multi-layer organization."
         }
         github={"https://github.com/KarliChristensen/SafariDemo"}
         deployment={"https://safaridemo.vercel.app"}
