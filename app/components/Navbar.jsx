@@ -8,12 +8,12 @@ import BigKW from "../android-chrome-192x192w.png";
 import { useAppContext } from "../components/Context";
 import { useRouter } from "next/navigation";
 
-const Navbar = ({ 
-  navigateToSection, 
-  sectionStatus, 
+const Navbar = ({
+  navigateToSection,
+  sectionStatus,
   isTransitioning,
   currentSection,
-  ...restProps 
+  ...restProps
 } = {}) => {
   const { activeSection: contextActiveSection } = useAppContext();
   const router = useRouter();
@@ -30,7 +30,7 @@ const Navbar = ({
     if (navigateToSection) {
       navigateToSection("landing");
     } else {
-      window.history.pushState(null, '', '#home');
+      window.history.pushState(null, "", "#home");
     }
   };
 
@@ -39,25 +39,25 @@ const Navbar = ({
     if (navigateToSection) {
       navigateToSection("about");
     } else {
-      window.history.pushState(null, '', '#about');
+      window.history.pushState(null, "", "#about");
     }
   };
 
   const handleProjectsClick = (e) => {
     e.preventDefault();
     if (navigateToSection) {
-      navigateToSection('projects');
+      navigateToSection("projects");
     } else {
-      window.history.pushState(null, '', '#projects');
+      window.history.pushState(null, "", "#projects");
     }
   };
 
   const getSectionForStyling = () => {
     if (currentSection) {
       const sectionMap = {
-        'landing': 'home',
-        'about': 'about',
-        'projects': 'projects'
+        landing: "home",
+        about: "about",
+        projects: "projects",
       };
       return sectionMap[currentSection] || currentSection;
     }
@@ -68,6 +68,10 @@ const Navbar = ({
 
   return (
     <header className="hidden md:block absolute top-0 w-full h-12 sm:h-28 z-50 bg-green-400/60 sm:bg-transparent">
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+      />
       <div className="h-full w-full px-2 sm:px-10 flex justify-between items-center">
         <button
           onClick={handleHomeClick}
@@ -97,21 +101,26 @@ const Navbar = ({
           <li>
             <button
               className={`navbarLink text-lg ${
-                currentSectionForStyling === "about" ? "active" : 
-                currentSectionForStyling === "home" ? "" : "active"
+                currentSectionForStyling === "about"
+                  ? "active"
+                  : currentSectionForStyling === "home"
+                  ? ""
+                  : "active"
               }`}
               onClick={handleAboutClick}
               aria-label="Navigate to About"
             >
               About
             </button>
-            
           </li>
           <li>
             <button
               className={`navbarLink text-lg ${
-                currentSectionForStyling === "projects" ? "active" : 
-                currentSectionForStyling === "home" ? "" : "active"
+                currentSectionForStyling === "projects"
+                  ? "active"
+                  : currentSectionForStyling === "home"
+                  ? ""
+                  : "active"
               }`}
               onClick={handleProjectsClick}
               aria-label="Navigate to Projects"

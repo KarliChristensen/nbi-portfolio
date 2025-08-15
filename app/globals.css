@@ -23,6 +23,19 @@
   } */
 }
 
+html {
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: auto; /* Disable momentum scrolling that can interfere */
+}
+
+body {
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+  /* Prevent rubber band scrolling on iOS */
+  -webkit-overflow-scrolling: auto;
+}
+
 #wrangler.hover-effect,
 #slayer.hover-effect {
   transition: transform 0.4s ease-in-out;
@@ -371,8 +384,21 @@ figure.overlayHover:hover figcaption::before {
   height: 100dvh;
   overflow: hidden;
   position: relative;
-  background: #000; /* Fallback background */
+  background: #000;
+  /* Key properties to disable pull-to-refresh */
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: auto;
+  /* Prevent any default touch behaviors */
+  touch-action: pan-x pan-y pinch-zoom;
 }
+
+  .section p, .section h1, .section h2, .section h3 {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
 
 .spatial-grid {
   display: grid;
@@ -387,7 +413,9 @@ figure.overlayHover:hover figcaption::before {
   width: 100dvw;
   height: 100dvh;
   position: relative;
-  overflow: hidden; /* Default to hidden, override for specific sections */
+  overflow: hidden;
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
 }
 
 /* Specific section styles */
@@ -406,12 +434,16 @@ figure.overlayHover:hover figcaption::before {
 .projects-section {
   overflow-y: auto;
   height: 100%;
-  scrollbar-width: none; 
+  scrollbar-width: none;
   -ms-overflow-style: none;
+  /* Disable overscroll behavior */
+  overscroll-behavior: contain;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: auto;
 }
 
 .projects-section::-webkit-scrollbar {
-  display: none; /* Hide scrollbar - Chrome, Safari, Edge (Chromium) */
+  display: none;
 }
 
 .projects-section > * {
@@ -474,16 +506,20 @@ figure.overlayHover:hover figcaption::before {
 
 /* Mobile adjustments - PRESERVE SPATIAL NAVIGATION */
 @media (max-width: 768px) {
-  /* Keep spatial navigation working but adjust touch sensitivity */
-  .spatial-container {
-    /* Maintain spatial navigation structure */
-    overflow: hidden;
-    height: 100dvh;
-    width: 100dvw;
-    /* Add touch-action to improve touch handling */
-    touch-action: pan-y;
+  html, body {
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: auto;
+    /* Additional mobile-specific properties */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Only allow selection where explicitly needed */
   }
-  
+
   .spatial-grid {
     /* Keep grid layout for spatial navigation */
     display: grid;
@@ -494,30 +530,30 @@ figure.overlayHover:hover figcaption::before {
     will-change: transform;
     /* Ensure transforms still work */
   }
-  
+
   .section {
     width: 100dvw;
     height: 100dvh;
     overflow: hidden;
   }
-  
+
   /* Projects section specific mobile adjustments */
   .projects-section {
     /* Allow scrolling when active */
     overflow-y: auto;
   }
-  
+
   /* Adjust transition timing for mobile */
   .spatial-grid {
     transition-duration: 0.5s; /* Slightly faster on mobile */
   }
-  
+
   /* Hide desktop-only elements on mobile */
   .hidden.md\\:flex,
   .hidden.md\\:block {
     display: none !important;
   }
-  
+
   /* Ensure mobile navigation elements are visible */
   .md\\:hidden {
     display: flex !important;
