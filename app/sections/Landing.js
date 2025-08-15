@@ -109,25 +109,19 @@ const Landing = ({
                   const slayerSpans = document.getElementsByClassName("slayer");
                   if (wranglerSpan) {
                     wranglerSpan.addEventListener(
-                      "mouseover" || "mousedown",
+                      "mouseover",
                       handleMouseOverWrangler
                     );
-                    wranglerSpan.addEventListener(
-                      "mouseout" || "mouseup",
-                      handleMouseOut
-                    );
+                    wranglerSpan.addEventListener("mouseout", handleMouseOut);
                   }
 
                   if (slayerSpans) {
                     Array.from(slayerSpans).forEach((slayerSpan) => {
                       slayerSpan.addEventListener(
-                        "mouseover" || "mousedown",
+                        "mouseover",
                         handleMouseOverSlayer
                       );
-                      slayerSpan.addEventListener(
-                        "mouseout" || "mouseup",
-                        handleMouseOut
-                      );
+                      slayerSpan.addEventListener("mouseout", handleMouseOut);
                     });
                   }
                 }
