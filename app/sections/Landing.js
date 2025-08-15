@@ -83,7 +83,7 @@ const Landing = ({
   return (
     <section
       id="home"
-      className="h-dvh w-screen snap-start flex relative"
+      className="h-dvh w-screen snap-start flex relative transition-all duration-150 ease-in-out"
       {...restProps}
     >
       <Navbar
@@ -167,7 +167,7 @@ const Landing = ({
 
       {/* Small Screen Indicators */}
       {/* Projects */}
-      <div className="md:hidden scroll_indicator flex flex-col absolute bottom-0 left-1/2 transform -translate-x-1/2 transition ease-in-out duration-300">
+      <div className="md:hidden scroll_indicator flex flex-col absolute bottom-0 left-1/2 transform -translate-x-1/2 transition ease-in-out duration-150">
         <button
           className={
             "navbarLink mb-1 md:mb-6 text-white raleway text font-bold md:text-xl"
@@ -179,9 +179,8 @@ const Landing = ({
         </button>
         <span className="bg-white w-[2px] h-[25px] md:h-[59px] self-center"></span>
       </div>
-
       {/* About */}
-      <div className="md:hidden scroll_indicator flex absolute right-0 top-3/4 transform -translate-y-1/2 transition ease-in-out duration-300">
+      <div className="md:hidden scroll_indicator flex absolute right-0 top-3/4 transform -translate-y-1/2 transition ease-in-out duration-150">
         <button
           className="navbarLink mr-2 md:mr-6 text-white raleway font-bold md:text-xl"
           onClick={handleAboutClick}
@@ -191,6 +190,8 @@ const Landing = ({
         </button>
         <span className="bg-white w-[20px] md:w-[50px] h-[2px] self-center"></span>
       </div>
+
+
       {/* Large Screen Indicator */}
       <div className="hidden md:flex scroll_indicator flex-col absolute transform bottom-0 left-1/2 -translate-x-1/2 group">
         <button

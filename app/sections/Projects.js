@@ -95,7 +95,7 @@ const Projects = ({
           "A full-stack CRUD project with all the bells and whistles required to operate a multi-layered organization. For this project I also performed the deployment, mail server setup and user rights configuration for the organization."
         }
         shortText={
-          "A full-stack CRUD equipped to operate a multi-layered organization."
+          "A full-stack CRUD built and equipped to facilatete the day-to-day operation of a multi-layer organization."
         }
         github={"https://github.com/KarliChristensen/SafariDemo"}
         deployment={"https://safaridemo.vercel.app"}
@@ -111,7 +111,7 @@ const Projects = ({
         text={
           "A site I put together for the launch of a children's book I co-wrote with my wife on the subject of becoming a parent, and not knowing what ever loving hell you're doing."
         }
-        shortText={"A site for a children's I co-wrote with my wife."}
+        shortText={"A site static site for the promotion of a children's book I co-wrote with my wife."}
         github={"https://github.com/KarliChristensen/monster-book"}
         deployment={"https://monster-taupe.vercel.app/"}
       />
@@ -127,7 +127,7 @@ const Projects = ({
           "At the end of the Ironhack boot camp, students are tasked with completing a fully functional CRUD project, building the front and backend separately before deploying these inside of a 3-month time-limit."
         }
         shortText={
-          "At the end of the Ironhack boot camp, students are tasked with completing a fully functional CRUD project, building the front and backend separately."
+          "At the end of the Ironhack boot camp, students are tasked with completing a fully functional CRUD project, building and hosting the front and backend separately."
         }
         github={"https://github.com/KarliChristensen/padel-app-client"}
         deployment={"https://adorable-concha-1ef0b2.netlify.app/"}
