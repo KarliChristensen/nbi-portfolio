@@ -186,15 +186,6 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
           case 'landing':
             targetSection = 'projects';
             break;
-          case 'about':
-            targetSection = 'landing';
-            break;
-        }
-      } else { // Scrolling up
-        switch (currentSection) {
-          case 'landing':
-            targetSection = 'about';
-            break;
         }
       }
       
@@ -232,16 +223,11 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
         case 'ArrowRight':
           if (currentSection === 'landing') targetSection = 'about';
           break;
-        case 'ArrowLeft':
-          if (currentSection === 'about') targetSection = 'landing';
-          break;
         case 'ArrowDown':
           if (currentSection === 'landing') targetSection = 'projects';
-          if (currentSection === 'about') targetSection = 'landing';
           break;
         case 'ArrowUp':
           if (currentSection === 'projects') targetSection = 'landing';
-          if (currentSection === 'landing') targetSection = 'about';
           break;
       }
       
@@ -339,12 +325,12 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
       // Horizontal swipe
       if (Math.abs(deltaX) > minSwipeDistance) {
         if (deltaX < 0) { 
-          // Swipe left (moving from right to left) - go to previous/left section
+          // Swipe right (moving from left to right) - go to previous/left section
           if (currentSection === 'about') {
             navigationCooldownRef.current = true;
             setTimeout(() => {
               navigationCooldownRef.current = false;
-            }, 1000);
+            }, 500);
             navigateToSection('landing');
           }
         } else { 
@@ -353,7 +339,7 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
             navigationCooldownRef.current = true;
             setTimeout(() => {
               navigationCooldownRef.current = false;
-            }, 1000);
+            }, 500);
             navigateToSection('about');
           }
         }
@@ -373,35 +359,24 @@ const SpatialNavigation = ({ landingContent, aboutContent, projectsContent }) =>
               navigationCooldownRef.current = true;
               setTimeout(() => {
                 navigationCooldownRef.current = false;
-              }, 1000);
+              }, 500);
               navigateToSection('landing');
             }
             // For all other cases in projects, allow normal scrolling
           }
         } else {
           // Handle vertical navigation for landing and about sections
-          if (deltaY < 0) { 
-            // Swipe up - go to section above/up
-            if (currentSection === 'landing') {
-              navigationCooldownRef.current = true;
-              setTimeout(() => {
-                navigationCooldownRef.current = false;
-              }, 1000);
-              navigateToSection('about');
-            }
-          } else { 
-            // Swipe down - go to section below/down
+          if (deltaY > 0) { 
             if (currentSection === 'about') {
               navigationCooldownRef.current = true;
               setTimeout(() => {
                 navigationCooldownRef.current = false;
-              }, 1000);
-              navigateToSection('landing');
+              }, 500);
             } else if (currentSection === 'landing') {
               navigationCooldownRef.current = true;
               setTimeout(() => {
                 navigationCooldownRef.current = false;
-              }, 1000);
+              }, 500);
               navigateToSection('projects');
             }
           }

@@ -142,7 +142,6 @@ const Landing = ({
                 .delete(7)
                 .pause(200)
                 .type(`<span>Frontend</span> `, { speed: 100 })
-                .break()
                 .move(null, { to: "END" })
                 .pause(500)
                 .delete(20)
@@ -158,7 +157,8 @@ const Landing = ({
                 .break()
                 .type(
                   "<span><span style='white-space: nowrap'>JS & HTML,</span><br><span style='white-space: nowrap;'><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>S</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>l</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>a</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>y</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>e</span><span class='slayer' style='-webkit-text-stroke: 2px white; color: rgba(0, 0, 0, 0); display: inline-block;'>r</span> of<span> CSS</span></span>",
-                  { speed: 50 })
+                  { speed: 50 }
+                );
               return instance;
             }}
           />
@@ -188,7 +188,7 @@ const Landing = ({
         </button>
         <span className="bg-white w-[20px] md:w-[50px] h-[2px] self-center"></span>
       </div>
-      <div className="hidden md:flex scroll_indicator flex-col absolute transform bottom-0 left-1/2 transition ease-in-out duration-300">
+      <div className="hidden md:flex scroll_indicator flex-col absolute transform bottom-0 left-1/2 transform -translate-x-1/2 transition ease-in-out duration-300">
         <p
           className="text-center mb-6 text-white raleway font-extrabold text-xl"
           aria-label="Navigate to Projects"

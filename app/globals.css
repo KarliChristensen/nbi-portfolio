@@ -31,7 +31,7 @@
 }
 
 .clampDefault {
-  font-size: clamp(2rem, 0.5rem + 5vw, 3rem);
+  font-size: clamp(2rem, 0.5rem + 5dvw, 3rem);
   line-height: 1.1;
 }
 
@@ -328,15 +328,15 @@ figure.overlayHover:hover figcaption::before {
 
 .app-container {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   overflow: hidden;
 }
 
 .content-wrapper {
   display: flex;
-  width: 200vw;
-  height: 100vh;
+  width: 200dvw;
+  height: 100dvh;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
@@ -346,13 +346,13 @@ figure.overlayHover:hover figcaption::before {
 }
 
 .content-wrapper.slide-to-about {
-  transform: translateX(-100vw);
+  transform: translateX(-100dvw);
 }
 
 .main-content,
 .about-content {
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   flex-shrink: 0;
 }
 
@@ -367,14 +367,14 @@ figure.overlayHover:hover figcaption::before {
 }
 
 .section {
-  height: 100vh;
+  height: 100dvh;
   scroll-snap-align: start;
 }
 
 /* Enhanced Spatial Navigation Styles */
 .spatial-container {
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   overflow: hidden;
   position: relative;
   background: #000; /* Fallback background */
@@ -382,21 +382,22 @@ figure.overlayHover:hover figcaption::before {
 
 .spatial-grid {
   display: grid;
-  grid-template-columns: 100vw 100vw;
-  grid-template-rows: 100vh 100vh;
-  width: 200vw;
-  height: 200vh;
+  grid-template-columns: 100dvw 100dvw;
+  grid-template-rows: 100dvh 100dvh;
+  width: 200dvw;
+  height: 200dvh;
   will-change: transform;
 }
 
 .section {
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   position: relative;
   overflow: hidden; /* Default to hidden, override for specific sections */
 }
 
 /* Specific section styles */
+
 .landing-section {
   grid-column: 1;
   grid-row: 1;
@@ -410,9 +411,18 @@ figure.overlayHover:hover figcaption::before {
 }
 
 .projects-section {
-  grid-column: 1;
-  grid-row: 2;
-  /* Overflow will be controlled by JavaScript based on active state */
+  overflow-y: auto;
+  height: 100%;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+
+.projects-section::-webkit-scrollbar {
+  display: none; /* Hide scrollbar - Chrome, Safari, Edge (Chromium) */
+}
+
+.projects-section > * {
+  height: auto; /* don’t force nested full-height unless needed */
 }
 
 .empty-section {
@@ -477,8 +487,8 @@ figure.overlayHover:hover figcaption::before {
   .spatial-container {
     /* Maintain spatial navigation structure */
     overflow: hidden;
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     /* Add touch-action to improve touch handling */
     touch-action: pan-y;
   }
@@ -486,17 +496,17 @@ figure.overlayHover:hover figcaption::before {
   .spatial-grid {
     /* Keep grid layout for spatial navigation */
     display: grid;
-    grid-template-columns: 100vw 100vw;
-    grid-template-rows: 100vh 100vh;
-    width: 200vw;
-    height: 200vh;
+    grid-template-columns: 100dvw 100dvw;
+    grid-template-rows: 100dvh 100dvh;
+    width: 200dvw;
+    height: 200dvh;
     will-change: transform;
     /* Ensure transforms still work */
   }
   
   .section {
-    width: 100vw;
-    height: 100vh;
+    width: 100dvw;
+    height: 100dvh;
     overflow: hidden;
   }
   
