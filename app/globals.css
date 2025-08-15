@@ -44,7 +44,7 @@ body {
 }
 
 .clampDefault {
-  font-size: clamp(2rem, 0.5rem + 5dvw, 3rem);
+  font-size: clamp(2rem, 0.5rem + 5vw, 3rem);
   line-height: 1.1;
 }
 
@@ -335,15 +335,15 @@ figure.overlayHover:hover figcaption::before {
 
 .app-container {
   position: relative;
-  width: 100dvw;
-  height: 100dvh;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 }
 
 .content-wrapper {
   display: flex;
-  width: 200dvw;
-  height: 100dvh;
+  width: 200vw;
+  height: 100vh;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
@@ -353,13 +353,13 @@ figure.overlayHover:hover figcaption::before {
 }
 
 .content-wrapper.slide-to-about {
-  transform: translateX(-100dvw);
+  transform: translateX(-100vw);
 }
 
 .main-content,
 .about-content {
-  width: 100dvw;
-  height: 100dvh;
+  width: 100vw;
+  height: 100vh;
   flex-shrink: 0;
 }
 
@@ -374,14 +374,14 @@ figure.overlayHover:hover figcaption::before {
 }
 
 .section {
-  height: 100dvh;
+  height: 100vh;
   scroll-snap-align: start;
 }
 
 /* Enhanced Spatial Navigation Styles */
 .spatial-container {
-  width: 100dvw;
-  height: 100dvh;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   position: relative;
   background: #000;
@@ -402,16 +402,16 @@ figure.overlayHover:hover figcaption::before {
 
 .spatial-grid {
   display: grid;
-  grid-template-columns: 100dvw 100dvw;
-  grid-template-rows: 100dvh 100dvh;
-  width: 200dvw;
-  height: 200dvh;
+  grid-template-columns: 100dw 100vw;
+  grid-template-rows: 100vh 100vh;
+  width: 200vw;
+  height: 200vh;
   will-change: transform;
 }
 
 .section {
   width: 100dvw;
-  height: 100dvh;
+  height: 100vh;
   position: relative;
   overflow: hidden;
   overscroll-behavior: none;
@@ -523,17 +523,17 @@ figure.overlayHover:hover figcaption::before {
   .spatial-grid {
     /* Keep grid layout for spatial navigation */
     display: grid;
-    grid-template-columns: 100dvw 100dvw;
-    grid-template-rows: 100dvh 100dvh;
-    width: 200dvw;
-    height: 200dvh;
+    grid-template-columns: 100vw 100vw;
+    grid-template-rows: 100vh 100vh;
+    width: 200vw;
+    height: 200vh;
     will-change: transform;
     /* Ensure transforms still work */
   }
 
   .section {
-    width: 100dvw;
-    height: 100dvh;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
   }
 
