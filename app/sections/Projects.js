@@ -12,6 +12,8 @@ import Version22 from "../../public/images/Portfolio V22.png";
 import Article from "../components/Article";
 import ArticleAltOne from "../components/ArticleAltOne";
 import ArticleAltTwo from "../components/ArticleAltTwo";
+import Shangamera from "../../public/images/Shangamera.png";
+import ShangameraMini from "../../public/images/ShangameraMini.png";
 
 const Projects = ({
   navigateToSection,
@@ -81,7 +83,23 @@ const Projects = ({
         sectionStatus={sectionStatus}
         isTransitioning={isTransitioning}
       />
-
+      <ArticleAltTwo
+        imageOne={Shangamera}
+        imageTwo={ShangameraMini}
+        title={
+          <h2>
+            Tours & Safari <span>Shangamera</span>
+          </h2>
+        }
+        text={
+          "A full-stack CRUD project with all the bells and whistles required to operate a multi-layered organization. For this project I also performed the deployment, mail server setup and user rights configuration for the organization."
+        }
+        shortText={
+          "A full-stack CRUD equipped to operate a multi-layered organization."
+        }
+        github={"https://github.com/KarliChristensen/SafariDemo"}
+        deployment={"https://safaridemo.vercel.app"}
+      />
       <Article
         imageOne={Monster}
         imageTwo={Monster2}
