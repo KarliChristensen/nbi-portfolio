@@ -92,7 +92,7 @@ const Projects = ({
           </h2>
         }
         text={
-          "A full-stack CRUD project with all the bells and whistles required to operate a multi-layered organization. For this project I also performed the deployment, mail server setup and user rights configuration for the organization."
+          "Shangamera was a newly opened Safari operation out of Botswana, they needed a website that'd let them operate a multi-layered organization and facilitate communication between them and foreign booking agents operating on behalf of 3rd party clients. For this project I also executed the deployment side, setup the mail server and user rights configuration for the organization, getting mostly free reign to pick and choose which tools and services and services to employ. The site is built with Next.js, TypeScript, Tailwind CSS and is hosted on Vercel. The site is fully responsive and features a custom booking system, drawing on a 3rd party email and text messaging system that communicates changes and incoming communication to the relevant employees."
         }
         shortText={
           "A full-stack CRUD project and equipped to facilatete the day-to-day operation of a multi-layer organization."
@@ -109,7 +109,7 @@ const Projects = ({
           </h2>
         }
         text={
-          "A site I put together for the launch of a children's book I co-wrote with my wife on the subject of becoming a parent, and not knowing what ever loving hell you're doing."
+          "A site I put together for the launch of a children's book I co-wrote with my wife on the subject of becoming a parent, and not knowing what ever loving hell you're doing. I played around with some animations and effects, and it was a fun little project to do. The site is built with Next.js, TypeScript, Tailwind CSS and is hosted on Vercel. The site is fully responsive and features a custom-built animation that draws on Maria's artistry and works based on touch and cursor-movement registration."
         }
         shortText={"A site static site for the promotion of a children's book I co-wrote with my wife."}
         github={"https://github.com/KarliChristensen/monster-book"}
@@ -124,7 +124,7 @@ const Projects = ({
           </h2>
         }
         text={
-          "At the end of the Ironhack boot camp, students are tasked with completing a fully functional CRUD project, building the front and backend separately before deploying these inside of a 3-month time-limit."
+          "At the end of the Ironhack boot camp, students are tasked with completing a fully functional CRUD project, building the front and backend separately before deploying these inside of a 3-month time-frame. The project is a padel booking app, allowing users to book courts, view their rankings, leagues, individual and game-related statistics and manage their profile. The site is built with React, Node.js, Express.js, MongoDB and is hosted on Netlify. The site is fully responsive and features a custom-built admin panel that allows for the management of users, courts, leagues and bookings."
         }
         shortText={
           "At the end of the Ironhack boot camp, students are tasked with completing a fully functional CRUD project, building and hosting the front and backend separately."
@@ -141,7 +141,7 @@ const Projects = ({
           </h2>
         }
         text={
-          "A full-stack CRUD project made as part of a 3-man group for Ironhack. Features a user messaging service, cart, sales and purchase functionality."
+          "A full-stack CRUD project made as part of a 3-man group for Ironhack. Features a user messaging service, cart, sales and purchase history, and a fully functional admin panel. The site is built with React, Node.js, Express.js, MongoDB and is hosted on Cyclic. The site is fully responsive and features a custom-built admin panel that allows for the management of users, products and orders."
         }
         shortText={
           "A full-stack CRUD project made as part of a 3-man group for Ironhack."
@@ -158,7 +158,7 @@ const Projects = ({
           </h2>
         }
         text={
-          "An expanding series of projects, the hone shown being the second version - Built after setting myself a 48-hour time limit, to produce something viable and reproducible - The one you're on, is the 5th iteration, though not much of the original design remains."
+          "An expanding series of projects, the one displayed being the second version - Built after setting myself a 48-hour time limit, to produce something viable and reproducible - The one you're on, is the 5th iteration, though not much of the original design remains. The site is built with React, Tailwind CSS and is hosted on Netlify."
         }
         shortText={"v2 of a series, the one you're on, is v5."}
         github={"https://github.com/KarliChristensen/SPPortfolio"}
