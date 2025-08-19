@@ -20,8 +20,8 @@ const About = ({
         sectionStatus={sectionStatus}
         isTransitioning={isTransitioning}
       />
-      <div className="mx-[15%] md:w-[80%]">
-        <p className="text-white font-serif font-bold text-sm sm:text-xl md:text-2xl leading-6 sm:leading-9">
+      <div className="mx-[15%] my-[10%] md:w-[80%]">
+        <p className="text-white font-serif font-bold text-xs sm:text-sm md:text-md leading-5 sm:leading-6">
           Hi, I&#39;m Karli! <br />
           <br />
           Back in 2019 when Covid wasn&#39;t yet a concern I made my living as a

@@ -201,7 +201,7 @@ const Landing = ({
         >
           Projects
         </button>
-        <span className="bg-white w-[2px] h-[59px] self-center group-hover:translate-y-5 transition ease-in-out duration-500"></span>
+        <span className="bg-white w-[2px] md:h-[35px] h-[59px] self-center group-hover:translate-y-5 transition ease-in-out duration-500"></span>
       </div>
     </section>
   );
